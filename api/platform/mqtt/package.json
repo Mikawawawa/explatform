@@ -1,0 +1,17 @@
+{
+    "name": "api-mqtt",
+    "version": "1.0.0",
+    "description": "api-server for explatform",
+    "main": "app.js",
+    "scripts": {
+        "start": "forever start app.js",
+        "stop": "forever stop app.js",
+        "check": "node ./check/pub.js & node ./check/sub.js"
+    },
+    "author": "lancelotnemoj",
+    "license": "MIT",
+    "dependencies": {
+        "mosca": "^2.8.3",
+        "mqtt": "^2.18.2"
+    }
+}
