@@ -8,6 +8,10 @@
         "stop": "forever stop app.js",
         "check": "node ./check/pub.js & node ./check/sub.js"
     },
+    "config": {
+        "mport":8080,
+        "mhost":"127.0.0.1"
+    },
     "author": "lancelotnemoj",
     "license": "MIT",
     "dependencies": {

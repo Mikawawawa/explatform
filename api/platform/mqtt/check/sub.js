@@ -1,8 +1,12 @@
-var mqtt = require('mqtt');  
-var client2 = mqtt.connect("mqtt://127.0.0.1:1883");   //指定服务端地址和端口
+const mqtt = require('mqtt')
+const package = require("../package.json")
+const client = mqtt.connect(`mqtt://${package.config.mhost}:${package.config.mport}`)
+
+client.on('connect', function () {
+    console.log(`connect to ${package.config.mhost}:${package.config.mport}`)
+    client.subscribe('test',{qos:1});//订阅主题为test的消息  
+})
   
-client2.subscribe('test',{qos:1});//订阅主题为test的消息  
-  
-client2.on('message',function(top,message) {  
+client.on('message',function(top,message) {  
     console.log(message.toString());  
 });  
