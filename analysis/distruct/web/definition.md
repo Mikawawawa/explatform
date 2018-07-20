@@ -85,6 +85,7 @@
 
 要实现的api为
 ```
+### 管理员
 /manager/insert_billboard?content=&class=
 {
     code:1,
@@ -139,5 +140,55 @@
             ...示例中的全部内容
         }
     ]
+}
+
+### 课程员
+/subject/insert_billboard?content=&class=
+{
+    code:1,
+    info:""
+}
+
+/subject/get_class/
+{
+    code:1,
+    info:
+    [
+        {
+            cid:10086,
+            joins:28,
+            classsroom:202,
+            weekday:3,
+            period:2
+        }
+    ]
+}
+
+/subject/get_request?class=
+{
+    code:1,
+    info:
+    [
+        {
+            tid:10086,
+            tname:”郑老师“,
+            class:10000,
+            classsroom:202,
+            weekday:3,
+            period:2
+        }
+    ]
+}
+
+/subject/exec_request?class=&tid=
+{
+    code:1,
+    info:""
+}
+
+/subject/put_template?id=&content=
+{
+    code:1,
+    info:""
 }
 ```
