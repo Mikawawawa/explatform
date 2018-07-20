@@ -19,43 +19,43 @@
 3. 批准负责班级的请求（从申请表项中复制一份到负责表中）
 4. 输入（课程号），返回代课申请（课程号，班级号，教室号，状态）
 5. 输入（栏目，操作，选择题）生成实验（模板），返回添加记录数（1|0）
-> 示例
-> 栏目：{
-> 
-> 'name':"课前预习",
-> 
-> "content"："
-> 
-> \### 课前预习
-> 
-> 本实验的目的是：
-> 
-> 实验器材
-> ”
-> 
-> }
-> 
-> 
-> 操作：[
-> 
-> {"name':"操作一,"grade":"5"}，
-> 
-> {"name':"操作二,"grade":"5"}
-> 
-> ]
-> 
->选择题：[
->{"quetion":"absdafasdf",
->
->'answer'：[
->
-> {'id':'a','content':'asdfasdfasf'},
->
-> {'id':'b','content':'asdfasdfasf'}]
->
-> 'right':"a"
->
->}]
+
+示例
+
+栏目：
+```
+[
+    {
+        'name':"课前预习",
+        "content"：
+        "
+            \### 课前预习
+            本实验的目的是：
+            实验器材
+        ”
+    }
+]
+```
+操作：
+```
+[
+    {"name':"操作一,"grade":"5"}，
+    {"name':"操作二,"grade":"5"}
+]
+```
+选择题：
+```
+[
+    {
+        "quetion":"absdafasdf",
+        "answer"：[
+            {'id':'a','content':'asdfasdfasf'},
+            {'id':'b','content':'asdfasdfasf'}
+        ],
+        "right":"a"
+    }
+]
+```
 5. 输入（班级号）查询学生的签到情况
 
 -----------------------
@@ -82,3 +82,62 @@
 试验台
 1. 输入（MAC地址，学号），根据试验台的进度记录，修改学生对应的实验记录的签到信息，修改实验桌的占用信息
 2. 输入（进度，学号，操作名，分数），修改实验记录中的分数
+
+要实现的api为
+```
+/manager/insert_billboard?content=&class=
+{
+    code:1,
+    info:""
+}
+/manager/create_object?type=0|1|2|3&id=&name=
+{
+    code:1,
+    info:""
+}
+/manager/new_term/
+{
+    code:1,
+    info:""
+}
+/manager/check_subject?subject=
+{
+    code:1,
+    info:
+    [
+        {
+            "classroom":202,
+            "subject":数字逻辑电路,
+            "weekday":"5",
+            "peroid":1
+        }
+    ]
+}
+/manager/check_classroom?classroom=
+{
+    code:1,
+    info:
+    [
+        {
+            "classroom":202,
+            "subject":数字逻辑电路,
+            "weekday":"5",
+            "peroid":1
+        }
+    ]
+}
+/manager/get_report?term=
+{
+    code:1,
+    info:
+    [
+        {
+            "sid":"16041519",
+            "sname":"姜佐腾",
+            "subject":"数字逻辑电路",
+            "eid":"xxxxxx",
+            ...示例中的全部内容
+        }
+    ]
+}
+```
