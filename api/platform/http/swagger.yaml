@@ -1,12 +1,9 @@
 swagger: "2.0"
 info:
   version: 1.0.1
-  title: apiOfHardsorft
-  description: apiOfHardsorft
+  title: platform
+  description: 服务器与硬件部分的接口，除去使用mqtt的部分
 basePath: /api/v1
-tags:
-  - name: Finger Print SignIn System
-    description: The apis for the fpsign system
 
 consumes:
   - application/json
@@ -41,16 +38,16 @@ paths:
   /teacher/update_processs/:
       get:
         tags:
-          - Progress
+          - User
         description: 教师更新进度
         responses:
           200:
             description: Return progress
   
-  /getway/get_emessage/:
-    post:
+  /gateway/get_emessage/:
+    get:
       tags:
-        - Emessage
+        - Gateway
       description: 网关获取实验信息
       parameters:
         - name: data
@@ -66,7 +63,7 @@ paths:
   /dialing/sign:
      get:
        tags:
-         - Result
+         - Dialing
        parameters:
          - name: data
            in: body
