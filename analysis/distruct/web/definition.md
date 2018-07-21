@@ -191,4 +191,118 @@
     code:1,
     info:""
 }
-```
+
+### 教师
+/teacher/found_class/
+{
+    code:1,
+    info:""
+}
+
+/teacher/put_class/tid=&class=
+{
+    code:1,
+    info:""
+}
+
+/teacher/check_class/tid=
+{
+    code:1,
+    info:
+    [
+        {
+            "tid":10086,
+            "class":10000,
+            "weekday":6,
+            "period":2,
+            "classroom":202,
+            "subject":"数字逻辑电路"
+        }
+    ]
+}
+
+/teacher/put_student/sid=&class=
+{
+    coded:1,
+    info:""
+}
+
+/teacher/check_object/class=&sid=|exp=
+{
+    code:1,
+    info:""
+}
+
+/teacher/sign_record/class=&exp=
+{
+    code:1,
+    info:
+    [
+        {
+            "subject":"数字逻辑电路实验"
+            "sid":17041802
+            "stime":201807211158
+        }
+    ]
+}
+
+/teacher/exp_revamp/class=&classroom=&exp=
+{
+    code:
+    info:""
+}
+
+/teacher/rel_occupy/class=&classroom=
+{
+    code:1,
+    info:""
+}
+
+/teacher/get_report?term=
+{
+    code:1,
+    info:
+    [
+        {
+            "sid":"16041519",
+            "sname":"姜佐腾",
+            "subject":"数字逻辑电路",
+            "eid":"xxxxxx",
+            ...示例中的全部内容
+        }
+    ]
+}
+
+### 学生
+/student/check_class/sid=&term=
+{
+    code:1,
+    info:
+    [
+        {
+            "sid":17041802,
+            "class":10000,
+            "weekday":3,
+            "period":2,
+            "classroom":202,
+            "subject":"数字逻辑电路"
+        }
+    ]
+}
+
+/student/re_record/sid=&class=&exp=
+{
+    code:
+    info:""
+}
+
+/stduent/exp_recode/sid=&class=
+{
+    code:
+    info:
+    [
+        {
+            ...所有实验记录
+        }
+    ]
+}
