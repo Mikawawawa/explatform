@@ -11,7 +11,7 @@ client.on("error",(err)=>{
     console.log(err)
 })
 
-let message = 'setr=xxxxxxx1xx'
+let message = '123'
 setInterval(()=>{
     client.publish('test', message, { qos: 0, retain: true })
 }, 2000);
