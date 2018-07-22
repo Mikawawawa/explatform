@@ -1,9 +1,12 @@
 swagger: "2.0"
 info:
   version: 1.0.1
-  title: platform
-  description: 服务器与硬件部分的接口，除去使用mqtt的部分
+  title: apiOfHardsorft
+  description: apiOfHardsorft
 basePath: /api/v1
+tags:
+  - name: Finger Print SignIn System
+    description: The apis for the fpsign system
 
 consumes:
   - application/json
@@ -33,21 +36,72 @@ definitions:
       res:
         type: string
         description: 成功后的操作
+  init:
+    type: object
+    title: init
+    required:
+      - cid
+      - row
+      - line
+    properties:
+      cid:
+        type: string
+        description: cid
+      row:
+        type: string
+        description: row
+      line:
+        type: string
+        description: line
+  teacher:
+    type: object
+    title: teacher
+    required:
+      - tid
+    properties:
+      tid:
+        type: string
+        description: tid
+  grade:
+    type: object
+    title: grade
+    required:
+      - sid
+      - cid
+      - process
+      - act
+      - grade
+    properties:
+      sid:
+        type: string
+        description: sid
+      cid:
+        type: string
+        description: cid
+      process:
+        type: string
+        description: process
+      act:
+        type: string
+        description: act
+      grade:
+        type: string
+        description: grade
   
 paths:
   /teacher/update_processs/:
       get:
         tags:
-          - User
+          - Progress
         description: 教师更新进度
         responses:
           200:
             description: Return progress
   
-  /gateway/get_emessage/:
-    get:
+  /getway/get_emessage/:
+    post:
       tags:
-        - Gateway
+        - Emessage
       description: 网关获取实验信息
       parameters:
         - name: data
@@ -61,19 +115,71 @@ paths:
           description: 根据最新修改时间保留新的信息，并返回
   
   /dialing/sign:
-     get:
-       tags:
-         - Dialing
-       parameters:
-         - name: data
-           in: body
-           description: 实验结束后的操作
-           required: true
-           schema: 
+    get:
+      tags:
+       - Result
+      description: 实验结束
+      parameters:
+        - name: data
+          in: body
+          description: 实验结束后的操作
+          required: true
+          schema: 
             $ref: "#/definitions/Result"
-       responses:
-         200:
-           description: 实验成功后的操作
+      responses:
+        200:
+          description: 实验成功后的操作
+  
+  /dialing/init:
+    get:
+      tags:
+       - init
+      description: 打分机注册自身身份
+      parameters:
+        - name: data
+          in: body
+          description: 打分机注册自身身份
+          required: true
+          schema: 
+            $ref: "#/definitions/init"
+      responses:
+        200:
+          description: 打分机注册自身身份
+  
+  /dialing/check_teacher:
+    get:
+      tags:
+       - check_teacher
+      description: 打分机验证教师身份
+      parameters:
+        - name: data
+          in: body
+          description: 打分机验证教师身份
+          required: true
+          schema: 
+            $ref: "#/definitions/teacher"
+      responses:
+        200:
+          description: 打分机验证教师身份
+  
+  /dialing/put_grade/:
+    get:
+      tags:
+       - put_grade
+      description: 打分机打分
+      parameters:
+        - name: data
+          in: body
+          description: 成绩
+          required: true
+          schema: 
+            $ref: "#/definitions/grade"
+      responses:
+        200:
+          description: 打分机打分
+  
+  
+  
         
 
   
