@@ -10,5 +10,5 @@ WORKDIR /home/mqtt
 COPY . /home/mqtt
 RUN npm install
 
-EXPOSE 8080
+EXPOSE 8201
 CMD ["npm", "start"]
