@@ -8,7 +8,7 @@
         "check": "node ./check/pub.js & node ./check/sub.js"
     },
     "config": {
-        "mport":8201,
+        "mport":8080,
         "mhost":"101.132.116.211"
     },
     "author": "lancelotnemoj",
