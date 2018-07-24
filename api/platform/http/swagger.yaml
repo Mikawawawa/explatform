@@ -1,0 +1,82 @@
+swagger: "2.0"
+info:
+  version: 1.0.1
+  title: apiOfHardsorft
+  description: apiOfHardsorft
+basePath: /api/v1
+tags:
+  - name: Finger Print SignIn System
+    description: The apis for the fpsign system
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  Emessage:
+    type: object
+    title: emessage
+    required:
+      - class
+      - process
+    properties:
+      class:
+        type: string
+        description: 班级号
+      unit:
+        type: string
+        description: 实验进度
+  Result:
+    type: object
+    title: result
+    required:
+      - res
+    properties:
+      res:
+        type: string
+        description: 成功后的操作
+  
+paths:
+  /teacher/update_processs/:
+      get:
+        tags:
+          - Progress
+        description: 教师更新进度
+        responses:
+          200:
+            description: Return progress
+  
+  /getway/get_emessage/:
+    post:
+      tags:
+        - Emessage
+      description: 网关获取实验信息
+      parameters:
+        - name: data
+          in: body
+          description: 实验信息
+          required: true
+          schema: 
+            $ref: "#/definitions/Emessage"
+      responses:
+        200:
+          description: 根据最新修改时间保留新的信息，并返回
+  
+  /dialing/sign:
+     get:
+       tags:
+         - Result
+       parameters:
+         - name: data
+           in: body
+           description: 实验结束后的操作
+           required: true
+           schema: 
+            $ref: "#/definitions/Result"
+       responses:
+         200:
+           description: 实验成功后的操作
+        
+
+  
