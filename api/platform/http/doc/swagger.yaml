@@ -1,0 +1,224 @@
+swagger: "2.0"
+info:
+  version: 1.0.2
+  title: Platform
+  description: 服务器与硬件部分的接口，除去使用mqtt的部分
+basePath: /
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  info:
+    type: object
+    title: info
+    properties:
+      code:
+        type: integer
+        description: 状态码
+      info:
+        type: string
+        description: 描述信息
+  Pmessage:
+    type: object
+    title: pmessage
+    required:
+      - class
+    properties:
+      class:
+        type: string
+        description: 班级号
+  Emessage:
+    type: object
+    title: emessage
+    required:
+      - class
+      - process
+    properties:
+      class:
+        type: string
+        description: 班级号
+      unit:
+        type: string
+        description: 实验进度
+  Result:
+    type: object
+    title: result
+    required:
+      - res
+    properties:
+      res:
+        type: string
+        description: 成功后的操作
+  init:
+    type: object
+    title: init
+    required:
+      - cid
+      - row
+      - line
+    properties:
+      cid:
+        type: string
+        description: cid
+      row:
+        type: string
+        description: row
+      line:
+        type: string
+        description: line
+  teacher:
+    type: object
+    title: teacher
+    required:
+      - tid
+    properties:
+      tid:
+        type: string
+        description: tid
+  grade:
+    type: object
+    title: grade
+    required:
+      - sid
+      - cid
+      - process
+      - act
+      - grade
+    properties:
+      sid:
+        type: string
+        description: sid
+      cid:
+        type: string
+        description: cid
+      process:
+        type: string
+        description: process
+      act:
+        type: string
+        description: act
+      grade:
+        type: string
+        description: grade
+  
+paths:
+  # /teacher/update_processs/:
+  #   post:
+  #     tags:
+  #       - Teacher
+  #     description: 教师更新进度
+  #     responses:
+  #       200:
+  #         schema:
+  #           $ref: "#/definitions/info"
+  #         description: Return progress
+  /gateway/get_emessage/:
+    post:
+      tags:
+        - Gateway
+      description: 网关获取实验信息
+      parameters:
+        - name: data
+          in: body
+          description: 实验信息
+          required: true
+          schema: 
+            $ref: "#/definitions/Emessage"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/info"
+          description: 根据最新修改时间保留新的信息，并返回
+  
+  /gateway/get_pmessage/:
+    post:
+      tags:
+        - Gateway
+      description: 网关获取电源信息
+      parameters:
+        - name: data
+          in: body
+          description: 实验信息
+          required: true
+          schema: 
+            $ref: "#/definitions/Pmessage"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/info"
+          description: 根据最新修改时间保留新的信息，并返回
+  
+  /dialing/sign:
+    post:
+      tags:
+       - Dialing
+      description: 实验结束
+      parameters:
+        - name: data
+          in: body
+          description: 实验结束后的操作
+          required: true
+          schema: 
+            $ref: "#/definitions/Result"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/info"
+          description: 实验成功后的操作
+  
+  /dialing/init:
+    post:
+      tags:
+       - Dialing
+      description: 打分机注册自身身份
+      parameters:
+        - name: data
+          in: body
+          description: 打分机注册自身身份
+          required: true
+          schema: 
+            $ref: "#/definitions/init"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/info"
+          description: 打分机注册自身身份
+  
+  /dialing/check_teacher:
+    post:
+      tags:
+       - Dialing
+      description: 打分机验证教师身份
+      parameters:
+        - name: data
+          in: body
+          description: 打分机验证教师身份
+          required: true
+          schema: 
+            $ref: "#/definitions/teacher"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/info"
+          description: 打分机验证教师身份
+  
+  /dialing/put_grade/:
+    post:
+      tags:
+       - Dialing
+      description: 打分机打分
+      parameters:
+        - name: data
+          in: body
+          description: 成绩
+          required: true
+          schema: 
+            $ref: "#/definitions/grade"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/info"
+          description: 打分机打分
