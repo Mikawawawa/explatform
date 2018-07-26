@@ -4,7 +4,10 @@ const router = express.Router();
 
 router.get('/', function (req, res) {
     if (req.session.key) {
-        res.send('Hello World!');
+        res.send({
+            code: 1,
+            info: req.session.key
+        });
     } else {
         res.send("Not login")
     }
