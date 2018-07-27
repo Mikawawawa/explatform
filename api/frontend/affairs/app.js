@@ -4,8 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 const teacherRouter = require('./routes/teacher');
 const studentRouter = require('./routes/student');
@@ -19,6 +19,8 @@ const options = {
   "port": "6379",
   "ttl": 60 * 60 * 24 * 30, //Session的有效期为30天
 };
+
+const domin=''
 
 // 此时req对象还没有session这个属性
 app.use(session({
@@ -36,10 +38,10 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('affairs/teacher', teacherRouter);
-app.use('affairs/student', studentRouter);
-app.use('affairs/class', classRouter);
-app.use('affairs/event', eventRouter);
+app.use(`/${domin}teacher`, teacherRouter);
+app.use(`/${domin}student`, studentRouter);
+app.use(`/${domin}class`, classRouter);
+app.use(`/${domin}event`, eventRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

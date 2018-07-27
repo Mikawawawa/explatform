@@ -2,8 +2,8 @@ const express = require('express');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 
-var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 const app = express();
 const options = {
@@ -11,6 +11,10 @@ const options = {
     "port": "6379",
     "ttl": 60 * 60 * 24 * 30, //Session的有效期为30天
 };
+
+const urllog=require("./midware/urllog")
+
+const domin=''
 
 // 此时req对象还没有session这个属性
 app.use(session({
@@ -28,7 +32,9 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-app.use('/auth', router);
+app.use(urllog)
+
+app.use(`/${domin}`, router);
 
 app.use(function (req, res, next) {
     next(createError(404));
@@ -55,3 +61,4 @@ const server = app.listen(8202, function () {
 
     console.log('Start listening at http://%s:%s', host, port);
 });
+
