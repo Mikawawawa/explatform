@@ -36,10 +36,10 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/teacher', teacherRouter);
-app.use('/student', studentRouter);
-app.use('/class', classRouter);
-app.use('/event', eventRouter);
+app.use('affairs/teacher', teacherRouter);
+app.use('affairs/student', studentRouter);
+app.use('affairs/class', classRouter);
+app.use('affairs/event', eventRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
