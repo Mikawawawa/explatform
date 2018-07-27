@@ -28,7 +28,7 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-app.use('/', router);
+app.use('/auth', router);
 
 app.use(function (req, res, next) {
     next(createError(404));
