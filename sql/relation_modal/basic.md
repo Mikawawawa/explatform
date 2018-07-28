@@ -1,9 +1,10 @@
+<!-- 不存在外键的表项 -->
 user(**user_id,user_type**,password)
 > user_id:用户登陆名
 > user_type:用户类型
 > password:用户密码
 
-subject（**subject_id**,subject_name)
+subject(**subject_id**,subject_name)
 > subject_id:教务编号\
 > subject_name:学科名称
 
@@ -21,6 +22,15 @@ template(**template_id**,operation,choice,section)
 > choice:选择题\
 > section:报告栏目
 
-subejct_template(***subject_id*,*template_id***)
-> subject_id:学科教务编号\
-> template_id:模板编号
+platform(**mac_address**,status)
+> mac_address:MAC地址\
+> status:状态
+
+peroid(**peroid_id**,defination)
+> peroid_id:上课时间段编号\
+> defination:文字定义
+
+semester(**semester_id**,semester_peroid,semester_stage)
+> semester_id:学期编号\
+> semester_peroid:学期年段\
+> semester_stage:学期阶段
