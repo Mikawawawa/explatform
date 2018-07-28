@@ -1,7 +1,7 @@
 experiment(**experiment_id**)
 > experiment_id:实验号 
 
-classroom(**classroom_id**,class_user,progress)
+classroom(**classroom_id**,***class_user*,*progress***)
 > classroom_id:教室名\
 > class_user:占用班级\
 > progress:进度
