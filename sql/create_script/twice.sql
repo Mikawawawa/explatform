@@ -12,3 +12,14 @@ CREATE TABLE `experiment_recard`(
 	FOREIGN KEY(`experiment_id`) REFERENCES experiment(experiment_id),
 	FOREIGN KEY(`subject_id`) REFERENCES subject(subject_id)
 );
+
+CREATE TABLE`class`(
+	`class_id` VARCHAR(32) not NULL,
+	`subject_id` VARCHAR(32) not NULL,
+	`semester_id`VARCHAR(32) not NULL,
+	`process` VARCHAR(32) not NULL,
+	PRIMARY KEY (`class_id`),
+	FOREIGN KEY(`subject_id`) REFERENCES subject(subject_id),
+	FOREIGN KEY(`semester_id`) REFERENCES semester(semester_id),
+	FOREIGN KEY(`process`) REFERENCES experiment(experiment_id)
+);
