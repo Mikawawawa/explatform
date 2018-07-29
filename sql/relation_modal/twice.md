@@ -1,10 +1,10 @@
 class(**class_id**,*subject_id*,*semester_id*,*process*)
-| 类型        | 名称               | 解释 |
-| ----------- | ------------------ | ---- |
-| class_id    | 教学班编号         |
-| subject_id  | 学科编号           |
-| semester_id | 所在学科           |
-| process     | 当前应当进行的实验 |
+| 类型        | 名称        | 解释               |
+| ----------- | ----------- | ------------------ |
+| varchar(32) | class_id    | 教学班编号         |
+| varchar(32) | subject_id  | 学科编号           |
+| varchar(32) | semester_id | 所在学科           |
+| varchar(32) | process     | 当前应当进行的实验 |
 
 experiment_recard(***student_id*,*experiment_id***,*subject_id*,grade,present,operation,choice,section)
 | 类型        | 名称          | 解释             |
