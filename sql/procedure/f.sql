@@ -164,3 +164,11 @@ BEGIN
 	declare code int;
 	SELECT * FROM class WHERE `semester_id` = $semester GROUP BY `subject_id`;
 END;
+-- 按班级查询实验
+CREATE PROCEDURE get_experiment(
+	in $class_id varchar(32)
+)
+BEGIN
+	declare code int;
+	SELECT * FROM experiment WHERE `class_id` = $class_id;
+END;
