@@ -1,0 +1,9 @@
+{
+    "host" : "101.132.116.211",
+    "port" : 3306,
+    "user" : "root",
+    "password" : "aptx4869",
+    "database" : "explatform",
+    "charset" : "UTF8_GENERAL_CI",
+    "debug" : false
+}
