@@ -199,13 +199,13 @@
     info:""
 }
 
-/teacher/put_class/tid=&class=
+/teacher/put_class?tid=&class=
 {
     code:1,
     info:""
 }
 
-/teacher/check_class/tid=
+/teacher/check_class?tid=
 {
     code:1,
     info:
@@ -221,19 +221,19 @@
     ]
 }
 
-/teacher/put_student/sid=&class=
+/teacher/put_student?sid=&class=
 {
     coded:1,
     info:""
 }
 
-/teacher/check_object/class=&sid=|exp=
+/teacher/check_object?class=&sid=|exp=
 {
     code:1,
     info:""
 }
 
-/teacher/sign_record/class=&exp=
+/teacher/sign_record?class=&exp=
 {
     code:1,
     info:
@@ -246,13 +246,13 @@
     ]
 }
 
-/teacher/exp_revamp/class=&classroom=&exp=
+/teacher/exp_revamp?class=&classroom=&exp=
 {
     code:
     info:""
 }
 
-/teacher/rel_occupy/class=&classroom=
+/teacher/rel_occupy?class=&classroom=
 {
     code:1,
     info:""
@@ -274,7 +274,7 @@
 }
 
 ### 学生
-/student/check_class/sid=&term=
+/student/check_class?sid=&term=
 {
     code:1,
     info:
@@ -290,13 +290,13 @@
     ]
 }
 
-/student/re_record/sid=&class=&exp=
+/student/get_record?sid=&class=&exp=
 {
     code:
     info:""
 }
 
-/stduent/exp_recode/sid=&class=
+/stduent/exp_recode?sid=&class=
 {
     code:
     info:
