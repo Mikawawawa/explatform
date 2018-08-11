@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -12,22 +11,16 @@ const teacherRouter = require('./routes/teacher');
 const studentRouter = require('./routes/student');
 const subjectRouter = require('./routes/subject');
 const adminRouter = require('./routes/admin');
+// 把所有的配置参数移动到config.json
+const config = require("./config.json")
+const domin = config.domin
 
-
-const options = {
-    "host": "123.206.176.72",
-    "port": "6379",
-    "ttl": 60 * 60 * 24 * 30, //Session的有效期为30天
-};
-  
-const domin=''
-
-// 此时req对象还没有session这个属性
-  app.use(session({
-    store: new RedisStore(options),
-    secret: 'explatform',
-    resave: true,
-    saveUninitialized: true
+app.use(session({
+  // redis可能被玩坏了，明天我部署一个docker版的再开，暂时存在内存
+  // store: new RedisStore(config.session),
+  secret: 'explatform',
+  resave: true,
+  saveUninitialized: true
 }));
 
 app.use(logger('dev'));
@@ -36,7 +29,8 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// 这次估计没有静态文件
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(`/${domin}teacher`, teacherRouter);
 app.use(`/${domin}student`, studentRouter);
@@ -53,7 +47,6 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   let status = err.message == "Not Found" ? 404 : 500
   res.status(status);
@@ -63,4 +56,4 @@ app.use(function (err, req, res, next) {
   })
 });
 
-app.listen(8040);
+app.listen(config.port);
