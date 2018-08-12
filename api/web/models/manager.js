@@ -3,9 +3,9 @@ const config = require("./config.json")
 
 var params = config.params;
 
-//对群体发送公告，通知定位到具体班级上
+//对该课程下的班级群体发送公告
 function application(config, callback) {
-    connection.query("CALL `class_notice`", (err, rows, fields) => {
+    connection.query("CALL `create_notice`", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -16,7 +16,7 @@ function application(config, callback) {
     })
 }
 
-//查看课程的排课情况
+//查看所负责的课程的排课情况
 function get_application(config, callback) {
     connection.query("CALL `get_teacher_timetable`", params,(err, rows, fields) => {
         if(err){
@@ -29,9 +29,9 @@ function get_application(config, callback) {
     })
 }
 
-//教室的使用情况
+//发布老师的带课申请
 function ttimetable(config, callback) {
-    connection.query("CALL `get_classroom_timetable`", (err, rows, fields) => {
+    connection.query("CALL `class_application`", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -42,9 +42,9 @@ function ttimetable(config, callback) {
     })
 }
 
-//手动增加课程负责人
-function recard(config, callback) {
-    connection.query("CALL `create_user`", params,(err, rows, fields) => {
+//查看老师的带课申请
+function ttimetable(config, callback) {
+    connection.query("CALL `get_teacher_application`", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -55,9 +55,9 @@ function recard(config, callback) {
     })
 }
 
-//手动增加实验课程
-function recard(config, callback) {
-    connection.query("CALL `create_experiment`", params,(err, rows, fields) => {
+//审核老师的带课申请
+function ttimetable(config, callback) {
+    connection.query("CALL `update_class_application`", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -68,9 +68,9 @@ function recard(config, callback) {
     })
 }
 
-//手动增加教师
-function recard(config, callback) {
-    connection.query("CALL `create_teacher`", params,(err, rows, fields) => {
+//发布报告模板（编辑报告内容包括：文字、表格（按图片方式存在）、图像文件、视频文件等）
+function ttimetable(config, callback) {
+    connection.query("CALL `create_template`", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -81,9 +81,9 @@ function recard(config, callback) {
     })
 }
 
-//手动增加学生
-function recard(config, callback) {
-    connection.query("CALL `create_student`", params,(err, rows, fields) => {
+//查看各班级的学生的签到信息
+function ttimetable(config, callback) {
+    connection.query("CALL `get_student_recard`", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
