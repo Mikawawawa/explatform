@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+// const path = require('path');
+const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 

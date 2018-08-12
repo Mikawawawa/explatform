@@ -1,5 +1,5 @@
 const connection = require("./connect")
-const config = require("./config.json")
+const config = require("../config.json")
 
 var params = config.params;
 
