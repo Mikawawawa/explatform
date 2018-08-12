@@ -1,14 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
-const config = require('../config.json');
-// 这里已经是object了
-// var connection = mysql.createConnection(JSON.parse(require('./config.json')));
-const connection = mysql.createConnection(config.mysql);
-// 这个语句提前比较好
-connection.connect();
+const models = require("../models/teacher")
 
-/* GET users listing. */
+//验证身份
+router.use((req, res, next) => {
+    if (!req.session.key || req.session.type !== "student") {
+        res.send({
+            code: 0,
+            info: "身份错误"
+        })
+    } else {
+        next()
+    }
+});
+
+// 业务代码
 router.get('/', function (req, res, next) {
     if (req.session.key) {
         res.send({
@@ -16,50 +22,61 @@ router.get('/', function (req, res, next) {
             info: req.session.key
         });
         next();
-    } else {
-        res.send({
-            code: 0,
-            info: "has not logined"
-        });
     }
+ });
+
+router.get('/a',function(req,res,next){
+     models.ttimetable({}, (data) => {
+         res.send({
+             code: 0,
+             info: "has not logined",
+             data: JSON.stringify(data)
+            });
+    })
+    next();
+});
+router.get('/b',function(req,res,next) {
+        models.application({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
 });
 
-// //查看已发布的需要招募老师的课程，并递交申请
-// connection.query('CALL get_class_application(1,@class)', function (err, rows, fields) {
-//     if (err) {
-//         throw err;
-//     }
+router.get('/c',function(req,res,next) {
+        models.get_application({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+});
 
-// });
-// connection.query('CALL class_application(1,@class,@teacher)', function (err, rows, fields) {
-//     if (err) {
-//         throw err;
-//     }
+router.get('/d',function(req,res,next) {
+        models.grade({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+});
 
-// });
-
-// //查看自己的课表
-// connection.query('CALL get_teacher_grant(1,@teacher)', function (err, rows, fields) {
-//     if (err) {
-//         throw err;
-//     }
-
-// });
-
-// //查看并批阅报告；对学生的预习、报告、大作业、考试等进行打分 查看自己带课教学班级学生实验的分数 查看代课班级学生的签到信息
-// connection.query('update_experiment_recard(1,@student，@grade，@present)', function (err, rows, fields) {
-//     if (err) {
-//         throw err;
-//     }
-
-// });
-
-// //对操作各题成绩进行现场扫描学生二维码打分或补登成绩
-// connection.query('CALL create_experiment_recard(1,@student，@grade)', function (err, rows, fields) {
-//     if (err) {
-//         throw err;
-//     }
-
-// });
+router.get('/e',function(req,res,next) {
+        models.recard({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+ });
 
 module.exports = router;

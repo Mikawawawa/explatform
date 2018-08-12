@@ -22,15 +22,20 @@ router.get('/', function (req, res, next) {
             info: req.session.key
         });
         next();
-    } else if(req.url=='a') {
-        models.timetable({}, (data) => {
-            res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
+    }
+ });
+
+router.get('/a',function(req,res,next){
+     models.stimetable({}, (data) => {
+         res.send({
+             code: 0,
+             info: "has not logined",
+             data: JSON.stringify(data)
             });
-        })
-    }else if(req.url=='b') {
+    })
+    next();
+});
+router.get('/b',function(req,res,next) {
         models.report({}, (data) => {
             res.send({
                 code: 0,
@@ -38,7 +43,10 @@ router.get('/', function (req, res, next) {
                 data: JSON.stringify(data)
             });
         })
-    }else if(req.url=='c') {
+    next();
+});
+
+router.get('/c',function(req,res,next) {
         models.up_exp({}, (data) => {
             res.send({
                 code: 0,
@@ -46,7 +54,10 @@ router.get('/', function (req, res, next) {
                 data: JSON.stringify(data)
             });
         })
-    }else if(req.url=='d') {
+    next();
+});
+
+router.get('/d',function(req,res,next) {
         models.create_exp({}, (data) => {
             res.send({
                 code: 0,
@@ -54,7 +65,10 @@ router.get('/', function (req, res, next) {
                 data: JSON.stringify(data)
             });
         })
-    }else if(req.url=='e') {
+    next();
+});
+
+router.get('/e',function(req,res,next) {
         models.grade({}, (data) => {
             res.send({
                 code: 0,
@@ -62,7 +76,7 @@ router.get('/', function (req, res, next) {
                 data: JSON.stringify(data)
             });
         })
-    }
-});
+    next();
+ });
 
 module.exports = router;
