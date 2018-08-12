@@ -1,10 +1,34 @@
+/*
+ * @Author: shengqiongyi
+ * @Date: 2018-08-12 20:19:34 
+ * @Last Modified by: Maktub
+ * @Last Modified time: 2018-08-12 20:23:51
+ */
 const connection = require("./connect")
-const config = require("./config.json")
+const config = require("../config.json")
 
-var params = config.params;
+// params是指route里文件调用这里的函数时，要传的参数，这个参数的来源在route
+// 不要使用var作为变量定义时的修饰符，可能会出现意料之外的错误
+// 对于引用的模块这类不变的对象，使用const
+// 对于块级作用域内的变量，使用let
+// let params = config.params;
 
-//查看自己的课表
-function stimetable(config, callback) {
+// mysql里存储过程的调用方式
+// call procedure(params...)
+// https://www.cnblogs.com/geaozhang/p/6797357.html
+
+// 为了后期维护（极有可能），函数命名一定要能够明白到底做了什么，
+// 比如timetable，到底是get到这个表，还是delete还是什么，一定要写明白
+
+// fileheader这个插件了解一下
+// 在函数前面输入/**，然后按tab，写好注释，后面用的时候会方便很多，可以直接看到提示
+
+/**
+ * 查看自己的课表
+ * @param {*} config 
+ * @param function callback 
+ */
+function get_timetable(config, callback) {
     connection.query("CALL `get_student_timetable`", (err, rows, fields) => {
         if(err){
             console.log(err);
@@ -17,7 +41,7 @@ function stimetable(config, callback) {
 }
 
 //查看报告；
-function report(config, callback) {
+function get_report(config, callback) {
     connection.query("CALL `get_student_recard`", (err, rows, fields) => {
         if(err){
             console.log(err);
@@ -30,7 +54,7 @@ function report(config, callback) {
 }
 //实验课前对预习作业进行递交 
 //课后能对实验报告进行编辑填写（允许对虚拟测量软件的测量结果截图粘贴、填写表格、粘贴图像文件、粘贴视频文件等操作）、递交
-function up_exp(config, callback) {
+function update_exp(config, callback) {
     connection.query("CALL `update_experiment_recard` where `student_id` = $student and `experiment_id` = $experiment",params, (err, rows, fields) => {
         if(err){
             console.log(err);
@@ -38,17 +62,18 @@ function up_exp(config, callback) {
     })
 }
 
-//老师开始上课后，对课程中的某个实验进行签到开始上电，实验完成后对实验各题结果进行递交；实验课结束后签离，切断电源
-function create_exp(config, callback) {
-    connection.query("CALL `create_experiment_recard`where `student_id` = $student_id and `experiment_id` = $experiment_id",params, (err, rows, fields) => {
-        if(err){
-            console.log(err);
-        }
-    })
-}
+// 这个事件由教师触发
+// //老师开始上课后，对课程中的某个实验进行签到开始上电，实验完成后对实验各题结果进行递交；实验课结束后签离，切断电源
+// function create_exp(config, callback) {
+//     connection.query("CALL `create_experiment_recard`where `student_id` = $student_id and `experiment_id` = $experiment_id",params, (err, rows, fields) => {
+//         if(err){
+//             console.log(err);
+//         }
+//     })
+// }
 
 ////查看自己的各门实验课的分数（含操作的小题分
-function grade(config, callback) {
+function get_grade(config, callback) {
     connection.query("CALL `get_student_recard`", (err, rows, fields) => {
         if(err){
             console.log(err);
@@ -61,9 +86,9 @@ function grade(config, callback) {
 }
 
 module.exports = {
-    'stimetable':stimetable,
-    'report':report,
-    'up_exp':up_exp,
-    'create_exp':create_exp,
-    'grade':grade
+    'get_timetable':get_timetable,
+    'get_report':get_report,
+    'get_grade':get_grade,
+    'update_exp':update_exp,
+    // 'create_exp':create_exp,
 }
