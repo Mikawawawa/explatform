@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
  });
 
 router.get('/a',function(req,res,next){
-     models.ttimetable({}, (data) => {
+     models.get_timetable({}, (data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -36,17 +36,6 @@ router.get('/a',function(req,res,next){
     next();
 });
 router.get('/b',function(req,res,next) {
-        models.application({}, (data) => {
-            res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
-            });
-        })
-    next();
-});
-
-router.get('/c',function(req,res,next) {
         models.get_application({}, (data) => {
             res.send({
                 code: 0,
@@ -57,8 +46,19 @@ router.get('/c',function(req,res,next) {
     next();
 });
 
+router.get('/c',function(req,res,next) {
+        models.update_application({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+});
+
 router.get('/d',function(req,res,next) {
-        models.grade({}, (data) => {
+        models.update_grade({}, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -69,7 +69,7 @@ router.get('/d',function(req,res,next) {
 });
 
 router.get('/e',function(req,res,next) {
-        models.recard({}, (data) => {
+        models.update_recard({}, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
