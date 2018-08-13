@@ -1,10 +1,9 @@
 const connection = require("./connect")
 const config = require("./config.json")
 
-var params = config.params;
 
 //对群体发送公告，通知定位到具体班级上
-function application(config, callback) {
+function update_notice(config, callback) {
     connection.query("CALL `class_notice`", (err, rows, fields) => {
         if(err){
             console.log(err);
@@ -17,7 +16,7 @@ function application(config, callback) {
 }
 
 //查看课程的排课情况
-function get_application(config, callback) {
+function get_class_timetable(config, callback) {
     connection.query("CALL `get_teacher_timetable`", params,(err, rows, fields) => {
         if(err){
             console.log(err);
@@ -30,7 +29,7 @@ function get_application(config, callback) {
 }
 
 //教室的使用情况
-function ttimetable(config, callback) {
+function get_classromm_timetable(config, callback) {
     connection.query("CALL `get_classroom_timetable`", (err, rows, fields) => {
         if(err){
             console.log(err);
@@ -43,7 +42,7 @@ function ttimetable(config, callback) {
 }
 
 //手动增加课程负责人
-function recard(config, callback) {
+function create_class_user(config, callback) {
     connection.query("CALL `create_user`", params,(err, rows, fields) => {
         if(err){
             console.log(err);
@@ -56,7 +55,7 @@ function recard(config, callback) {
 }
 
 //手动增加实验课程
-function recard(config, callback) {
+function create_experiment(config, callback) {
     connection.query("CALL `create_experiment`", params,(err, rows, fields) => {
         if(err){
             console.log(err);
@@ -69,7 +68,7 @@ function recard(config, callback) {
 }
 
 //手动增加教师
-function recard(config, callback) {
+function create_teacher(config, callback) {
     connection.query("CALL `create_teacher`", params,(err, rows, fields) => {
         if(err){
             console.log(err);
@@ -82,7 +81,7 @@ function recard(config, callback) {
 }
 
 //手动增加学生
-function recard(config, callback) {
+function create_student(config, callback) {
     connection.query("CALL `create_student`", params,(err, rows, fields) => {
         if(err){
             console.log(err);
@@ -95,9 +94,11 @@ function recard(config, callback) {
 }
 
 module.exports = {
-    'recard':recard,
-    'grade' :grade,
-    'ttimetable':ttimetable,
-    'application':application,
-    'get_application':get_application
+    'create_student':create_student,
+    'create_teacher' :create_teacher,
+    'create_experiment':create_experiment,
+    'create_class_user':create_class_user,
+    'get_classromm_timetable':get_classromm_timetable,
+    'get_class_timetable':get_class_timetable,
+    'update_notice':update_notice
 }
