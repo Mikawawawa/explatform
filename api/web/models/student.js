@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-08-12 20:23:51
  */
 const connection = require("./connect")
-const config = require("../config.json")
+const config = require('../config.json')
 
 // params是指route里文件调用这里的函数时，要传的参数，这个参数的来源在route
 // 不要使用var作为变量定义时的修饰符，可能会出现意料之外的错误

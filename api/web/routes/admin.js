@@ -3,7 +3,7 @@ const router = express.Router();
 const models = require("../models/student")
 
 //验证身份
-router.use((req, res, next) => {
+/*router.use((req, res, next) => {
     if (!req.session.key || req.session.type !== "student") {
         res.send({
             code: 0,
@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
         next();
     }
  });
-
+*/
 router.get('/create_student',function(req,res,next){
      models.create_student({}, (data) => {
          res.send({

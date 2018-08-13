@@ -1,5 +1,5 @@
 const connection = require("./connect")
-const config = require("./config.json")
+const config = require('../config.json')
 
 
 //对群体发送公告，通知定位到具体班级上
