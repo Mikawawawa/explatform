@@ -33,8 +33,8 @@ router.get('/get_timetable',function(req,res,next){
              data: JSON.stringify(data)
             });
     })
-    next();
 });
+
 router.get('/get_application',function(req,res,next) {
         models.get_application((req.url), (data) => {
             res.send({
@@ -43,7 +43,6 @@ router.get('/get_application',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/update_application',function(req,res,next) {
@@ -54,7 +53,6 @@ router.get('/update_application',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/update_grade',function(req,res,next) {
@@ -65,7 +63,6 @@ router.get('/update_grade',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/update_recard',function(req,res,next) {
@@ -76,7 +73,6 @@ router.get('/update_recard',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
  });
 
 module.exports = router;

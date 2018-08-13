@@ -3,7 +3,7 @@ const router = express.Router();
 const models = require("../models/student")
 
 //验证身份
-router.use((req, res, next) => {
+/*router.use((req, res, next) => {
     if (!req.session.key || req.session.type !== "student") {
         res.send({
             code: 0,
@@ -24,16 +24,17 @@ router.get('/', function (req, res, next) {
         next();
     }
  });
-
+*/
 router.get('/get_timetable',function(req,res,next){
-     models.get_timetable((req.url), (data) => {
+    res.send(req.url);
+     /*models.get_timetable((req.url), (data) => {
+         console.log(req.url);
          res.send({
              code: 0,
              info: "has not logined",
              data: JSON.stringify(data)
             });
-    })
-    next();
+    })*/
 });
 router.get('/get_report',function(req,res,next) {
         models.get_report((req.url), (data) => {
@@ -43,7 +44,6 @@ router.get('/get_report',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/update_exp',function(req,res,next) {
@@ -54,7 +54,6 @@ router.get('/update_exp',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 /*router.get('/d',function(req,res,next) {
@@ -77,7 +76,6 @@ router.get('/get_grade',function(req,res,next) {
                 data: JSON.stringify(data)
             });
         })
-    next();
  });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const models = require("../models/student")
+const models = require("../models/manager")
 
 //验证身份
 router.use((req, res, next) => {
@@ -26,79 +26,72 @@ router.get('/', function (req, res, next) {
  });
 
 router.get('/update_notice',function(req,res,next){
-     models.update_notice({}, (data) => {
+     models.update_notice((req.uel), (data) => {
          res.send({
              code: 0,
              info: "has not logined",
              data: JSON.stringify(data)
             });
     })
-    next();
 });
 router.get('/get_teacher_timetable',function(req,res,next) {
-        models.get_teacher_timetable({}, (data) => {
+        models.get_teacher_timetable((req.url), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/update_class_application',function(req,res,next) {
-        models.update_class_application({}, (data) => {
+        models.update_class_application((req.url), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/get_teacher_application',function(req,res,next) {
-        models.get_teacher_application({}, (data) => {
+        models.get_teacher_application((req.url), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
                 data: JSON.stringify(data)
             });
         })
-    next();
 });
 
 router.get('/check_application',function(req,res,next) {
-        models.check_application({}, (data) => {
+        models.check_application((req.url), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
                 data: JSON.stringify(data)
             });
         })
-    next();
  });
 
  router.get('/update_template',function(req,res,next) {
-    models.update_template({}, (data) => {
+    models.update_template((req.url), (data) => {
         res.send({
             code: 0,
             info: "has not logined",
             data: JSON.stringify(data)
         });
     })
-    next();
 });
 
 router.get('/get_student_recard',function(req,res,next) {
-    models.get_student_recard({}, (data) => {
+    models.get_student_recard((req.url), (data) => {
         res.send({
             code: 0,
             info: "has not logined",
             data: JSON.stringify(data)
         });
     })
-    next();
 });
 
 module.exports = router;
