@@ -25,8 +25,8 @@ router.get('/', function (req, res, next) {
     }
  });
 
-router.get('/a',function(req,res,next){
-     models.stimetable({}, (data) => {
+router.get('/get_timetable',function(req,res,next){
+     models.get_timetable({}, (data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -35,8 +35,8 @@ router.get('/a',function(req,res,next){
     })
     next();
 });
-router.get('/b',function(req,res,next) {
-        models.report({}, (data) => {
+router.get('/get_report',function(req,res,next) {
+        models.get_report({}, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -46,8 +46,8 @@ router.get('/b',function(req,res,next) {
     next();
 });
 
-router.get('/c',function(req,res,next) {
-        models.up_exp({}, (data) => {
+router.get('/update_exp',function(req,res,next) {
+        models.update_exp({}, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -57,7 +57,7 @@ router.get('/c',function(req,res,next) {
     next();
 });
 
-router.get('/d',function(req,res,next) {
+/*router.get('/d',function(req,res,next) {
         models.create_exp({}, (data) => {
             res.send({
                 code: 0,
@@ -67,9 +67,10 @@ router.get('/d',function(req,res,next) {
         })
     next();
 });
+*/
 
-router.get('/e',function(req,res,next) {
-        models.grade({}, (data) => {
+router.get('/get_grade',function(req,res,next) {
+        models.get_grade({}, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",

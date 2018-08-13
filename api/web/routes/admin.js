@@ -1,14 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
-const config = require('../config.json');
-// 这里已经是object了
-// var connection = mysql.createConnection(JSON.parse(require('./config.json')));
-const connection = mysql.createConnection(config.mysql);
-// 这个语句提前比较好
-connection.connect();
+const models = require("../models/student")
 
-/* GET users listing. */
+//验证身份
+router.use((req, res, next) => {
+    if (!req.session.key || req.session.type !== "student") {
+        res.send({
+            code: 0,
+            info: "身份错误"
+        })
+    } else {
+        next()
+    }
+});
+
+// 业务代码
 router.get('/', function (req, res, next) {
     if (req.session.key) {
         res.send({
@@ -16,12 +22,83 @@ router.get('/', function (req, res, next) {
             info: req.session.key
         });
         next();
-    } else {
+    }
+ });
+
+router.get('/create_student',function(req,res,next){
+     models.create_student({}, (data) => {
+         res.send({
+             code: 0,
+             info: "has not logined",
+             data: JSON.stringify(data)
+            });
+    })
+    next();
+});
+router.get('/create_teacher',function(req,res,next) {
+        models.create_teacher({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+});
+
+router.get('/create_experiment',function(req,res,next) {
+        models.create_experiment({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+});
+
+router.get('/create_class_user',function(req,res,next) {
+        models.create_class_user({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+});
+
+router.get('/get_classromm_timetable',function(req,res,next) {
+        models.get_classromm_timetable({}, (data) => {
+            res.send({
+                code: 0,
+                info: "has not logined",
+                data: JSON.stringify(data)
+            });
+        })
+    next();
+ });
+
+ router.get('/get_class_timetable',function(req,res,next) {
+    models.get_class_timetable({}, (data) => {
         res.send({
             code: 0,
-            info: "has not logined"
+            info: "has not logined",
+            data: JSON.stringify(data)
         });
-    }
+    })
+    next();
+});
+
+router.get('/update_notice',function(req,res,next) {
+    models.update_notice({}, (data) => {
+        res.send({
+            code: 0,
+            info: "has not logined",
+            data: JSON.stringify(data)
+        });
+    })
+    next();
 });
 
 module.exports = router;
