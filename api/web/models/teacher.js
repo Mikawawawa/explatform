@@ -1,8 +1,6 @@
 const connection = require("./connect")
 const config = require('../config.json')
 
-var params = config.params;
-
 //查看已发布的需要招募老师的课程
 function get_application(config, callback) {
     connection.query("CALL `get_class_application`", (err, rows, fields) => {

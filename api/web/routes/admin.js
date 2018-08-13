@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
  });
 */
 router.get('/create_student',function(req,res,next){
-     models.create_student({}, (data) => {
+     models.create_student((req.Url), (data) => {
          res.send({
              code: 0,
              info: "has not logined",
