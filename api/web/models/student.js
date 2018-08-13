@@ -29,7 +29,7 @@ const config = require('../config.json')
  * @param function callback 
  */
 function get_timetable(config, callback) {
-    connection.query("CALL `get_student_timetable`",config, (err, rows, fields) => {
+    connection.query("CALL 'get_student_timetable'",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }

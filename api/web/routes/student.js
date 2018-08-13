@@ -26,16 +26,15 @@ router.get('/', function (req, res, next) {
  });
 */
 router.get('/get_timetable',function(req,res,next){
-    res.send(req.url);
-     /*models.get_timetable((req.url), (data) => {
-         console.log(req.url);
+    models.get_timetable(Number(req.url.substr(-8,8)), (data) =>{
          res.send({
              code: 0,
              info: "has not logined",
              data: JSON.stringify(data)
             });
-    })*/
+    })
 });
+
 router.get('/get_report',function(req,res,next) {
         models.get_report((req.url), (data) => {
             res.send({
