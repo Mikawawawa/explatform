@@ -15,6 +15,7 @@ const models = require("../models/manager")
 });
 */
 // 业务代码
+/*
 router.get('/', function (req, res, next) {
     if (req.session.key) {
         res.send({
@@ -24,9 +25,21 @@ router.get('/', function (req, res, next) {
         next();
     }
  });
+ */
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+router.post('/create_student',function(req,res,next){
+    models.create_student(req.body.config,req.body.id, (data) => {
+        res.send({
+            code: 0,
+            info: "has not logined",
+            data: JSON.stringify(data)
+           });
+   })
+});
 
-router.get('/update_notice',function(req,res,next){
-     models.update_notice((req.uel.substr(-8,8)), (data) => {
+
+router.post('/update_notice',function(req,res,next){
+     models.update_notice(req.body.notice_id,req.body.user_id,req.body.content,req.body.time,req.body.class_id, (data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -44,8 +57,8 @@ router.get('/get_teacher_timetable',function(req,res,next) {
         })
 });
 
-router.get('/update_class_application',function(req,res,next) {
-        models.update_class_application([req.url.substr(-16,8),req.url.substr(-8,8)], (data) => {
+router.post('/update_class_application',function(req,res,next) {
+        models.update_class_application(req.body.class_id,req.body.teacher,req.body.status, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -65,7 +78,7 @@ router.get('/get_teacher_application',function(req,res,next) {
 });
 
 router.post('/check_application',function(req,res,next) {
-        models.check_application((req.body), (data) => {
+        models.check_application(req.body.class_id,req.body.teacher,req.body.status, (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -75,7 +88,7 @@ router.post('/check_application',function(req,res,next) {
  });
 
  router.post('/update_template',function(req,res,next) {
-    models.update_template((req.body), (data) => {
+    models.update_template((req.body.subject_id,req.body.template_id), (data) => {
         res.send({
             code: 0,
             info: "has not logined",
