@@ -3,7 +3,7 @@ const router = express.Router();
 const models = require("../models/admin")
 
 //验证身份
-/*router.use((req, res, next) => {
+router.use((req, res, next) => {
     if (!req.session.key || req.session.type !== "student") {
         res.send({
             code: 0,
@@ -24,9 +24,9 @@ router.get('/', function (req, res, next) {
         next();
     }
  });
-*/
+
 router.post('/create_student',function(req,res,next){
-     models.create_student(req.body.config,req.body.id, (data) => {
+     models.create_student(req.body.id,req.body.name,(data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -35,7 +35,7 @@ router.post('/create_student',function(req,res,next){
     })
 });
 router.post('/create_teacher',function(req,res,next) {
-        models.create_teacher((req.body), (data) => {
+        models.create_teacher((req.body.id,req.body.name), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -55,7 +55,7 @@ router.post('/create_experiment',function(req,res,next) {
 });
 
 router.post('/create_class_user',function(req,res,next) {
-        models.create_class_user((req.body), (data) => {
+        models.create_class_user((req.body.id,req.body.password,req.body.name,req.body.type), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -85,7 +85,7 @@ router.get('/get_classromm_timetable',function(req,res,next) {
 });
 
 router.post('/update_notice',function(req,res,next) {
-    models.update_notice((req.body), (data) => {
+    models.update_notice((req.body.id,req.body.notice), (data) => {
         res.send({
             code: 0,
             info: "has not logined",
