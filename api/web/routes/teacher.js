@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
  });
 
 router.get('/get_timetable',function(req,res,next){
-     models.get_timetable((req.url), (data) => {
+     models.get_timetable((req.url.substr(-8,8)), (data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -36,7 +36,7 @@ router.get('/get_timetable',function(req,res,next){
 });
 
 router.get('/get_application',function(req,res,next) {
-        models.get_application((req.url), (data) => {
+        models.get_application((req.url.substr(-8,8)), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",

@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 app.use(`/${domin}teacher`, teacherRouter);
 app.use(`/student`, studentRouter);
-app.use(`/${domin}manager`, managerRouter);
+app.use(`/manager`, managerRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler

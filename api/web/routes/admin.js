@@ -65,7 +65,7 @@ router.get('/create_class_user',function(req,res,next) {
 });
 
 router.get('/get_classromm_timetable',function(req,res,next) {
-        models.get_classromm_timetable((req.url), (data) => {
+        models.get_classromm_timetable((req.url.substr(-8,8)), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -75,7 +75,7 @@ router.get('/get_classromm_timetable',function(req,res,next) {
  });
 
  router.get('/get_class_timetable',function(req,res,next) {
-    models.get_class_timetable((req.url), (data) => {
+    models.get_class_timetable((req.url.substr(-8,8)), (data) => {
         res.send({
             code: 0,
             info: "has not logined",

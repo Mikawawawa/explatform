@@ -29,7 +29,7 @@ const config = require('../config.json')
  * @param function callback 
  */
 function get_timetable(config, callback) {
-    connection.query("CALL 'get_student_timetable'",config, (err, rows, fields) => {
+    connection.query("CALL `get_student_timetable`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -42,7 +42,7 @@ function get_timetable(config, callback) {
 
 //查看报告；
 function get_report(config, callback) {
-    connection.query("CALL `get_student_recard`",config, (err, rows, fields) => {
+    connection.query("CALL `get_student_recard`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -74,7 +74,7 @@ function update_exp(config, callback) {
 
 ////查看自己的各门实验课的分数（含操作的小题分
 function get_grade(config, callback) {
-    connection.query("CALL `get_student_recard`", config,(err, rows, fields) => {
+    connection.query("CALL `get_student_recard`(1)", config,(err, rows, fields) => {
         if(err){
             console.log(err);
         }

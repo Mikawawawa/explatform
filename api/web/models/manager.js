@@ -5,7 +5,7 @@ var params = config.params;
 
 //对该课程下的班级群体发送公告
 function update_notice(config, callback) {
-    connection.query("CALL `create_notice`",config, (err, rows, fields) => {
+    connection.query(`CALL create_notice(1)`,config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -18,7 +18,7 @@ function update_notice(config, callback) {
 
 //查看所负责的课程的排课情况
 function get_teacher_timetable(config, callback) {
-    connection.query("CALL `get_teacher_timetable`",config,(err, rows, fields) => {
+    connection.query("CALL `get_teacher_timetable`(1)",config,(err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -30,8 +30,8 @@ function get_teacher_timetable(config, callback) {
 }
 
 //发布老师的带课申请
-function update_class_application(config, callback) {
-    connection.query("CALL `class_application`",config, (err, rows, fields) => {
+function update_class_application([config,teacher], callback) {
+    connection.query("CALL `class_application`(2)",[config,teacher], (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -44,7 +44,7 @@ function update_class_application(config, callback) {
 
 //查看老师的带课申请
 function get_teacher_application(config, callback) {
-    connection.query("CALL `get_teacher_application`",config, (err, rows, fields) => {
+    connection.query("CALL `get_teacher_application`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -57,7 +57,7 @@ function get_teacher_application(config, callback) {
 
 //审核老师的带课申请
 function check_application(config, callback) {
-    connection.query("CALL `update_class_application`",config, (err, rows, fields) => {
+    connection.query("CALL `update_class_application`(3)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -83,7 +83,7 @@ function update_template(config, callback) {
 
 //查看各班级的学生的签到信息
 function get_student_recard(config, callback) {
-    connection.query("CALL `get_student_recard`",config, (err, rows, fields) => {
+    connection.query("CALL `get_student_recard`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }

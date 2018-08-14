@@ -3,7 +3,7 @@ const router = express.Router();
 const models = require("../models/manager")
 
 //验证身份
-router.use((req, res, next) => {
+/*router.use((req, res, next) => {
     if (!req.session.key || req.session.type !== "student") {
         res.send({
             code: 0,
@@ -13,7 +13,7 @@ router.use((req, res, next) => {
         next()
     }
 });
-
+*/
 // 业务代码
 router.get('/', function (req, res, next) {
     if (req.session.key) {
@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
  });
 
 router.get('/update_notice',function(req,res,next){
-     models.update_notice((req.uel), (data) => {
+     models.update_notice((req.uel.substr(-8,8)), (data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -35,7 +35,7 @@ router.get('/update_notice',function(req,res,next){
     })
 });
 router.get('/get_teacher_timetable',function(req,res,next) {
-        models.get_teacher_timetable((req.url), (data) => {
+        models.get_teacher_timetable((req.url.substr(-8,8)), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -45,7 +45,7 @@ router.get('/get_teacher_timetable',function(req,res,next) {
 });
 
 router.get('/update_class_application',function(req,res,next) {
-        models.update_class_application((req.url), (data) => {
+        models.update_class_application([req.url.substr(-16,8),req.url.substr(-8,8)], (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -55,7 +55,7 @@ router.get('/update_class_application',function(req,res,next) {
 });
 
 router.get('/get_teacher_application',function(req,res,next) {
-        models.get_teacher_application((req.url), (data) => {
+        models.get_teacher_application((req.url.substr(-8,8)), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -85,7 +85,7 @@ router.get('/check_application',function(req,res,next) {
 });
 
 router.get('/get_student_recard',function(req,res,next) {
-    models.get_student_recard((req.url), (data) => {
+    models.get_student_recard((req.url.substr(-8,8)), (data) => {
         res.send({
             code: 0,
             info: "has not logined",

@@ -18,7 +18,7 @@ function update_notice(config, callback) {
 
 //查看课程的排课情况
 function get_class_timetable(config, callback) {
-    connection.query("CALL `get_teacher_timetable`",config, params,(err, rows, fields) => {
+    connection.query("CALL `get_experiment_recard`(1)",config, params,(err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -31,7 +31,7 @@ function get_class_timetable(config, callback) {
 
 //教室的使用情况
 function get_classromm_timetable(config, callback) {
-    connection.query("CALL `get_classroom_timetable`",config, (err, rows, fields) => {
+    connection.query("CALL `get_classroom_timetable`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
