@@ -45,8 +45,8 @@ router.get('/get_report',function(req,res,next) {
         })
 });
 
-router.get('/update_exp',function(req,res,next) {
-        models.update_exp((req.url), (data) => {
+router.post('/update_exp',function(req,res,next) {
+        models.update_exp((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",

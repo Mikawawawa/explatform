@@ -45,8 +45,8 @@ router.get('/get_application',function(req,res,next) {
         })
 });
 
-router.get('/update_application',function(req,res,next) {
-        models.update_application((req.url), (data) => {
+router.post('/update_application',function(req,res,next) {
+        models.update_application((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -55,8 +55,8 @@ router.get('/update_application',function(req,res,next) {
         })
 });
 
-router.get('/update_grade',function(req,res,next) {
-        models.update_grade((req.url), (data) => {
+router.post('/update_grade',function(req,res,next) {
+        models.update_grade((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -65,8 +65,8 @@ router.get('/update_grade',function(req,res,next) {
         })
 });
 
-router.get('/update_recard',function(req,res,next) {
-        models.update_recard((req.url), (data) => {
+router.post('/update_recard',function(req,res,next) {
+        models.update_recard((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",

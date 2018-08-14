@@ -5,7 +5,7 @@ const config = require('../config.json')
 
 //对群体发送公告，通知定位到具体班级上
 function update_notice(config, callback) {
-    connection.query("CALL `class_notice`", config,(err, rows, fields) => {
+    connection.query("CALL `class_notice`(1)", config,(err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -44,7 +44,7 @@ function get_classromm_timetable(config, callback) {
 
 //手动增加课程负责人
 function create_class_user(config, callback) {
-    connection.query("CALL `create_user`", config,(err, rows, fields) => {
+    connection.query("CALL `create_user`(1)", config,(err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -57,7 +57,7 @@ function create_class_user(config, callback) {
 
 //手动增加实验课程
 function create_experiment(config, callback) {
-    connection.query("CALL `create_experiment`",config,(err, rows, fields) => {
+    connection.query("CALL `create_experiment`(1)",config,(err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -70,7 +70,7 @@ function create_experiment(config, callback) {
 
 //手动增加教师
 function create_teacher(config, callback) {
-    connection.query("CALL `create_teacher`",config,(err, rows, fields) => {
+    connection.query("CALL `create_teacher`(1)",config,(err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -82,8 +82,8 @@ function create_teacher(config, callback) {
 }
 
 //手动增加学生
-function create_student(config, callback) {
-    connection.query("CALL `create_student`",config,(err, rows, fields) => {
+function create_student(config,id, callback) {
+    connection.query("CALL `create_student`(1,1)",(config,id),(err, rows, fields) => {
         if(err){
             console.log(err);
         }

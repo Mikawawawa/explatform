@@ -25,8 +25,8 @@ router.get('/', function (req, res, next) {
     }
  });
 */
-router.get('/create_student',function(req,res,next){
-     models.create_student((req.Url), (data) => {
+router.post('/create_student',function(req,res,next){
+     models.create_student(req.body.config,req.body.id, (data) => {
          res.send({
              code: 0,
              info: "has not logined",
@@ -34,8 +34,8 @@ router.get('/create_student',function(req,res,next){
             });
     })
 });
-router.get('/create_teacher',function(req,res,next) {
-        models.create_teacher((req.url), (data) => {
+router.post('/create_teacher',function(req,res,next) {
+        models.create_teacher((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -44,8 +44,8 @@ router.get('/create_teacher',function(req,res,next) {
         })
 });
 
-router.get('/create_experiment',function(req,res,next) {
-        models.create_experiment((req.url), (data) => {
+router.post('/create_experiment',function(req,res,next) {
+        models.create_experiment((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -54,8 +54,8 @@ router.get('/create_experiment',function(req,res,next) {
         })
 });
 
-router.get('/create_class_user',function(req,res,next) {
-        models.create_class_user((req.url), (data) => {
+router.post('/create_class_user',function(req,res,next) {
+        models.create_class_user((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -84,8 +84,8 @@ router.get('/get_classromm_timetable',function(req,res,next) {
     })
 });
 
-router.get('/update_notice',function(req,res,next) {
-    models.update_notice((req.url), (data) => {
+router.post('/update_notice',function(req,res,next) {
+    models.update_notice((req.body), (data) => {
         res.send({
             code: 0,
             info: "has not logined",

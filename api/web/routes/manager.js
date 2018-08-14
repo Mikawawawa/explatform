@@ -64,8 +64,8 @@ router.get('/get_teacher_application',function(req,res,next) {
         })
 });
 
-router.get('/check_application',function(req,res,next) {
-        models.check_application((req.url), (data) => {
+router.post('/check_application',function(req,res,next) {
+        models.check_application((req.body), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -74,8 +74,8 @@ router.get('/check_application',function(req,res,next) {
         })
  });
 
- router.get('/update_template',function(req,res,next) {
-    models.update_template((req.url), (data) => {
+ router.post('/update_template',function(req,res,next) {
+    models.update_template((req.body), (data) => {
         res.send({
             code: 0,
             info: "has not logined",

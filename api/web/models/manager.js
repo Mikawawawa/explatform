@@ -57,7 +57,7 @@ function get_teacher_application(config, callback) {
 
 //审核老师的带课申请
 function check_application(config, callback) {
-    connection.query("CALL `update_class_application`(3)",config, (err, rows, fields) => {
+    connection.query("CALL `update_class_application`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
@@ -70,7 +70,7 @@ function check_application(config, callback) {
 
 //发布报告模板（编辑报告内容包括：文字、表格（按图片方式存在）、图像文件、视频文件等）
 function update_template(config, callback) {
-    connection.query("CALL `create_template`",config, (err, rows, fields) => {
+    connection.query("CALL `create_template`(1)",config, (err, rows, fields) => {
         if(err){
             console.log(err);
         }
