@@ -46,7 +46,7 @@ router.get('/get_application',function(req,res,next) {
 });
 
 router.post('/update_application',function(req,res,next) {
-        models.update_application((req.body), (data) => {
+        models.update_application((req.body.classid,req.body.teacher), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -56,7 +56,7 @@ router.post('/update_application',function(req,res,next) {
 });
 
 router.post('/update_grade',function(req,res,next) {
-        models.update_grade((req.body), (data) => {
+        models.update_grade((req.body.operation), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
@@ -66,7 +66,7 @@ router.post('/update_grade',function(req,res,next) {
 });
 
 router.post('/update_recard',function(req,res,next) {
-        models.update_recard((req.body), (data) => {
+        models.update_recard((req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
