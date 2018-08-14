@@ -3,7 +3,7 @@ const router = express.Router();
 const models = require("../models/student")
 
 //验证身份
-/*router.use((req, res, next) => {
+router.use((req, res, next) => {
     if (!req.session.key || req.session.type !== "student") {
         res.send({
             code: 0,
@@ -24,8 +24,8 @@ router.get('/', function (req, res, next) {
         next();
     }
  });
-*/
-router.get('/get_timetable',function(req,res,next){
+
+ router.get('/get_timetable',function(req,res,next){
     models.get_timetable((req.url.substr(-8,8)), (data) =>{
          res.send({
              code: 0,
@@ -46,7 +46,7 @@ router.get('/get_report',function(req,res,next) {
 });
 
 router.post('/update_exp',function(req,res,next) {
-        models.update_exp((req.body), (data) => {
+        models.update_exp((req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
             res.send({
                 code: 0,
                 info: "has not logined",
