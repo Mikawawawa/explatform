@@ -57,7 +57,7 @@ function get_teacher_application(teacher, callback) {
 
 //审核老师的带课申请
 function check_application(class_id,teacher,status, callback) {
-    connection.query("CALL `update_class_application`("+class_id+","+teacher+","+status+")", (err, rows, fields) => {
+    connection.query("CALL `update_class_application`("+class_id+","+teacher+","+status+")",(err, rows, fields) => {
         if(err){
             console.log(err);
         }

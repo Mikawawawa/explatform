@@ -98,7 +98,7 @@ router.post('/check_application',function(req,res,next) {
 });
 
 router.get('/get_student_recard',function(req,res,next) {
-    models.get_student_recard((req.url.substr(-8,8)), (data) => {
+    models.get_student_recard((req.url.substr(-8,8)),(data) => {
         res.send({
             code: 0,
             info: "has not logined",
