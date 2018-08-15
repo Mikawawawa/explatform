@@ -23,11 +23,19 @@ const config = require('../config.json')
 // fileheader这个插件了解一下
 // 在函数前面输入/**，然后按tab，写好注释，后面用的时候会方便很多，可以直接看到提示
 
-/**
- * 查看自己的课表
- * @param {*} config 
- * @param function callback 
- */
+//登录
+function landing(user_id,password,callback){
+    connection.query("SELECT user_type FORM `user` WHERE user_id = "+user_id+" and password = "+password+")",(err,rows,fields)=>{
+        if(err){
+            console.log(err);
+        }
+        else {
+            console.log(rows)
+            callback(rows)
+        }
+    })
+}
+
 function get_timetable(config, callback) {
     connection.query("CALL `get_student_timetable`("+config+")", (err, rows, fields) => {
         if(err){
@@ -80,4 +88,5 @@ module.exports = {
     'get_report':get_report,
     'get_grade':get_grade,
     'update_exp':update_exp,
+    'landing':landing
 }

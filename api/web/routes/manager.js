@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const models = require("../models/manager")
+const models = require("../models/manager");
+const land = require("../models/student");
 
 //验证身份
 /*router.use((req, res, next) => {
@@ -15,18 +16,23 @@ const models = require("../models/manager")
 });
 */
 // 业务代码
-/*
-router.get('/', function (req, res, next) {
-    if (req.session.key) {
-        res.send({
-            code: 1,
-            info: req.session.key
-        });
-        next();
-    }
- });
- */
-qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+router.get('/landing', function (req, res, next) {
+    land.landing((req.url.substr(-8,8)),(data)=>{
+        if(date!=="manager"){
+            res.send({
+                code :0,
+                info:"身份错误"
+            })
+        }
+        else{
+            res.send({
+                code :0,
+                info:"登录成功"
+            })
+        }
+     })
+})
+
 router.post('/create_student',function(req,res,next){
     models.create_student(req.body.config,req.body.id, (data) => {
         res.send({
