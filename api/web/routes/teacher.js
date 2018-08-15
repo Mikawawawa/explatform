@@ -61,7 +61,7 @@ router.post('/update_application',function(req,res,next) {
 });
 
 router.post('/update_grade',function(req,res,next) {
-        models.update_grade((req.body.operation), (data) => {
+        models.update_grade((req.body.student),(req.body.experiment),(req.body.operation), (data) => {
             res.send({
                 code: 0,              
                 data: JSON.stringify(data)

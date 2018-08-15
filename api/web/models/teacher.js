@@ -53,8 +53,8 @@ function update_recard(subject,grade,present,operation,section,choice,callback) 
 }
 
 //对操作各题成绩进行现场扫描学生二维码打分或补登成绩
-function update_grade(config, callback) {
-    connection.query("CALL `update_experiment_operation`("+config+")", (err, rows, fields) => {
+function update_grade(student,experiment,config, callback) {
+    connection.query("CALL `update_experiment_operation`("+student+","+experiment+","+config+")", (err, rows, fields) => {
         if(err){
             console.log(err);
         }

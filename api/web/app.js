@@ -33,7 +33,7 @@ app.use(cookieParser());
 // 这次估计没有静态文件
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(`/${domin}teacher`, teacherRouter);
+app.use(`/teacher`, teacherRouter);
 app.use(`/student`, studentRouter);
 app.use(`/manager`, managerRouter);
 app.use('/admin', adminRouter);
