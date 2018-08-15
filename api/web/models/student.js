@@ -24,8 +24,8 @@ const config = require('../config.json')
 // 在函数前面输入/**，然后按tab，写好注释，后面用的时候会方便很多，可以直接看到提示
 
 //登录
-function landing(user_id,password,callback){
-    connection.query("SELECT user_type FORM `user` WHERE user_id = "+user_id+" and password = "+password+")",(err,rows,fields)=>{
+function landing(id,password,callback){
+    connection.query("SELECT user_type FROM `user` WHERE user_id="+id+" and password="+password+")",(err,rows,fields)=>{
         if(err){
             console.log(err);
         }

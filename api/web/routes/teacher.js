@@ -16,9 +16,9 @@ const land = require("../models/student");
 });
 */
 // 业务代码
-router.get('/landing', function (req, res, next) {
-    land.landing((req.url.substr(-8,8)),(data)=>{
-        if(date!=="teacher"){
+router.post('/landing', function (req, res, next) {
+    land.landing((req.body.id),(req.body.password),(data)=>{
+        if(data!=="admin"){
             res.send({
                 code :0,
                 info:"身份错误"
@@ -36,8 +36,7 @@ router.get('/landing', function (req, res, next) {
 router.get('/get_timetable',function(req,res,next){
      models.get_timetable((req.url.substr(-8,8)), (data) => {
          res.send({
-             code: 0,
-             info: "has not logined",
+             code: 0,             
              data: JSON.stringify(data)
             });
     })
@@ -46,8 +45,7 @@ router.get('/get_timetable',function(req,res,next){
 router.get('/get_application',function(req,res,next) {
         models.get_application((req.url.substr(-8,8)), (data) => {
             res.send({
-                code: 0,
-                info: "has not logined",
+                code: 0,               
                 data: JSON.stringify(data)
             });
         })
@@ -56,8 +54,7 @@ router.get('/get_application',function(req,res,next) {
 router.post('/update_application',function(req,res,next) {
         models.update_application((req.body.classid,req.body.teacher), (data) => {
             res.send({
-                code: 0,
-                info: "has not logined",
+                code: 0,               
                 data: JSON.stringify(data)
             });
         })
@@ -66,8 +63,7 @@ router.post('/update_application',function(req,res,next) {
 router.post('/update_grade',function(req,res,next) {
         models.update_grade((req.body.operation), (data) => {
             res.send({
-                code: 0,
-                info: "has not logined",
+                code: 0,              
                 data: JSON.stringify(data)
             });
         })
@@ -76,8 +72,7 @@ router.post('/update_grade',function(req,res,next) {
 router.post('/update_recard',function(req,res,next) {
         models.update_recard((req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
             res.send({
-                code: 0,
-                info: "has not logined",
+                code: 0,               
                 data: JSON.stringify(data)
             });
         })

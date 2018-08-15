@@ -15,9 +15,9 @@ const models = require("../models/student")
 });
 */
 // 业务代码
-router.get('/landing', function (req, res, next) {
-    models.landing((req.url.substr(-8,8)),(data)=>{
-        if(date!=="student"){
+router.post('/landing', function (req, res, next) {
+    models.landing((req.body.id),(req.body.password),(data)=>{
+        if(data!=="admin"){
             res.send({
                 code :0,
                 info:"身份错误"
