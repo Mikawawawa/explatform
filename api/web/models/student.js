@@ -2,7 +2,7 @@
  * @Author: shengqiongyi
  * @Date: 2018-08-12 20:19:34 
  * @Last Modified by: Maktub
- * @Last Modified time: 2018-08-12 20:23:51
+ * @Last Modified time: 2018-08-15 10:39:15
  */
 const connection = require("./connect")
 const config = require('../config.json')
@@ -62,17 +62,7 @@ function update_exp(subject,grade,present,operation,section,choice,callback) {
     })
 }
 
-// 这个事件由教师触发
-// //老师开始上课后，对课程中的某个实验进行签到开始上电，实验完成后对实验各题结果进行递交；实验课结束后签离，切断电源
-// function create_exp(config, callback) {
-//     connection.query("CALL `create_experiment_recard`where `student_id` = $student_id and `experiment_id` = $experiment_id",params, (err, rows, fields) => {
-//         if(err){
-//             console.log(err);
-//         }
-//     })
-// }
-
-////查看自己的各门实验课的分数（含操作的小题分
+//查看自己的各门实验课的分数（含操作的小题分
 function get_grade(config, callback) {
     connection.query("CALL `get_student_recard`("+config+")",(err, rows, fields) => {
         if(err){
@@ -90,5 +80,4 @@ module.exports = {
     'get_report':get_report,
     'get_grade':get_grade,
     'update_exp':update_exp,
-    // 'create_exp':create_exp,
 }

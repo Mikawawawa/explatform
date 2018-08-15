@@ -1,5 +1,4 @@
 const connection = require("./connect")
-const config = require('../config.json')
 
 //查看已发布的需要招募老师的课程
 function get_application(config, callback) {
@@ -66,10 +65,22 @@ function update_grade(config, callback) {
     })
 }
 
+//老师开始上课后，对课程中的某个实验进行签到开始上电，实验完成后对实验各题结果进行递交；实验课结束后签离，切断电源
+function start_exp(classroom_id,class_id,process, callback) {
+    connection.query(`call update_classroom('${classroom_id}','${class_id}','${process}')`, (err, rows, fields) => {
+        if(err){
+            console.log(err);
+        }else{
+            callback(rows)
+        }
+    })
+}
+
 module.exports = {
     'update_recard':update_recard,
     'update_grade' :update_grade,
     'get_timetable':get_timetable,
     'update_application':update_application,
-    'get_application':get_application
+    'get_application':get_application,
+    'start_exp':start_exp,
 }
