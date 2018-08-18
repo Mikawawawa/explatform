@@ -8,7 +8,7 @@ function update_notice(id,notice, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -21,7 +21,7 @@ function get_class_timetable(config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -34,7 +34,7 @@ function get_classromm_timetable(config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -47,7 +47,7 @@ function create_class_user(id,password,name,type, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -60,7 +60,7 @@ function create_experiment(subject, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -73,7 +73,7 @@ function create_teacher(id,name, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -86,7 +86,7 @@ function create_student(id,name,callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }

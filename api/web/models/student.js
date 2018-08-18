@@ -43,7 +43,7 @@ function get_timetable(config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -56,7 +56,7 @@ function get_report(config, callback) {
         }
         else {
             console.log(rows);
-            callback(rows);
+            callback(rows[0]);
         }
     })
 }
@@ -78,7 +78,7 @@ function get_grade(config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }

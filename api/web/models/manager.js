@@ -11,7 +11,7 @@ function update_notice(notice_id,user_id,content,time,class_id, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -24,7 +24,7 @@ function get_teacher_timetable(teacher_id, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -37,7 +37,7 @@ function update_class_application(class_id,teacher, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -50,7 +50,7 @@ function get_teacher_application(teacher, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -63,7 +63,7 @@ function check_application(class_id,teacher,status, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -76,7 +76,7 @@ function update_template(subject_id,template_id, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -89,7 +89,7 @@ function get_student_recard(student, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }

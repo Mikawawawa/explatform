@@ -32,6 +32,7 @@ router.post('/landing', function (req, res, next) {
      })
 })
 
+
  router.get('/get_timetable',function(req,res,next){
     models.get_timetable((req.url.substr(-8,8)), (data) =>{
          res.send({
@@ -42,6 +43,8 @@ router.post('/landing', function (req, res, next) {
 })
 
 router.get('/get_report',function(req,res,next) {
+    console.log(req.baseUrl);
+    console.log(req.originalUrl);
     models.get_report((req.url.substr(-8.8)), (data) => {
         res.send({
             code: 0,

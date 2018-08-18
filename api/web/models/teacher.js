@@ -8,7 +8,7 @@ function get_application(config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -21,7 +21,7 @@ function update_application(classid,teacher, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -34,7 +34,7 @@ function get_timetable(config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -47,7 +47,7 @@ function update_recard(subject,grade,present,operation,section,choice,callback) 
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -60,7 +60,7 @@ function update_grade(student,experiment,config, callback) {
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
@@ -71,7 +71,7 @@ function start_exp(classroom_id,class_id,process, callback) {
         if(err){
             console.log(err);
         }else{
-            callback(rows)
+            callback(rows[0])
         }
     })
 }

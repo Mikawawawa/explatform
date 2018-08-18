@@ -127,7 +127,7 @@ CREATE PROCEDURE get_student_timetable(
 )
 BEGIN
 	declare code int;
-	SELECT * FROM class  WHERE student_id = $student
+	SELECT * FROM class  WHERE student_id = $student GROUP BY class_id;
 		);
 END;
 -- 按教室查询课表
