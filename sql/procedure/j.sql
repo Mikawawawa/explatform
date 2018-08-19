@@ -204,8 +204,9 @@ BEGIN
 END;
 -- 查询用户拥有的权限
 CREATE PROCEDURE get_user_power(
-	in $user_id varchar(32)
+	in $user_id  varchar(32),
+	in $password varchar(32)
 )
 BEGIN
-	SELECT user_type FROM `user` WHERE user_id=$user_id;
+	SELECT user_type FROM `user` WHERE user_id=$user_id and password = $password;
 END;

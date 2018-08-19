@@ -17,7 +17,11 @@ const models = require("../models/student")
 // 业务代码
 router.post('/landing', function (req, res, next) {
     models.landing((req.body.id),(req.body.password),(data)=>{
-        if(data!=="admin"){
+        let abc = JSON.stringify(data);
+        let bcd = JSON.parse(abc);
+        let user_type = bcd[0].user_type;
+        console.log(user_type);
+        if(String(user_type)!=="student"){
             res.send({
                 code :0,
                 info:"身份错误"

@@ -25,13 +25,13 @@ const config = require('../config.json')
 
 //登录
 function landing(id,password,callback){
-    connection.query("SELECT user_type FROM `user` WHERE user_id="+id+" and password="+password+")",(err,rows,fields)=>{
+    connection.query("CALL `get_user_power`("+id+",'"+password+"')",(err,rows,fields)=>{
         if(err){
             console.log(err);
         }
         else {
             console.log(rows)
-            callback(rows)
+            callback(rows[0])
         }
     })
 }
