@@ -65,10 +65,10 @@ router.get('/get_teacher_timetable',function(req,res,next) {
 });
 
 router.post('/update_class_application',function(req,res,next) {
-        models.update_class_application(req.body.class_id,req.body.teacher,req.body.status, (data) => {
+        models.update_class_application(req.body.class_id,req.body.teacher, (data) => {
             res.send({
                 code: 0,               
-                data: JSON.stringify(data)
+                info:data
             });
         })
 });

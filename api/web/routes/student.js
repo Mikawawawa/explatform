@@ -26,6 +26,7 @@ router.post('/landing', function (req, res, next) {
                 code :0,
                 info:"身份错误"
             })
+
         }
         else{
             res.send({
@@ -65,10 +66,10 @@ router.get('/get_report',function(req,res,next) {
 })
 
 router.post('/update_exp',function(req,res,next) {
-    models.update_exp((req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
+    models.update_exp((req.body.student,req.body.experiment,req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
         res.send({
             code: 0,
-            data: JSON.stringify(data)
+            info:data
         })
     })
 })

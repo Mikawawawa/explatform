@@ -36,8 +36,7 @@ function update_class_application(class_id,teacher, callback) {
             console.log(err);
         }
         else {
-            console.log(rows)
-            callback(rows[0])
+            callback("ok")
         }
     })
 }

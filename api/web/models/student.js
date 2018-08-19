@@ -79,10 +79,12 @@ function get_report(config, callback) {
 //实验课前对预习作业进行递交 
 //课后能对实验报告进行编辑填写（允许对虚拟测量软件的测量结果截图粘贴、填写表格、粘贴图像文件、粘贴视频文件等操作）、递交
 function update_exp(subject,grade,present,operation,section,choice,callback) {
-    connection.query("CALL `update_experiment_recard`("+subject+","+grade+","+present+","+operation+","+section+","+choice+")", (err, rows, fields) => {
+    connection.query("CALL `update_experiment_recard`("+student+""+experiment+","+subject+","+grade+","+present+","+operation+","+section+","+choice+")", (err, rows, fields) => {
         if(err){
             console.log(err);
         }
+        else
+            callback("ok")
     })
 }
 

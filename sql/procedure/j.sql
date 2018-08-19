@@ -84,7 +84,7 @@ BEGIN
 	IF open>=1 THEN
 		set code=0;
 	ELSE
-		insert into `class_application`(class_id,teacher_id,status) VALUES ($id,$name,0);
+		insert into `class_application`(class_id,teacher_id,status) VALUES ($class,$teacher,0);
 		if ROW_COUNT()>1 then
 			set code=1;
 		else
