@@ -36,6 +36,22 @@ function landing(id,password,callback){
     })
 }
 
+function text(config, callback) {
+    connection.query("CALL `get_user_power`("+config+")", (err, rows, fields) => {
+        if(err){
+            console.log(err);
+        }
+        else {
+            var abc = JSON.stringify(rows[0]);
+            console.log(abc);
+            var bcd = JSON.parse(abc);
+            console.log(bcd);
+            console.log(bcd[0].user_type);
+            callback(rows[0])
+        }
+    })
+}
+
 function get_timetable(config, callback) {
     connection.query("CALL `get_student_timetable`("+config+")", (err, rows, fields) => {
         if(err){
@@ -88,5 +104,6 @@ module.exports = {
     'get_report':get_report,
     'get_grade':get_grade,
     'update_exp':update_exp,
-    'landing':landing
+    'landing':landing,
+    'text':text
 }

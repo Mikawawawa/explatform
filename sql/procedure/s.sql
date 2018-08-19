@@ -127,7 +127,12 @@ CREATE PROCEDURE get_student_timetable(
 )
 BEGIN
 	declare code int;
-	SELECT * FROM class  WHERE student_id = $student GROUP BY class_id;
+	SELECT * FROM
+		class 
+	WHERE
+		class_id IN 
+		(
+			SELECT class_id FROM class_join WHERE student_id = $student_id
 		);
 END;
 -- 按教室查询课表
@@ -144,7 +149,13 @@ CREATE PROCEDURE get_teacher_timetable(
 )
 BEGIN
 	declare code int;
-	SELECT * FROM class  WHERE teacher_id = $teacher_id;
+	SELECT * FROM
+		class 
+	WHERE
+		class_id IN 
+		(
+			SELECT class_id FROM class_grant WHERE teacher_id = $teacher_id
+		);
 END;
 -- 按课程新增公告
 CREATE PROCEDURE create_notice(

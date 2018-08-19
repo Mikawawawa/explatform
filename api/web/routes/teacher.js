@@ -78,7 +78,7 @@ router.post('/update_recard',function(req,res,next) {
         })
  });
 
- router.get("start_exp",function(req,res){
+ router.post("start_exp",function(req,res){
     models.start_exp(req.body.classroom_id,req.body.class_id,process,(data)=>{
         data=data[0]
         res.send({

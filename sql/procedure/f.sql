@@ -142,11 +142,11 @@ END;
 
 -- 按学科查询实验并按班级group by
 CREATE PROCEDURE get_experiment_recard(
-	in $subject varchar(32)
+	in $subject_id varchar(32)
 )
 BEGIN
 	declare code int;
-	SELECT * FROM experiment_recard WHERE `subject` = $subject GROUP BY `class_id`;
+	SELECT * FROM experiment_recard WHERE `subject` = $subject_id GROUP BY `class_id`;
 END;
 -- 根据班级查询公告信息
 CREATE PROCEDURE get_notice(
