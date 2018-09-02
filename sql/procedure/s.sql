@@ -54,9 +54,9 @@ CREATE PROCEDURE create_experiment_recard(
 	in $subject_id varchar(32),
 	in $grade tinyint,
 	in $present datetime,
-	in $operation json,
-	in $choice json,
-	in $section json
+	in $operation text,
+	in $choice text,
+	in $section text
 )
 BEGIN
 	DECLARE CODE TINYINT;
@@ -107,9 +107,9 @@ CREATE PROCEDURE update_experiment_recard_present(
 	in $subject_id varchar(32),
 	in $grade tinyint,
 	in $present datetime,
-	in $operation json,
-	in $choice json,
-	in $section json
+	in $operation text,
+	in $choice text,
+	in $section text
 )
 BEGIN
 	DECLARE CODE TINYINT;

@@ -77,9 +77,9 @@ CREATE PROCEDURE update_experiment_recard(
     in $subject varchar(32),
 	in $grade TINYINT,
 	in $present datetime,
-	in $operation json,
-    in $section json,
-    in $choice json
+	in $operation text,
+    in $section text,
+    in $choice text
 )
 BEGIN
     declare code int;
