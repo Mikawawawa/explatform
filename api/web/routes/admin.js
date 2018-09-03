@@ -17,7 +17,7 @@ const land = require("../models/student");
 */
 
 // 业务代码
-router.post('/landing', function (req, res, next) {
+/*router.post('/landing', function (req, res, next) {
     land.landing((req.body.id),(req.body.password),(data)=>{
         let abc = JSON.stringify(data);
         let bcd = JSON.parse(abc);
@@ -37,7 +37,7 @@ router.post('/landing', function (req, res, next) {
         }
      })
 })
-
+*/
 router.post('/create_student',function(req,res,next){
      models.create_student(req.body.id,req.body.name,(data) => {
          res.send({
