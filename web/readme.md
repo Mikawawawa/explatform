@@ -1,3 +1,22 @@
-### readme
-zero（你懂我意思吧）
-虽然满脑子骚操作，想试下路由分发应用
+# explatform
+cd explatform
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
