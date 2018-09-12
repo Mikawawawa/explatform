@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const models = require("../models/student")
 
 //验证身份
-router.use((req, res, next) => {
+/*router.use((req, res, next) => {
     if (!req.session.key || req.session.type !== "student") {
         res.send({
             code: 0,
@@ -13,56 +13,74 @@ router.use((req, res, next) => {
         next()
     }
 });
-
+*/
 // 业务代码
-router.get('/', function (req, res, next) {
-    if (req.session.key) {
-        res.send({
-            code: 1,
-            info: req.session.key
-        });
-        next();
-    } else if(req.url=='a') {
-        models.timetable({}, (data) => {
+router.post('/landing', function (req, res, next) {
+    models.landing((req.body.id),(req.body.password),(data)=>{
+        let abc = JSON.stringify(data);
+        let bcd = JSON.parse(abc);
+        let user_type = bcd[0].user_type;
+        console.log(user_type);
+        if(String(user_type)!=="student"){
             res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
-            });
-        })
-    }else if(req.url=='b') {
-        models.report({}, (data) => {
-            res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
-            });
-        })
-    }else if(req.url=='c') {
-        models.up_exp({}, (data) => {
-            res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
-            });
-        })
-    }else if(req.url=='d') {
-        models.create_exp({}, (data) => {
-            res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
-            });
-        })
-    }else if(req.url=='e') {
-        models.grade({}, (data) => {
-            res.send({
-                code: 0,
-                info: "has not logined",
-                data: JSON.stringify(data)
-            });
-        })
-    }
-});
+                code :0,
+                info:"身份错误"
+            })
 
-module.exports = router;
+        }
+        else{
+            res.send({
+                code :0,
+                info:"登录成功"
+            })
+        }
+     })
+})
+
+
+ router.get('/get_timetable',function(req,res,next){
+    models.get_timetable((req.url.substr(-8,8)), (data) =>{
+         res.send({
+             code: 0,
+             data: JSON.stringify(data)
+        })
+    })
+})
+
+router.get('/text',function(req,res,next) {
+    models.text((req.url.substr(-8.8)), (data) => {
+        res.send({
+            code: 0,
+            data: JSON.stringify(data)
+        })
+    })
+})
+
+router.get('/get_report',function(req,res,next) {
+    models.get_report((req.url.substr(-8.8)), (data) => {
+        res.send({
+            code: 0,
+            data: JSON.stringify(data)
+        })
+    })
+})
+
+router.post('/update_exp',function(req,res,next) {
+    models.update_exp((req.body.student,req.body.experiment,req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
+        res.send({
+            code: 0,
+            info:data
+        })
+    })
+})
+
+router.get('/get_grade',function(req,res,next) {
+    models.get_grade((req.url.substr(-8,8)), (data) => {
+        res.send({
+            code: 0,
+            data: JSON.stringify(data)
+        })
+    })
+ })
+
+module.exports = router

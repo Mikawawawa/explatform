@@ -84,7 +84,7 @@ BEGIN
 	IF open>=1 THEN
 		set code=0;
 	ELSE
-		insert into `class_application`(class_id,teacher_id,status) VALUES ($id,$name,0);
+		insert into `class_application`(class_id,teacher_id,status) VALUES ($class,$teacher,0);
 		if ROW_COUNT()>1 then
 			set code=1;
 		else
@@ -204,8 +204,9 @@ BEGIN
 END;
 -- 查询用户拥有的权限
 CREATE PROCEDURE get_user_power(
-	in $user_id varchar(32)
+	in $user_id  varchar(32),
+	in $password varchar(32)
 )
 BEGIN
-	SELECT user_type FROM `user` WHERE user_id=$user_id;
+	SELECT user_type FROM `user` WHERE user_id=$user_id and password = $password;
 END;

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+// const path = require('path');
+const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -9,7 +10,7 @@ const RedisStore = require('connect-redis')(session);
 
 const teacherRouter = require('./routes/teacher');
 const studentRouter = require('./routes/student');
-const subjectRouter = require('./routes/subject');
+const managerRouter = require('./routes/manager');
 const adminRouter = require('./routes/admin');
 // 把所有的配置参数移动到config.json
 const config = require("./config.json")
@@ -32,10 +33,10 @@ app.use(cookieParser());
 // 这次估计没有静态文件
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(`/${domin}teacher`, teacherRouter);
-app.use(`/${domin}student`, studentRouter);
-app.use(`/${domin}class`, subjectRouter);
-app.use(`/${domin}event`, adminRouter);
+app.use(`/teacher`, teacherRouter);
+app.use(`/student`, studentRouter);
+app.use(`/manager`, managerRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
