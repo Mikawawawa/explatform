@@ -1,13 +1,15 @@
 // import Vue from 'vue'
-import Vue from 'vue/dist/vue.js';
-import Login from './view/Login'
-import Home from "./view/Index"
+import Vue from 'vue/dist/vue.js'
 import VueRouter from 'vue-router'
+
 import VueMaterial from 'vue-material'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -16,18 +18,7 @@ Vue.use(VueMaterial)
 Vue.use(VueAwesomeSwiper, /* { default global options } */ )
 Vue.use(VueRouter)
 
-const routes = [
-  { path: '/', component: Home },
-  { path: '/login', component: Login }
-]
-
-const router = new VueRouter({
-  routes // (缩写) 相当于 routes: routes
-})
-
 new Vue({
   router,
   el: '#app'
-  // template: '<Home/>',
-  // components: { Home,Login }
 })

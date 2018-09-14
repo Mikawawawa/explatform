@@ -52,7 +52,7 @@ export default {
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
-        this.$router.push('/')
+        this.$router.push("/");
       }, 1000);
     }
   }

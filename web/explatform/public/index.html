@@ -9,6 +9,38 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <title>explatform</title>
+  <style>
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity .5s ease;
+    }
+
+    .fade-enter,
+    .fade-leave-active {
+      opacity: 0
+    }
+
+    .child-view {
+      position: absolute;
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    }
+
+    .slide-left-enter,
+    .slide-right-leave-active {
+      opacity: 0;
+      -webkit-transform: translate(30px, 0);
+      transform: translate(30px, 0);
+    }
+
+    .slide-left-leave-active,
+    .slide-right-enter {
+      opacity: 0;
+      -webkit-transform: translate(-30px, 0);
+      transform: translate(-30px, 0);
+    }
+  </style>
+  <script src="https://unpkg.com/marked@0.3.6"></script>
+  <script src="https://unpkg.com/lodash@4.16.0"></script>
 </head>
 
 <body>
@@ -16,7 +48,7 @@
     <strong>We're sorry but explatform doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
   <div id="app">
-    <transition>
+    <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
   </div>

@@ -1,88 +1,50 @@
 <template>
-  <div class="swiper-container" :class="swipeid">
-      <div class="swiper-wrapper">
-          <!-- 存放具体的轮播内容 -->
-          <slot name ="swiper-con"></slot>
-      </div>
-      <!-- 分页器 -->
-      <div :class="{'swiper-pagination':pagination}"></div>
-  </div>
+  <md-content class="swiper-container">
+    <swiper :options="swiperOption">
+      <swiper-slide v-for="i in text" class="full" :key="i">
+        <img :src="i" alt="" srcset="">
+      </swiper-slide>
+    </swiper>
+  </md-content>
 </template>
 <script>
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.min.css";
 export default {
-  props: {
-    swipeid: {
-      type: String,
-      default: ""
-    },
-    effect: {
-      type: String,
-      default: "slide"
-    },
-    loop: {
-      type: Boolean,
-      default: false
-    },
-    direction: {
-      type: String,
-      default: "horizontal"
-    },
-    pagination: {
-      type: Boolean,
-      default: true
-    },
-    paginationType: {
-      type: String,
-      default: "bullets"
-    },
-    autoPlay: {
-      type: Number,
-      default: 3000
-    }
-  },
   data() {
     return {
-      dom: ""
+      dom: "",
+      text: ["background/1.jpg", "background/1.jpg"],
+      swiperOption: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        autoplay: {
+          delay: 1500,
+          disableOnInteraction: false
+        },
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }
     };
-  },
-  mounted() {
-    var that = this;
-    this.dom = new Swiper("." + that.swipeid, {
-      //循环
-      loop: that.loop,
-      //分页器
-      pagination: {
-        el: ".swiper-pagination",
-        bulletClass: "swiper-pagination-bullet"
-      },
-      //分页类型
-      paginationType: that.paginationType,
-      //自动播放
-      autoPlay: that.autoPlay,
-      //方向
-      direction: that.direction,
-      //特效
-      effect: that.effect,
-      //用户操作swiper之后，不禁止autoplay
-      disableOnInteraction: false,
-      //修改swiper自己或子元素时，自动初始化swiper
-      observer: true,
-      //修改swiper的父元素时，自动初始化swiper
-      observeParents: true
-    });
   }
 };
 </script>
 
 <style>
-.swiper-pagination-bullet-active {
-  background: #fff;
+.swiper-container {
+  padding: 16px;
+  margin-top: -5vh;
+  width: 75%;
+  /* height: 90%; */
 }
-.swiper-container-horizontal > .swiper-pagination-bullets {
-  bottom: 1rem;
-  width: 95%;
-  text-align: right;
+
+swiper {
+  height: 100%;
+  padding: 0px;
 }
 </style>
