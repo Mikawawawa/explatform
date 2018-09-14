@@ -169,14 +169,7 @@ export default {
       }
     ]
   }),
-  methods: {
-    newUser() {
-      window.alert("Noop");
-    },
-    searchOnTable() {
-      this.searched = searchByName(this.users, this.search);
-    }
-  },
+  methods: {},
   created() {
     this.searched = this.users;
   }
