@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       dom: "",
-      text: ["background/1.jpg", "background/1.jpg"],
+      text: ["background/2.jpg", "background/4.jpg"],
       swiperOption: {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -37,9 +37,9 @@ export default {
 
 <style>
 .swiper-container {
-  padding: 16px;
-  margin-top: -5vh;
-  width: 75%;
+  /* padding: 16px; */
+  /* margin-top: -5vh; */
+  width: 100%;
   /* height: 90%; */
 }
 

@@ -14,15 +14,16 @@
                 <md-icon>add</md-icon>
             </md-button>
 
-            <md-menu-content>
+            <md-menu-content style="z-index:9998">
                 <md-menu-item @click="goCourse()">课程界面</md-menu-item>
                 <md-menu-item @click="goLogin()">登录</md-menu-item>
-                <md-menu-item @click="goMarkdown()">Markdown</md-menu-item>
+                <md-menu-item @click="goMarkdown()">报告编辑</md-menu-item>
+                <md-menu-item @click="goArticle()">报告显示</md-menu-item>
             </md-menu-content>
         </md-menu>
         </md-toolbar>
         <!-- slider -->
-        <md-drawer :md-active.sync="showNavigation" style="max-height:100vh">
+        <md-drawer :md-active.sync="showNavigation" style="max-height:100vh;z-index:9999">
         <md-toolbar class="md-transparent" md-elevation="0">
             <span class="md-title">Shortcut</span>
         </md-toolbar>
@@ -95,6 +96,9 @@ export default {
     },
     goMarkdown: function() {
       this.$router.push("/markdown");
+    },
+    goArticle:function(){
+        this.$router.push("/article")
     }
   }
 };

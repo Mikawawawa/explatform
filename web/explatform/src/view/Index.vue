@@ -11,33 +11,24 @@
           <md-content>
             <div class="list dark">
               <h2 class="md-display-2">开放式实验平台</h2>
-              <p>This text will follow the default color of the documentation, which is a nice red color.</p>
+              <p>开放式实验平台提供了实验安排，实验报告，实验室电源等多方面的实验管理功能</p>
+              <p>由国家级电工电子实验中心牵头设计</p>
+              <p>杭电微芯科技创新孵化器协助开发</p>
             </div>
           </md-content>
         </span>
       </div>
       <div class="md-layout-item md-medium-hide">
         <span>
-          <md-card style="width=100%;height:100%;margin:0px" class="dark">
+          <md-card style="width=100%;height:100%;margin:0px" class="dark md-elevation-0">
             <md-card-media-cover md-solid>
               <md-card-media>
-                <img src="/background/1.jpg" alt="Skyscraper">
+                <img src="/background/2.jpg" alt="Skyscraper">
               </md-card-media>
               <md-card-area>
                 <md-card-header>
-                  <span class="md-title">Solid background</span>
-                  <span class="md-subhead">1/1 image</span>
+                  <span class="md-title">杭州电子科技大学</span>
                 </md-card-header>
-
-                <md-card-actions>
-                  <md-button class="md-icon-button">
-                    <md-icon>favorite</md-icon>
-                  </md-button>
-
-                  <md-button class="md-icon-button">
-                    <md-icon>share</md-icon>
-                  </md-button>
-                </md-card-actions>
               </md-card-area>
             </md-card-media-cover>
           </md-card>
@@ -46,9 +37,9 @@
     </div>
 
     <!-- part two -->
-    <div class="md-layout md-gutter md-alignment-top md-elevation-4">
-      <div class="md-layout-item md-size-30 md-medium-hide">
-        <span>
+    <div class="md-layout md-gutter md-alignment-top md-elevation-0">
+      <div class="md-layout-item md-size-40 md-medium-hide">
+        <!-- <span>
           <md-card style="width=100%;height:100%;margin:0px">
             <md-card-media-cover md-solid>
               <md-card-media>
@@ -72,18 +63,19 @@
               </md-card-area>
             </md-card-media-cover>
           </md-card>
-        </span>
+        </span> -->
+        <Swipe></Swipe>
       </div>
       <div class="md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100">
         <span>
           <md-content>
             <div class="list">
               <h2 class="md-display-2">快速开始</h2>
-              <p>请开始你的表演</p>
-              <p>请开始我的表演</p>
-              <p>请开始他的表演</p>
-              <p>请开始她的表演</p>
-              <p>请开始它的表演</p>
+              <p>点击左上方菜单按钮调出shortcut快捷面板，显示身份验证二维码</p>
+              <p>点击右上方菜单按钮进入对应功能</p>
+              <p>点击Explatform字样可从任何界面回到首页</p>
+              <p>编辑器使用了Markdown规范，并提供了一定辅助功能，便于快速上手</p>
+              <p>请开始使用</p>
             </div>
           </md-content>
         </span>

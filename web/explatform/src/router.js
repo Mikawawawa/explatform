@@ -4,6 +4,7 @@ import Login from './view/Login'
 import Home from "./view/Index"
 import Course from "./view/Course"
 import Markdown from "./view/Markdown"
+import Article from "./view/Article"
 import Info from "./view/Info"
 
 // rules
@@ -26,6 +27,10 @@ const routes = [{
     {
         path: '/markdown',
         component: Markdown
+    },
+    {
+        path:'/article',
+        component:Article
     }
 ]
 // router
