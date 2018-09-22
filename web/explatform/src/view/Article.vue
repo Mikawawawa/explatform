@@ -13,35 +13,35 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue"
-import marked from "marked"
+import Header from "../components/Header.vue";
+import marked from "marked";
 
-import article from "./article"
+import article from "../template/article";
 
 export default {
   components: {
-    Header,
+    Header
   },
   data: () => ({
-      content:""
+    content: ""
   }),
   computed: {
-    compiledMarkdown: function () {
-      return marked(article, { sanitize: true })
+    compiledMarkdown: function() {
+      return marked(article, { sanitize: true });
     }
   },
   methods: {}
 };
 </script>
 <style>
-@media (max-width: 600px){
-.article{
-    width:100% !important;
+@media (max-width: 600px) {
+  .article {
+    width: 100% !important;
+  }
 }
-}
-.article{
-    width:75%;
-    margin:auto
+.article {
+  width: 75%;
+  margin: auto;
 }
 </style>
  

@@ -29,8 +29,8 @@ const routes = [{
         component: Markdown
     },
     {
-        path:'/article',
-        component:Article
+        path: '/article',
+        component: Article
     }
 ]
 // router
