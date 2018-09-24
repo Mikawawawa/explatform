@@ -3,17 +3,17 @@
         <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-fixed-header  style="height:100%!important">
           <md-table-toolbar>
               <div class="md-toolbar-section-start">
-                <h1 class="md-title">Users</h1>
+                <h1 class="md-title">大物实验A2</h1>
               </div>
 
               <md-field md-clearable class="md-toolbar-section-end">
-                <md-input placeholder="Search by experimend_title..." v-model="search" @input="searchOnTable" />
+                <md-input placeholder="Search by experiment_name..." v-model="search" @input="searchOnTable" />
               </md-field>
           </md-table-toolbar>
 
           <md-table-empty-state
               md-label="No experiment found"
-              :md-description="`No user found for this '${search}' query.`">
+              :md-description="`No experiment found for this '${search}' query.`">
               <md-button class="md-primary md-raised" @click="newUser">Create New User</md-button>
           </md-table-empty-state>
 
