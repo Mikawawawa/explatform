@@ -20,8 +20,10 @@
           <md-table-row slot="md-table-row" slot-scope="{ item }">
               <md-table-cell md-label="实验号" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
               <md-table-cell md-label="实验名称" md-sort-by="name">{{ item.name }}</md-table-cell>
-              <md-table-cell md-label="实验分" md-sort-by="exp_grade">{{ item.exp_grade }}</md-table-cell>
-              <md-table-cell md-label="报告分" md-sort-by="rep_grade">{{ item.rep_grade }}</md-table-cell>
+              <md-table-cell md-label="实验分" md-sort-by="exp_grade">
+                <!-- {{ item.exp_grade }} -->
+                <showGrade v-bind:info="item.exp_grade"></showGrade>
+              </md-table-cell>
               <md-table-cell md-label="实验报告" md-sort-by="report">
                 <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown()">
                   <md-icon>visibility</md-icon>
@@ -35,7 +37,11 @@
 </template>
 
 <script>
+import showGrade from "./ShowGrade.vue"
 export default {
+  components:{
+    showGrade
+  },
   props: {
     info: {
       type: Array
@@ -47,7 +53,7 @@ export default {
   }),
   methods: {
     goMarkdown() {
-      this.$router.push("/Markdown");
+      this.$router.push("/article");
     },
     newUser() {
       window.alert("Noop");
