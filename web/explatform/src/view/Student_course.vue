@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <CourseCard v-bind="n in sum"></CourseCard>
+        <Studentcard v-bind="1"></Studentcard>
     </div>
     <!-- <md-content class="list" style="margin-left:auto">
         
@@ -18,19 +18,17 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import CourseCard from "../components/CourseCard.vue";
+import Studentcard from "../components/Studentcard.vue";
 export default {
-  name: "Course",
+  name: "Student_course",
   components: {
     Header,
     Footer,
-    CourseCard
+    Studentcard
   },
   data: () => ({
-    num: 20
+    num: 1
   }),
   methods: {}
 };
 </script>
-
-

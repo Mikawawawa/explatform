@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     goCourse: function() {
-      this.$router.push("/course");
+      this.$router.push("/Student_course");
     },
     goHome: function() {
       this.$router.push("/");

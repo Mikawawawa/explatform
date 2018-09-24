@@ -7,7 +7,7 @@
         "port": 8101,
         "user": "root",
         "password": "aptx4869",
-        "database": "explatform",
+        "database": "explaform",
         "charset": "UTF8_GENERAL_CI",
         "debug": false
     },
