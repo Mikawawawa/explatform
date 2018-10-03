@@ -16,6 +16,7 @@ const land = require("../models/student");
 });
 */
 // 业务代码
+//登录
 router.post('/landing', function (req, res, next) {
     land.landing((req.body.id),(req.body.password),(data)=>{
         let abc = JSON.stringify(data);
@@ -37,16 +38,7 @@ router.post('/landing', function (req, res, next) {
      })
 })
 
-router.post('/create_student',function(req,res,next){
-    models.create_student(req.body.config,req.body.id, (data) => {
-        res.send({
-            code: 0,
-            data: JSON.stringify(data)
-           });
-   })
-});
-
-
+//对该课程下的班级群体发送公告
 router.post('/update_notice',function(req,res,next){
      models.update_notice(req.body.notice_id,req.body.user_id,req.body.content,req.body.time,req.body.class_id, (data) => {
          res.send({
@@ -55,6 +47,8 @@ router.post('/update_notice',function(req,res,next){
             });
     })
 });
+
+//查看所负责的课程的排课情况
 router.get('/get_teacher_timetable',function(req,res,next) {
         models.get_teacher_timetable((req.url.substr(-8,8)), (data) => {
             res.send({
@@ -64,6 +58,7 @@ router.get('/get_teacher_timetable',function(req,res,next) {
         })
 });
 
+//发布老师的带课申请
 router.post('/update_class_application',function(req,res,next) {
         models.update_class_application(req.body.class_id,req.body.teacher, (data) => {
             res.send({
@@ -73,6 +68,7 @@ router.post('/update_class_application',function(req,res,next) {
         })
 });
 
+//查看老师的带课申请
 router.get('/get_teacher_application',function(req,res,next) {
         models.get_teacher_application((req.url.substr(-8,8)), (data) => {
             res.send({
@@ -82,6 +78,7 @@ router.get('/get_teacher_application',function(req,res,next) {
         })
 });
 
+//审核老师的带课申请
 router.post('/check_application',function(req,res,next) {
         models.check_application(req.body.class_id,req.body.teacher,req.body.status, (data) => {
             res.send({
@@ -91,6 +88,7 @@ router.post('/check_application',function(req,res,next) {
         })
  });
 
+ //发布报告模板（编辑报告内容包括：文字、表格（按图片方式存在）、图像文件、视频文件等）
  router.post('/update_template',function(req,res,next) {
     models.update_template((req.body.subject_id,req.body.template_id), (data) => {
         res.send({
@@ -100,6 +98,7 @@ router.post('/check_application',function(req,res,next) {
     })
 });
 
+//查看各班级的学生的签到信息
 router.get('/get_student_recard',function(req,res,next) {
     models.get_student_recard((req.url.substr(-8,8)),(data) => {
         res.send({

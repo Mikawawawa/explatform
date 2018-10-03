@@ -26,7 +26,7 @@ function update_application(classid,teacher, callback) {
     })
 }
 
-//查看自己的课表
+//查看教师的课表
 function get_timetable(config, callback) {
     connection.query("CALL `get_teacher_timetable`("+config+")", (err, rows, fields) => {
         if(err){

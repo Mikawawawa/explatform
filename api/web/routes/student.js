@@ -15,7 +15,8 @@ const models = require("../models/student")
 });
 */
 // 业务代码
-router.post('/landing', function (req, res, next) {
+//登录
+router.post('/landing', function (req, res, next) {                             
     models.landing((req.body.id),(req.body.password),(data)=>{
         let abc = JSON.stringify(data);
         let bcd = JSON.parse(abc);
@@ -37,7 +38,7 @@ router.post('/landing', function (req, res, next) {
      })
 })
 
-
+//获取学生课表
  router.get('/get_timetable',function(req,res,next){
     models.get_timetable((req.url.substr(-8,8)), (data) =>{
          res.send({
@@ -47,15 +48,7 @@ router.post('/landing', function (req, res, next) {
     })
 })
 
-router.get('/text',function(req,res,next) {
-    models.text((req.url.substr(-8.8)), (data) => {
-        res.send({
-            code: 0,
-            data: JSON.stringify(data)
-        })
-    })
-})
-
+//获取实验报告
 router.get('/get_report',function(req,res,next) {
     models.get_report((req.url.substr(-8.8)), (data) => {
         res.send({
@@ -65,6 +58,7 @@ router.get('/get_report',function(req,res,next) {
     })
 })
 
+//上传实验数据
 router.post('/update_exp',function(req,res,next) {
     models.update_exp((req.body.student,req.body.experiment,req.body.subject,req.body.grade,req.body.present,req.body.operation,req.body.section,req.body.choice), (data) => {
         res.send({
@@ -74,6 +68,7 @@ router.post('/update_exp',function(req,res,next) {
     })
 })
 
+//查看学生实验成绩
 router.get('/get_grade',function(req,res,next) {
     models.get_grade((req.url.substr(-8,8)), (data) => {
         res.send({

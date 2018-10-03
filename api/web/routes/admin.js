@@ -17,7 +17,8 @@ const land = require("../models/student");
 */
 
 // 业务代码
-/*router.post('/landing', function (req, res, next) {
+//登录
+router.post('/landing', function (req, res, next) {
     land.landing((req.body.id),(req.body.password),(data)=>{
         let abc = JSON.stringify(data);
         let bcd = JSON.parse(abc);
@@ -37,7 +38,8 @@ const land = require("../models/student");
         }
      })
 })
-*/
+
+//手动增加学生
 router.post('/create_student',function(req,res,next){
      models.create_student(req.body.id,req.body.name,(data) => {
          res.send({
@@ -46,6 +48,8 @@ router.post('/create_student',function(req,res,next){
             });
     })
 });
+
+//手动增加教师
 router.post('/create_teacher',function(req,res,next) {
         models.create_teacher((req.body.id,req.body.name), (data) => {
             res.send({
@@ -55,6 +59,7 @@ router.post('/create_teacher',function(req,res,next) {
         })
 });
 
+//手动增加实验课程
 router.post('/create_experiment',function(req,res,next) {
         models.create_experiment((req.body), (data) => {
             res.send({
@@ -64,6 +69,7 @@ router.post('/create_experiment',function(req,res,next) {
         })
 });
 
+//手动增加课程负责人
 router.post('/create_class_user',function(req,res,next) {
         models.create_class_user((req.body.id,req.body.password,req.body.name,req.body.type), (data) => {
             res.send({
@@ -73,6 +79,7 @@ router.post('/create_class_user',function(req,res,next) {
         })
 });
 
+//教室的使用情况
 router.get('/get_classromm_timetable',function(req,res,next) {
         models.get_classromm_timetable((req.url.substr(-8,8)), (data) => {
             res.send({
@@ -82,6 +89,7 @@ router.get('/get_classromm_timetable',function(req,res,next) {
         })
  });
 
+ //查看课程的排课情况
  router.get('/get_class_timetable',function(req,res,next) {
     models.get_class_timetable((req.url.substr(-8,8)), (data) => {
         res.send({
@@ -91,6 +99,7 @@ router.get('/get_classromm_timetable',function(req,res,next) {
     })
 });
 
+//对群体发送公告，通知定位到具体班级上
 router.post('/update_notice',function(req,res,next) {
     models.update_notice((req.body.id,req.body.notice), (data) => {
         res.send({
