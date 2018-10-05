@@ -1,0 +1,90 @@
+---
+swagger: "2.0"
+info:
+  description: "A simple API to learn how to write OpenAPI Specification"
+  version: "1.0.0"
+  title: "Simple API"
+schemes:
+- "https"
+paths:
+  /users:
+    post:
+      summary: "Add some users"
+      description: "Adds a new user to the users list."
+      operationId: "usersPOST"
+      parameters:
+      - in: "body"
+        name: "user"
+        description: "The user to create."
+        required: false
+        schema:
+          $ref: "#/definitions/user"
+      responses:
+        204:
+          description: "User succesfully created."
+        400:
+          description: "User couldn't have been created."
+      x-swagger-router-controller: "Default"
+  /expriments:
+    get:
+      summary: "Gets some experiments information"
+      description: "Returns a list containing all expriments."
+      operationId: "exprimentsGET"
+      parameters: []
+      responses:
+        200:
+          description: "A list of Experiment"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/inline_response_200"
+        404:
+          description: "The Experiment does not exists."
+      x-swagger-router-controller: "Default"
+    post:
+      summary: "Add some experiment reports"
+      description: "Adds a new report to the report list."
+      operationId: "exprimentsPOST"
+      parameters:
+      - in: "body"
+        name: "report"
+        description: "The report to create."
+        required: false
+        schema:
+          $ref: "#/definitions/report"
+      responses:
+        204:
+          description: "report have been succesfully submited."
+        400:
+          description: "fail to submit report."
+      x-swagger-router-controller: "Default"
+definitions:
+  report:
+    properties:
+      experimentID:
+        type: "string"
+      experimentName:
+        type: "string"
+      experimentReport:
+        type: "string"
+  inline_response_200:
+    properties:
+      experimentID:
+        type: "string"
+      experimentName:
+        type: "string"
+      experimentScore:
+        type: "string"
+      experimentReport:
+        type: "string"
+    example:
+      experimentReport: "experimentReport"
+      experimentScore: "experimentScore"
+      experimentID: "experimentID"
+      experimentName: "experimentName"
+  user:
+    properties:
+      userID:
+        type: "string"
+      password:
+        type: "string"
