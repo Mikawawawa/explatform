@@ -4,8 +4,8 @@ info:
   description: "A simple API to learn how to write OpenAPI Specification"
   version: "1.0.0"
   title: "Simple API"
-host: "simple.api#到时候再改"
-basePath: "/openapi101#到时候再改"
+host: "101.132.116.211"
+basePath: "/student"
 schemes:
 - "https"
 paths:
