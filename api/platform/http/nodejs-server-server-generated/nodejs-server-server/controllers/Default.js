@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Default = require('../service/DefaultService');
 
-module.exports.exprimentsGET = function exprimentsGET (req, res, next) {
-  Default.exprimentsGET()
+module.exports.get_gradeGET = function get_gradeGET (req, res, next) {
+  Default.get_gradeGET()
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -13,9 +13,8 @@ module.exports.exprimentsGET = function exprimentsGET (req, res, next) {
     });
 };
 
-module.exports.exprimentsPOST = function exprimentsPOST (req, res, next) {
-  var report = req.swagger.params['report'].value;
-  Default.exprimentsPOST(report)
+module.exports.get_reportGET = function get_reportGET (req, res, next) {
+  Default.get_reportGET()
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -24,9 +23,9 @@ module.exports.exprimentsPOST = function exprimentsPOST (req, res, next) {
     });
 };
 
-module.exports.usersPOST = function usersPOST (req, res, next) {
-  var user = req.swagger.params['user'].value;
-  Default.usersPOST(user)
+module.exports.landingPOST = function landingPOST (req, res, next) {
+  var student = req.swagger.params['student'].value;
+  Default.landingPOST(student)
     .then(function (response) {
       utils.writeJson(res, response);
     })
