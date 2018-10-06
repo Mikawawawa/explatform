@@ -90,6 +90,5 @@ module.exports = {
     'get_report':get_report,
     'get_grade':get_grade,
     'update_exp':update_exp,
-    'landing':landing,
-    'text':text
+    'landing':landing
 }

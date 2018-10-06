@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import student from "api/platform/http/doc/nodejs-server-server/controllers/Default.js"
 import showGrade from "./ShowGrade.vue"
 export default {
   components:{
