@@ -9,7 +9,7 @@ basePath: "/student"
 schemes:
 - "https"
 paths:
-  /landing:
+  /landi:
     post:
       summary: "login"
       description: "学生登录."
