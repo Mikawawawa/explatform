@@ -5,9 +5,10 @@
  * Gets experiment grade
  * Returns grade
  *
+ * studentID String ID of pet to return
  * returns List
  **/
-exports.get_gradeGET = function() {
+exports.get_gradeStudentIDGET = function(studentID) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = [ {
@@ -41,10 +42,10 @@ exports.get_reportGET = function() {
  * login
  * 学生登录.
  *
- * student Student The student to create. (optional)
+ * tags Tags The student to create. (optional)
  * no response value expected for this operation
  **/
-exports.landingPOST = function(student) {
+exports.landingPOST = function(tags) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
