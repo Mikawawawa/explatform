@@ -9,36 +9,30 @@ basePath: "/student"
 schemes:
 - "https"
 paths:
-  /landi:
+  /landing:
     post:
       summary: "login"
       description: "学生登录."
       operationId: "landingPOST"
       parameters:
       - in: "body"
-        name: "tags"
+        name: "student"
         description: "The student to create."
         required: false
         schema:
-          $ref: "#/definitions/tags"
+          $ref: "#/definitions/student"
       responses:
         204:
           description: "Student succesfully created."
         400:
           description: "Student couldn't have been created."
       x-swagger-router-controller: "Default"
-  /get_grade/{studentID}:
+  /get_grade:
     get:
       summary: "Gets experiment grade"
       description: "Returns grade"
-      operationId: "get_gradeStudentIDGET"
-      parameters:
-      - name: "studentID"
-        in: "path"
-        description: "ID of pet to return"
-        required: true
-        type: "string"
-        format: "int64"
+      operationId: "get_gradeGET"
+      parameters: []
       responses:
         200:
           description: "grade"
@@ -62,15 +56,15 @@ paths:
           description: "The Experiment does not exists."
       x-swagger-router-controller: "Default"
 definitions:
+  student:
+    properties:
+      id:
+        type: "string"
+      password:
+        type: "string"
   inline_response_200:
     properties:
       experimentScore:
         type: "string"
     example:
       experimentScore: "experimentScore"
-  tags:
-    properties:
-      id:
-        type: "string"
-      password:
-        type: "string"

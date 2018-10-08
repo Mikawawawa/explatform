@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <CourseCard v-bind="n in sum"></CourseCard>
+        <CourseCard v-for = "n in num"></CourseCard>
     </div>
     <!-- <md-content class="list" style="margin-left:auto">
         
