@@ -1,0 +1,379 @@
+swagger: '2.0'
+info:
+  description: 实验平台参展版API
+  version: 1.0.0
+  title: Marx
+  termsOfService: 'http://wekan.mcfhq.com'
+host: localhost
+basePath: /api
+tags:
+  - name: user
+    description: 用户账号相关的API
+  - name: student
+    description: 学生权限下可以操作的API
+  - name: teacher
+    description: 教师身份下可以操作的API
+schemes:
+  - http
+paths:
+  /user/login:
+    post:
+      tags:
+        - user
+      summary: "登录"
+      description: "用户登录."
+      operationId: "landingPost"
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: formData
+          description: 登录ID号
+          required: true
+          type: string
+        - name: pwd
+          in: formData
+          description: 学生学号
+          required: true
+          type: string
+      responses:
+        200:
+          description: User successfully login.
+          schema:
+            $ref: '#/definitions/ActionState'
+  /user/get_power:
+    get:
+      tags:
+        - user
+      summary: "获取用户权限"
+      description: "根据输入的用户名返回用户权限"
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 用户id
+          type: string
+      responses:
+        200:
+          description: "返回用户权限"
+          schema:
+            required:
+              - userName
+            properties:
+              status:
+                type: string
+              userType:
+                type: string
+                
+  /student/get_course:
+    get:
+      tags:
+        - student
+      summary: "学生获取课程"
+      description: "根据学生的账号返回学生课表"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - name: student_id
+          in: path
+          required: true
+          description: The studentID
+          type: string
+      responses:
+        200:
+          description: "返回学生课程"
+          schema:
+            $ref: '#/definitions/CourseInfo'
+  /student/get_exp:
+    get:
+      tags:
+      - student
+      summary: "获取实验详情"
+      description: "根据课程号获取实验的详情"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "course_id"
+        in: "path"
+        description: "课程编号"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Expinfo_s'
+  /student/set_report:
+    post:
+      tags: 
+      - student
+      summary: "提交报告"
+      description: "提交报告"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters: 
+      - name: "student_id"
+        in: "formData"
+        description: "学生的ID"
+        required: true
+        type: "string"
+      - name: "exp_id"
+        in: "formData"
+        description: "实验的ID"
+        required: true
+        type: "string"
+      - name: "article"
+        in: "formData"
+        description: "实验报告的数据"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: '#/definitions/ActionState'
+            
+  /teacher/get_exp:
+    get:
+      tags:
+        - teacher
+      summary: 获取实验详情
+      description: 根据实验id获取所有学生的该实验信息
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: class_id
+          in: formData
+          description: 班级id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 获取到信息
+          schema:
+            $ref: '#/definitions/Expinfo_t'
+        '403':
+          description: 错误
+          schema:
+            $ref: '#/definitions/ErrorState'
+  /teacher/set_grade:
+    post:
+      tags: 
+        - teacher
+      summary: 设置某个学生某个实验的成绩
+      description: 传入学生id、实验id和完整的成绩，设置学生信息
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: student_id
+          in: formData
+          description: 学生学号
+          required: true
+          type: string
+        - name: exp_id
+          in: formData
+          description: 实验编号
+          required: true
+          type: string
+        - name: preview
+          in: formData
+          description: 预习分
+          required: false
+          type: integer
+        - name: action
+          in: formData
+          description: 操作分
+          required: false
+          type: integer
+        - name: report
+          in: formData
+          description: 报告分
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: 成功
+          schema:
+            $ref: '#/definitions/ActionState'
+        '403':
+          description: 错误
+          schema:
+            $ref: '#/definitions/ErrorState'
+  /teacher/get_report:
+    get:
+      tags:
+        - teacher
+      summary: 获取实验报告
+      description: 根据报告id获取markdown报告的原始内容
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: report_id
+          in: formData
+          description: 报告编号
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 获取到信息
+          schema:
+            $ref: '#/definitions/Reportinfo_t'
+        '403':
+          description: 错误
+          schema:
+            $ref: '#/definitions/ErrorState'
+  /teacher/get_course:
+    get:
+      tags:
+        - teacher
+      summary: "根据教师号获取教师课表"
+      description: "查看教师课表"
+      operationId: "get_teacher_timetableById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - name: teacher_id
+          in: path
+          required: true
+          description: teacher
+          type: string
+      responses:
+        "200":
+          description: "返回教师课表"
+          schema:
+            $ref: '#/definitions/CourseInfo'
+  /teacher/start_exp:
+    post:
+      tags:
+        - teacher
+      summary: "开始实验"
+      description: "教师开始实验"
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: classroom_id
+          in: formData
+          type: string
+        - name: class_id
+          in: formData
+          type: string
+        - name: process
+          in: formData
+          type: string
+      responses:
+        200:
+          description: get experiment sucess.
+          schema:
+            $ref: '#/definitions/ActionState'            
+       
+
+
+definitions:
+  CourseInfo:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: 状态码
+        default: 1
+      info:
+        type: object
+        example:
+          - course_id:
+            type: string
+            description: 课程id号
+          - course_name:
+            type: string
+            desciption: 课程名
+  Expinfo_t:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: 状态码
+        default: 1
+      info:
+        type: object
+        example:
+          - student_id:
+              type: string
+              description: 学生id号
+            article:
+              type: string
+              description: 报告编号
+            grade:
+              type: object
+              maxitem: 3
+              example:
+                - "preview": 4
+                - "action": 5
+                - "report": 4
+  Expinfo_s:
+    type: "object"
+    properties:
+      id: 
+        type: "string"
+        description: "id号"
+      name:
+        type: "string"
+        description: "实验名称"
+      score:
+        type: "integer"
+        description: "实验分数"
+      student_id:
+        type: "string"
+        description: "学生学号"
+  Reportinfo_t:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: 状态码
+        default: 1
+      info:
+        type: string
+        description: markdown文档的原始内容
+        example: 
+          "# hello world"
+  ActionState:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: 操作状态码，1成功
+        default: 1
+      info:
+        type: string
+        description: 提示词，便于前端显示
+        default: "发送操作请求成功"
+  ErrorState:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: 操作状态码,0失败
+        default: 0
+      info:
+        type: string
+        description: 提示词，便于前端显示
+        default: "未知错误"

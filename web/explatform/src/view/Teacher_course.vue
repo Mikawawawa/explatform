@@ -4,12 +4,8 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <CourseCard v-for = "n in num"></CourseCard>
+        <CourseCard v-for="value in course" v-bind:name="value.name"></CourseCard>
     </div>
-    <!-- <md-content class="list" style="margin-left:auto">
-        
-
-    </md-content> -->
     <!-- footer -->
     <Footer></Footer>
   </md-content>
@@ -27,7 +23,12 @@ export default {
     CourseCard
   },
   data: () => ({
-    num: 5
+    num: 5,
+    course:[
+      {name:"数电实验"},
+      {name:"电分实验"},
+      {name:"模电实验"}
+    ]
   }),
   methods: {}
 };
