@@ -41,7 +41,8 @@ export default {
       loading: false,
       login: {
         id: "",
-        password: ""
+        password: "",
+        type:""
       }
     };
   },
