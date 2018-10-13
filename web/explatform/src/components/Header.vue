@@ -15,7 +15,8 @@
             </md-button>
 
             <md-menu-content style="z-index:9998">
-                <md-menu-item @click="goCourse()">课程界面</md-menu-item>
+                <md-menu-item @click="goTeacherCourse()">教师课程界面</md-menu-item>
+                <md-menu-item @click="goStudentCourse()">学生课程界面</md-menu-item>
                 <md-menu-item @click="goLogin()">登录</md-menu-item>
                 <md-menu-item @click="goMarkdown()">报告编辑</md-menu-item>
                 <md-menu-item @click="goArticle()">报告显示</md-menu-item>
@@ -85,9 +86,18 @@ export default {
     }
   },
   methods: {
-    goCourse: function() {
-      this.$router.push("/course");
+    goStudentCourse: function() {
+      this.$router.push("/student_course");
     },
+    goTeacherCourse:function(){
+        this.$router.push("/teacher_course");
+    },
+    // goStudentExp:function(){
+    //     this.$router.push("/student_exp");
+    // },
+    // goTeacherExp:function(){
+    //     this.$router.push("/teacher_exp");
+    // },
     goHome: function() {
       this.$router.push("/");
     },

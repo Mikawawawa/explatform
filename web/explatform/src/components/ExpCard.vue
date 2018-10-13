@@ -23,13 +23,13 @@
 export default {
   methods: {
     cardClick: function() {
-      this.$router.push("/student_exp");
+      this.$router.push("/teacher_info");
     }
   },
   props: {
     name: {
       type: String,
-      default: "大物实验"
+      default: "示波器的使用"
     },
     time: {
       type: String,
@@ -37,7 +37,7 @@ export default {
     },
     classroom: {
       type: String,
-      default: "暂无课程信息"
+      default: "暂无教室信息"
     }
   }
 };

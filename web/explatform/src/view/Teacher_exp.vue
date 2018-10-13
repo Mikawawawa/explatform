@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <Studentcard v-for="value in course" v-bind:name="value.name"></Studentcard>
+        <ExpCard v-for = "n in num"></ExpCard>
     </div>
     <Footer></Footer>
   </md-content>
@@ -13,27 +13,19 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import Studentcard from "../components/Studentcard.vue";
+import ExpCard from "../components/ExpCard.vue";
 export default {
-  name: "Student_course",
+  name: "Cours  e",
   components: {
     Header,
     Footer,
-    Studentcard
+    ExpCard
   },
   data: () => ({
-    course:[
-      {
-        "name":"数电实验1"
-      },
-      {
-        "name":"数电实验2"
-      },
-      {
-        "name":"数电实验3"
-      }
-    ]
+    num: 5
   }),
   methods: {}
 };
 </script>
+
+

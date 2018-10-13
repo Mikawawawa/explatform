@@ -23,7 +23,7 @@
 export default {
   methods: {
     cardClick: function() {
-      this.$router.push("/info");
+      this.$router.push("/teacher_exp");
     }
   },
   props: {

@@ -27,7 +27,7 @@ export default {
     CourseCard
   },
   data: () => ({
-    num: 20
+    num: 5
   }),
   methods: {}
 };
