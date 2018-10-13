@@ -1,5 +1,4 @@
 {
-
   "name": "aerosimulate",
   "version": "1.0.0",
   "description": "",
@@ -22,6 +21,7 @@
     "express": "^4.16.3",
     "http-error": "0.0.6",
     "http-errors": "^1.7.0",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "mysql": "^2.16.0"
   }
 }

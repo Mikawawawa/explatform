@@ -1,9 +1,22 @@
 const mysql = require('mysql');
 const config = require('../config.json');
-const connection = mysql.createConnection(config.mysql);
+const connection = mysql.createConnection({
+    host: "101.132.116.211",
+    port: 3306,
+    user: "root",
+    password: "aptx4869",
+    database: 'explatform',
+    charset: "UTF8_GENERAL_CI",
+    debug: false
+});
+// const connection = mysql.createConnection(config.mysql);
 connection.connect();
-connection.on("connect", () => {
-    console.log("ok")
+connection.on("connect", (err) => {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log("db:ok")
 })
 
 module.exports = connection
@@ -11,15 +24,17 @@ module.exports = connection
 connection.execute=async function(command,params){
     return new Promise((resolve,reject)=>{
         connection.query(command,params,(error,results)=>{
-            results=typeof(results)!=="undefined"?JSON.parse(JSON.stringify(results)):results
+            // console.log(results)
+            results=typeof(results)=="undefined"?results:results[0]
             // 错误处理
             if(error){
+                console.log(error)
                 resolve({
                     status:0,
                     info:"ACTION ERROR!"
                 })
             // 空值处理
-            }else if(typeof(results[0])=='undefined'){
+            }else if(typeof(results)=='undefined'){
                 resolve({
                     status:0,
                     info:"NOT FOUND!"

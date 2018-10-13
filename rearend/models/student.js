@@ -6,7 +6,21 @@ const connection=require("./connect")
  * Time: 
  * Comment: 
  */
-exports.getCourse=function(student_id){
+exports.getCourse= async function(student_id){
+    var res=[];
+    let data=await connection.execute("call get_student_timetable(?)",[student_id]);
+    // return data
+    for(let i=0; i<data.info.length; i++){
+        res[i] = {
+            course_id: data.info[i].subject_id,
+            type: null,
+            description: "课程id号"
+        }
+    }
+    return {
+        status:0,
+        info:res
+    }
 
 }
 
@@ -16,8 +30,25 @@ exports.getCourse=function(student_id){
  * Time: 
  * Comment: 
  */
-exports.getExp=function(course_id,student_id){
-
+exports.getExp=async function(course_id,student_id){
+    var res=[];
+    let data =await connection.execute("SELECT * FROM `experiment_recard` where student_id=? and experiment_id in (SELECT experiment_id FROM experiment WHERE `subject_id` = ?)",[student_id, course_id]);
+    // let data = await connection.execute("SELECT * FROM `experiment_recard` where student_id='17041802' and experiment_id in (SELECT experiment_id FROM experiment WHERE `subject_id` = '101')")
+    for(let i=0; i<data.info.length; i++){
+        res[i] = {
+            id: data.info[i].experiment_id,
+            name: null,
+            score:data.info[i].grade,
+            student_id:data.info[i].student_id
+        }
+    }
+    return {
+        res
+    } 
+    // return{
+    //     status:1,
+    //     info:"EXECUTE DOWN!"
+    // }
 }
 
 /**
@@ -27,5 +58,9 @@ exports.getExp=function(course_id,student_id){
  * Comment: 
  */
 exports.setReport=function(student_id,exp_id,article){
-
+    let data =connection.execute("UPDATE experiment_recard set `section` = ? where `student_id` = ? and `experiment_id` = ?",[article, student_id,exp_id]);
+    return{
+        status:1,
+        info:"EXECUTE DOWN!"
+    }
 }
