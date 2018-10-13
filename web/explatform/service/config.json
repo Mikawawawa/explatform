@@ -5,10 +5,10 @@
     "S_COURSE_DETAIL":"/student/get_exp",
     "SET_REPORT":"/student/set_report",
 
-    "T_GET_COURSE":"/teacher",
-    "GET_EXPERIMENT":"/teacher/get_exp",
-    "T_COURSE_DETAIL":"/teacher/get_exp",
-    "SET_SCORE":"/teacher/set_grade",
-    "GET_REPORT":"/teacher/get_report"
+    "T_GET_COURSE":"/teacher/get_exp",
+    "GET_EXPERIMENT":"/teacher/set_grade",
+    "T_COURSE_DETAIL":"/teacher/get_report",
+    "SET_SCORE":"/teacher/get_course",
+    "GET_REPORT":"/teacher/start_exp"
 
 }
