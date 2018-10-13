@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <CourseCard v-for="value in course" v-bind:name="value.name"></CourseCard>
+        <Card v-for="value in course" v-bind:name="value.name"></Card>
     </div>
     <!-- footer -->
     <Footer></Footer>
@@ -14,16 +14,15 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import CourseCard from "../components/CourseCard.vue";
+import Card from "../components/Card.vue";
 export default {
-  name: "Course",
+  name: "Course1",
   components: {
     Header,
     Footer,
-    CourseCard
+    Card
   },
   data: () => ({
-    num: 5,
     course:[
       {name:"数电实验"},
       {name:"电分实验"},

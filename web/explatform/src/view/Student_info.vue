@@ -16,7 +16,7 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import Studentcard from "../components/Studentcard.vue";
+import Card from "../components/Card.vue";
 import Studentcourse from "../components/Studentcourse.vue";
 
 import exp_form from "../template/experiment_form";
@@ -25,7 +25,7 @@ export default {
   components: {
     Header,
     Footer,
-    Studentcard,
+    Card,
     Studentcourse
   },
   data: () => ({

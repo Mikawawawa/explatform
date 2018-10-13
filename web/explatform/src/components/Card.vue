@@ -20,24 +20,22 @@
 </template>
 
 <script>
+import router from "./router.js"
 export default {
   methods: {
     cardClick: function() {
-      this.$router.push("/student_exp");
+      
+      this.$router.push("/teacher_exp");
     }
   },
   props: {
-    name: {
-      type: String,
-      default: "大物实验"
-    },
     time: {
       type: String,
       default: "暂无时间信息"
     },
     classroom: {
       type: String,
-      default: "暂无课程信息"
+      default: "暂无教室信息"
     }
   }
 };

@@ -101,11 +101,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "student_id"
-        in: "path"
-        description: "学号"
-        required: true
-        type: "string"
       - name: "course_id"
         in: "path"
         description: "课程编号"

@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <Studentcard v-for="value in course" v-bind:name="value.name"></Studentcard>
+        <Card v-for="value in course" v-bind:name="value.name"></Card>
     </div>
     <Footer></Footer>
   </md-content>
@@ -13,13 +13,13 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import Studentcard from "../components/Studentcard.vue";
+import Card from "../components/Card.vue";
 export default {
   name: "Student_course",
   components: {
     Header,
     Footer,
-    Studentcard
+    Card
   },
   data: () => ({
     course:[
