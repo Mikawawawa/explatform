@@ -36,11 +36,11 @@ exports.studentGet_courseGET = function(student_id) {
  * 获取实验详情
  * 根据课程号获取实验的详情
  *
- * course_id String 课程编号
  * student_id String 学号
+ * course_id String 课程编号
  * returns Expinfo_s
  **/
-exports.studentGet_expGET = function(course_id,student_id) {
+exports.studentGet_expGET = function(student_id,course_id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
