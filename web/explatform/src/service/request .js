@@ -22,7 +22,7 @@ export const setDomain = ($domain) => {
  * @param {*} queryParameters URL传参
  * @param {*} form FORMDATA
  */
-export default async (id,password) => {
+exports.LOGIN=async (id,password) => {
     let response=await request('post',`${config.LOGIN}`,{
         id:id,
         password:password
@@ -30,25 +30,25 @@ export default async (id,password) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-export default async () => {
+exports.GET_POWER= async () => {
     return axios [get](`${config.GET_POWER}`, {
         params: form
     }, config.get)
 }
 
-export default async () => {
+exports.S_GET_COURSE= async () => {
     return axios [get](`${config.S_GET_COURSE}`, {
         params: form
     }, config.get)
 }
 
-export default async () => {
+exports.S_COURSE_DETAIL=async () => {
     return axios [get](`${config.S_COURSE_DETAIL}`, {
         params: form
     }, config.get)
 }
 
-export default async (student_id,exp_id,article) => {
+exports.SET_REPORT=async (student_id,exp_id,article) => {
     let response=await request('post',`${config.SET_REPORT}`,{
         student_id:student_id,
         exp_id:exp_id,
@@ -57,13 +57,13 @@ export default async (student_id,exp_id,article) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-export default async () => {
+exports.T_COURSE_DETAIL=async () => {
     return axios [get](`${config.T_COURSE_DETAIL}`, {
         params: form
     }, config.get)
 }
 
-export default async (student_id,exp_id,preview,action,report) => {
+exports.SET_GRADE=async (student_id,exp_id,preview,action,report) => {
     let response=await request('post',`${config.SET_GRADE}`,{
         student_id:student_id,
         exp_id:exp_id,
@@ -74,19 +74,19 @@ export default async (student_id,exp_id,preview,action,report) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-export default async () => {
+exports.GET_REPORT=async () => {
     return axios [get](`${config.GET_REPORT}`, {
         params: form
     }, config.get)
 }
 
-export default async () => {
+exports.T_GET_COURSE=async () => {
     return axios [get](`${config.T_GET_COURSE}`, {
         params: form
     }, config.get)
 }
 
-export default async (classroom_id,class_id, process) => {
+exports.SET_GRADE=async (classroom_id,class_id, process) => {
     let response=await request('post',`${config.SET_GRADE}`,{
         classroom_id:classroom_id,
         class_id:class_id,
