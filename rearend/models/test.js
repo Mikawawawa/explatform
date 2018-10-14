@@ -43,3 +43,4 @@ const user=require("./user")
 // user.getPower('17041802').then(data=>{
 //     console.log(data)
 // })
+
