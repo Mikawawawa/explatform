@@ -1,6 +1,18 @@
 const teacher=require("./teacher")
 const user=require("./user")
+const student=require("./student")
 
+/*student.getCourse("17041802").then(data=>{
+    console.log(data)
+})*/
+
+/*student.getExp("101","17041802").then(data=>{
+    console.log(data)
+})*/
+
+/*student.setReport("17041802","123",'123').then(data=>{
+    console.log(data)
+})*/
 /**
  * 测试人：姜佐腾
  * 日期：2018年10月13日
