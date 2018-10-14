@@ -1,5 +1,5 @@
 'use strict';
-
+const User=require("../models/user")
 
 /**
  * 登录
@@ -9,20 +9,10 @@
  * pwd String 学生学号
  * returns ActionState
  **/
-exports.landingPost = function(id,pwd) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "status" : 0,
-  "info" : "发送操作请求成功"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+exports.landingPost = function(id,password) {
+  return await User.login(id,password)
 }
+    
 
 
 /**
@@ -33,17 +23,6 @@ exports.landingPost = function(id,pwd) {
  * returns inline_response_200
  **/
 exports.userGet_powerGET = function(id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "userType" : "userType",
-  "status" : "status"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+  return await User.getPower(id)
 }
 
