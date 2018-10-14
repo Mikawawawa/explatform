@@ -21,8 +21,8 @@ exports.get_teacher_timetableById = async function(teacher_id) {
  * class_id String 班级id
  * returns Expinfo_t
  **/
-exports.teacherGet_expGET = async function(class_id) {
-  return await Teacher.getExp(class_id)
+exports.get_exp = async function(class_id) {
+  return await Teacher.get_exp(class_id)
 }
 
 
@@ -49,8 +49,8 @@ exports.teacherGet_reportGET = async function(report_id) {
  * report Integer 报告分 (optional)
  * returns ActionState
  **/
-exports.teacherSet_gradePOST = async function(student_id,exp_id,preview,action,report) {
-  return await Teacher.setGrade(student_id,exp_id,grade)
+exports.set_grade = async function(student_id,exp_id,grade,preview,action,report) {
+  return await Teacher.set_grade(student_id,exp_id,grade)
 }
 
 
@@ -66,4 +66,3 @@ exports.teacherSet_gradePOST = async function(student_id,exp_id,preview,action,r
 exports.teacherStart_expPOST = async function(classroom_id,class_id,process) {
   return await Teacher.startExp(classroom_id,class_id,process)
 }
-

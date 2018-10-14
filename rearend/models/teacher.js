@@ -33,7 +33,7 @@ exports.getCourse=async function(id) {
  * Time: 17点35分
  * Comment: 
  */
-exports.getExp=async function(class_id){
+exports.get_exp=async function(class_id){
     let data=await connection.execute("SELECT * FROM `experiment_recard` where student_id in (select student_id from `class_join` where class_id=?)",[class_id])
     if(data.status!=0){
         data.info={

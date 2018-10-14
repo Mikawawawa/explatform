@@ -9,7 +9,7 @@ const User=require("../models/user")
  * pwd String 学生学号
  * returns ActionState
  **/
-exports.landingPost = function(id,password) {
+exports.login = async function(id,password) {
   return await User.login(id,password)
 }
     
@@ -22,7 +22,7 @@ exports.landingPost = function(id,password) {
  * id String 用户id
  * returns inline_response_200
  **/
-exports.userGet_powerGET = function(id) {
+exports.get_power = async function(id) {
   return await User.getPower(id)
 }
 

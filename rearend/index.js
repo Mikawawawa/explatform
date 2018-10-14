@@ -4,12 +4,16 @@ const cookieParser = require('cookie-parser');
 const createError = require("http-errors")
 
 const config = require("./config.json")
-const apiRouter = require("./route/api")
+
+const userRouter = require("./route/user")
+const studentRouter = require("./route/student")
+const teacherRouter = require("./route/teacher")
 
 const app = express();
 
-app.use("/api", apiRouter)
-
+app.use("/api/user", userRouter)
+app.use("/api/student", studentRouter)
+app.use("/api/teacher", teacherRouter)
 
 app.use(logger('dev'));
 app.use(express.json());

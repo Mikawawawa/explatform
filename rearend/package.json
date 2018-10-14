@@ -17,6 +17,7 @@
   "author": "Maktub",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "http-error": "0.0.6",

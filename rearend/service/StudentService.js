@@ -1,5 +1,5 @@
 'use strict';
-
+const Student=require("../models/student")
 
 /**
  * 学生获取课程
@@ -8,8 +8,8 @@
  * student_id String The studentID
  * returns CourseInfo
  **/
-exports.studentGet_courseGET = function(student_id) {
-  return await test.getCourse(student_id)
+exports.studentGet_courseGET =async function(student_id) {
+  return await Student.getCourse(student_id)
 }
 
 
@@ -21,8 +21,8 @@ exports.studentGet_courseGET = function(student_id) {
  * course_id String 课程编号
  * returns Expinfo_s
  **/
-exports.studentGet_expGET = function(student_id,course_id) {
-  return await test.getExp(student_id,course_id)
+exports.studentGet_expGET =async function(student_id,course_id) {
+  return await Student.getExp(student_id,course_id)
 }
 
 
@@ -35,8 +35,8 @@ exports.studentGet_expGET = function(student_id,course_id) {
  * article String 实验报告的数据
  * returns ActionState
  **/
-exports.studentSet_reportPOST = function(student_id,exp_id,article) {
-  return await test.setReport(student_id,exp_id,article)
+exports.studentSet_reportPOST =async function(student_id,exp_id,article) {
+  return await Student.setReport(student_id,exp_id,article)
 
 }
 
