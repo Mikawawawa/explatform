@@ -56,12 +56,12 @@ export default {
         }})
       else if(this.info=="2") this.$router.push({
         path:`/teacher_info`,
-        params: { 
+        query: { 
             dataobj: this.Dname,
         }});
       else this.$router.push({
         path:`/student_exp`,
-        params: { 
+        query: { 
             dataobj: this.Dname,
         }});
   }
