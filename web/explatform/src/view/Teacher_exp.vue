@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <Card v-for="value in course" v-bind:name="value.name"></Card>
+        <Card v-for="value in course" v-bind:name="value.name" info="2"></Card>
     </div>
     <Footer></Footer>
   </md-content>
