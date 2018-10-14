@@ -55,7 +55,7 @@ const routes = [{
     },
     {
         path: '/article',
-        props:true,
+        props:false,
         component: Article
     }
 ]

@@ -1,14 +1,14 @@
 <template>
-<li v-if='this.flag'><span @click='edit()'>{{info}}</span></li>
-<input type="text" v-else @change='input()' @focusout="input()" autofocus="autofocus" v-model="info" style="max-width:30px;">
+<li v-if='this.flag'><span @click='edit()'>{{grade}}</span></li>
+<input type="text" v-else @change='input()' @focusout="input()" autofocus="autofocus" v-model="grade" style="max-width:30px;">
 </template>
 
 <script>
 export default{
     props: {
-        info: {
+        grade: {
             type: String,
-            default:""
+            default:"0"
         }
     },
     data:()=>({
@@ -23,7 +23,7 @@ export default{
         },
     },
     created:()=>{
-        this.flag=(this.info==""?true:false)
+        this.flag=(this.grade==""?true:false)
     }
 }
 </script>
