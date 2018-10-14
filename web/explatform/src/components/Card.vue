@@ -26,7 +26,9 @@ export default {
     info:{
       type:String
     },
-    name:{},
+    name:{
+      type:String
+    },
     time: {
       type: String,
       default: "暂无时间信息"
@@ -37,17 +39,31 @@ export default {
     }
   },
   data: () => ({
+    Dname:[],
     search: null,
     searched: []
   }),
   created() {
     this.searched = this.info;
+    this.Dname = this.name;
   },
   methods: {
     cardClick(){
-      if(this.info=="1") this.$router.push(`/teacher_exp`);
-      else if(this.info=="2") this.$router.push(`/teacher_info`);
-      else this.$router.push(`/student_exp`);
+      if(this.info=="1")this.$router.push({
+        path:`/teacher_exp`,
+        query: { 
+          dataobj: this.Dname,
+        }})
+      else if(this.info=="2") this.$router.push({
+        path:`/teacher_info`,
+        params: { 
+            dataobj: this.Dname,
+        }});
+      else this.$router.push({
+        path:`/student_exp`,
+        params: { 
+            dataobj: this.Dname,
+        }});
   }
   }
 };

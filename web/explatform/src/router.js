@@ -26,7 +26,7 @@ const routes = [{
     },
     {
         path: '/teacher_course',
-        props:true,
+        props:false,
         component: Teacher_course
     },
     {
@@ -41,7 +41,7 @@ const routes = [{
     },
     {
         path: '/teacher_exp',
-        props:true,
+        props:false,
         component: Teacher_exp
     },
     {
