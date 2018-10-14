@@ -9,26 +9,7 @@
  * returns CourseInfo
  **/
 exports.studentGet_courseGET = function(student_id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "status" : 0,
-  "info" : [ {
-    "course_id" : null,
-    "type" : "string",
-    "description" : "课程id号"
-  }, {
-    "course_name" : null,
-    "type" : "string",
-    "desciption" : "课程名"
-  } ]
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+  return await test.getCourse(student_id)
 }
 
 
@@ -41,20 +22,7 @@ exports.studentGet_courseGET = function(student_id) {
  * returns Expinfo_s
  **/
 exports.studentGet_expGET = function(student_id,course_id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "score" : 0,
-  "name" : "name",
-  "student_id" : "student_id",
-  "id" : "id"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+  return await test.getExp(student_id,course_id)
 }
 
 
@@ -68,17 +36,8 @@ exports.studentGet_expGET = function(student_id,course_id) {
  * returns ActionState
  **/
 exports.studentSet_reportPOST = function(student_id,exp_id,article) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "status" : 0,
-  "info" : "发送操作请求成功"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+  return await test.setReport(student_id,exp_id,article)
+
 }
+
 
