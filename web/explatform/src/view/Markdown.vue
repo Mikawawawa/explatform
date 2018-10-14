@@ -18,6 +18,10 @@ export default {
   data: () => ({
     input: "#hello"
   }),
+  created() {
+    this.exp = this.$route.query.exp
+    this.student=this.$route.query.student
+  },
   computed: {},
   methods: {}
 };

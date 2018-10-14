@@ -20,10 +20,10 @@
           <md-table-row slot="md-table-row" slot-scope="{ item }">
               <md-table-cell md-label="学号" md-sort-by="id" md-numeric>{{ item.student_id }}</md-table-cell>
               <md-table-cell md-label="操作分" md-sort-by="exp_grade">
-                <showGrade v-bind:info="item.score.action"></showGrade>
+                <showGrade v-bind:grade="item.score.action?item.score.action:'0'"></showGrade>
               </md-table-cell>
               <md-table-cell md-label="报告分" md-sort-by="exp_grade">
-                <showGrade v-bind:info="item.score.report"></showGrade>
+                <showGrade v-bind:grade="item.score&&item.score.report?item.score.report:'0'"></showGrade>
               </md-table-cell>
               <md-table-cell md-label="查看报告" md-sort-by="report">
                 <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown(item.id,item.student_id)">
@@ -53,10 +53,22 @@ export default {
   }),
   methods: {
     goEdit(){
-      this.$router.push("/markdown")
+      this.$router.push({
+          path:"/markdown",
+          query:{
+            exp:exp,
+            student:student
+          }
+        })
     },
-    goMarkdown() {
-      this.$router.push("/article");
+    goMarkdown(exp,student) {
+      this.$router.push({
+        path:"/article",
+        query:{
+          exp:exp,
+          student:student
+        }
+      });
     },
     newUser() {
       window.alert("Noop");
