@@ -8,22 +8,26 @@ exports.Login=async (id,password) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-exports.getPower= async () => {
-    return axios [get](`${config.GET_POWER}`, {
-        params: form
-    }, config.get)
+exports.getPower=async (type) => {
+    let response=await request('post',`${config.GET_POWER}`,{
+       type:type
+    })
+    return JSON.parse(JSON.stringify(response.data))
 }
 
-exports.sGetCourse= async () => {
-    return axios [get](`${config.S_GET_COURSE}`, {
-        params: form
-    }, config.get)
+exports.sGetCourse=async (id) => {
+    let response=await request('post',`${config.S_GET_COURSE}`,{
+       id:id
+    })
+    return JSON.parse(JSON.stringify(response.data))
 }
 
-exports.sGetExp=async () => {
-    return axios [get](`${config.S_COURSE_DETAIL}`, {
-        params: form
-    }, config.get)
+exports.sGetExp=async (student_id,course_id) => {
+    let response=await request('post',`${config.S_COURSE_DETAIL}`,{
+        student_id:student_id,
+        course_id:course_id
+    })
+    return JSON.parse(JSON.stringify(response.data))
 }
 
 exports.setReport=async (student_id,exp_id,article) => {
@@ -35,10 +39,11 @@ exports.setReport=async (student_id,exp_id,article) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-exports.tCourseDetail=async () => {
-    return axios [get](`${config.T_COURSE_DETAIL}`, {
-        params: form
-    }, config.get)
+exports.tCourseDetail=async (class_id) => {
+    let response=await request('post',`${config.T_COURSE_DETAIL}`,{
+        class_id:class_id
+    })
+    return JSON.parse(JSON.stringify(response.data))
 }
 
 exports.setGrade=async (student_id,exp_id,preview,action,report) => {
@@ -52,18 +57,19 @@ exports.setGrade=async (student_id,exp_id,preview,action,report) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-exports.getReport=async () => {
-    return axios [get](`${config.GET_REPORT}`, {
-        params: form
-    }, config.get)
+exports.getReport=async (report_id) => {
+    let response=await request('post',`${config.GET_REPORT}`,{
+        report_id:report_id
+    })
+    return JSON.parse(JSON.stringify(response.data))
 }
 
-exports.tGetCourse=async () => {
-    return axios [get](`${config.T_GET_COURSE}`, {
-        params: form
-    }, config.get)
+exports.tGetCours=async (teacher_id) => {
+    let response=await request('post',`${config.T_GET_COURSE}`,{
+        teacher_id:teacher_id
+    })
+    return JSON.parse(JSON.stringify(response.data))
 }
-
 exports.startExp=async (classroom_id,class_id, process) => {
     let response=await request('post',`${config.SET_GRADE}`,{
         classroom_id:classroom_id,
