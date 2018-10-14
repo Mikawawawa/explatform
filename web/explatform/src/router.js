@@ -10,32 +10,38 @@ import Teacher_exp from "./view/Teacher_exp"
 import Markdown from "./view/Markdown"
 import Article from "./view/Article"
 
-import Student_info from "./view/Teacher_info"
+import Student_info from "./view/Student_info"
 import Student_course from "./view/Student_course"
 
 // rules
 const routes = [{
         path: '/',
+        props:true,
         component: Home
     },
     {
         path: '/login',
+        props:true,
         component: Login
     },
     {
         path: '/teacher_course',
+        props:true,
         component: Teacher_course
     },
     {
         path: '/student_course',
+        props:true,
         component: Student_course
     },
     {
         path: '/student_exp',
+        props:true,
         component: Student_info
     },
     {
         path: '/teacher_exp',
+        props:true,
         component: Teacher_exp
     },
     {
@@ -44,10 +50,12 @@ const routes = [{
     },
     {
         path: '/markdown',
+        props:true,
         component: Markdown
     },
     {
         path: '/article',
+        props:true,
         component: Article
     }
 ]

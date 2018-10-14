@@ -1,142 +1,82 @@
-const form = [{
-        id: 1,
-        name: "Shawna Dubbin",
-        email: "sdubbin0@geocities.com",
-        gender: "Male",
-        title: "Assistant Media Planner"
-    },
-    {
-        id: 2,
-        name: "Odette Demageard",
-        email: "odemageard1@spotify.com",
-        gender: "Female",
-        title: "Account Coordinator"
-    },
-    {
-        id: 3,
-        name: "Vera Taleworth",
-        email: "vtaleworth2@google.ca",
-        gender: "Male",
-        title: "Community Outreach Specialist"
-    },
-    {
-        id: 4,
-        name: "Lonnie Izkovitz",
-        email: "lizkovitz3@youtu.be",
-        gender: "Female",
-        title: "Operator"
-    },
-    {
-        id: 5,
-        name: "Thatcher Stave",
-        email: "tstave4@reference.com",
-        gender: "Male",
-        title: "Software Test Engineer III"
-    },
-    {
-        id: 6,
-        name: "Karim Chipping",
-        email: "kchipping5@scribd.com",
-        gender: "Female",
-        title: "Safety Technician II"
-    },
-    {
-        id: 7,
-        name: "Helge Holyard",
-        email: "hholyard6@howstuffworks.com",
-        gender: "Female",
-        title: "Internal Auditor"
-    },
-    {
-        id: 8,
-        name: "Rod Titterton",
-        email: "rtitterton7@nydailynews.com",
-        gender: "Male",
-        title: "Technical Writer"
-    },
-    {
-        id: 9,
-        name: "Gawen Applewhite",
-        email: "gapplewhite8@reverbnation.com",
-        gender: "Female",
-        title: "GIS Technical Architect"
-    },
-    {
-        id: 10,
-        name: "Nero Mulgrew",
-        email: "nmulgrew9@plala.or.jp",
-        gender: "Female",
-        title: "Staff Scientist"
-    },
-    {
-        id: 11,
-        name: "Cybill Rimington",
-        email: "crimingtona@usnews.com",
-        gender: "Female",
-        title: "Assistant Professor"
-    },
-    {
-        id: 12,
-        name: "Maureene Eggleson",
-        email: "megglesonb@elpais.com",
-        gender: "Male",
-        title: "Recruiting Manager"
-    },
-    {
-        id: 13,
-        name: "Cortney Caulket",
-        email: "ccaulketc@cbsnews.com",
-        gender: "Male",
-        title: "Safety Technician IV"
-    },
-    {
-        id: 14,
-        name: "Selig Swynfen",
-        email: "sswynfend@cpanel.net",
-        gender: "Female",
-        title: "Environmental Specialist"
-    },
-    {
-        id: 15,
-        name: "Ingar Raggles",
-        email: "iragglese@cbc.ca",
-        gender: "Female",
-        title: "VP Sales"
-    },
-    {
-        id: 16,
-        name: "Karmen Mines",
-        email: "kminesf@topsy.com",
-        gender: "Male",
-        title: "Administrative Officer"
-    },
-    {
-        id: 17,
-        name: "Salome Judron",
-        email: "sjudrong@jigsy.com",
-        gender: "Male",
-        title: "Staff Scientist"
-    },
-    {
-        id: 18,
-        name: "Clarinda Marieton",
-        email: "cmarietonh@theatlantic.com",
-        gender: "Male",
-        title: "Paralegal"
-    },
-    {
-        id: 19,
-        name: "Paxon Lotterington",
-        email: "plotteringtoni@netvibes.com",
-        gender: "Female",
-        title: "Marketing Assistant"
-    },
-    {
-        id: 20,
-        name: "Maura Thoms",
-        email: "mthomsj@webeden.co.uk",
-        gender: "Male",
-        title: "Actuary"
+const exp_form = [{
+    student_id:16041511,
+    id: 1,
+    name: "示波器的使用",
+    score:{
+        action: "93",
+        report: "87"
     }
-]
-export default form
+},
+{
+    student_id:16041511,
+    id: 2,
+    name: "用扭摆法测量刚体的转动惯量",
+    score:{
+        action: "90",
+        report: "83"
+    }
+},
+{
+    student_id:16041511,
+    id: 3,
+    name: "导热系数的测定",
+    score:{
+        action: "91",
+        report: "88"
+    }
+},
+{
+    student_id:16041511,
+    id: 4,
+    name: "空气比热容比的测量",
+    score:{
+        action: "93",
+        report: "87"
+    }
+},
+{
+    student_id:16041511,
+    id: 5,
+    name: "霍尔效应及其应用",
+    score:{
+        action: "83",
+        report: "85"
+    }
+},
+{
+    student_id:16041511,
+    id: 6,
+    name: "光的偏振",
+    score:{
+        action: "89",
+        report: "87"
+    }
+},
+{
+    student_id:16041511,
+    id: 7,
+    name: "伏安法测非线性电阻",
+    score:{
+        action: "93",
+        report: "87"
+    }
+},
+{
+    student_id:16041511,
+    id: 8,
+    name: "硅光电池的特性及其应用",
+    score:{
+        action: "94",
+        report: "85"
+    }
+},
+{
+    student_id:16041511,
+    id: 9,
+    name: "电势差计的原理和使用",
+    score:{
+        action: "90",
+        report: "86"
+    }
+}]
+export default exp_form

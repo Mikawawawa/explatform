@@ -1,5 +1,5 @@
 <template>
-    <md-autocomplete v-model="selectGrade" :md-options="grades">
+    <md-autocomplete v-model="selectGrade" :md-options="grades" class="grade_5">
         <label>grade</label>
     </md-autocomplete>
 </template>
@@ -12,3 +12,9 @@ export default {
   })
 };
 </script>
+
+<style>
+.grade_5{
+  max-width: 100px;
+}
+</style>

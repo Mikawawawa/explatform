@@ -1,6 +1,6 @@
 <template>
 <li v-if='this.flag'><span @click='edit()'>{{info}}</span></li>
-<input type="text" v-else @change='input()' v-model="info">
+<input type="text" v-else @change='input()' @focusout="input()" autofocus="autofocus" v-model="info" style="max-width:30px;">
 </template>
 
 <script>

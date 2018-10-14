@@ -21,14 +21,20 @@
               <md-table-cell md-label="实验号" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
               <md-table-cell md-label="实验名称" md-sort-by="name">{{ item.name }}</md-table-cell>
               <md-table-cell md-label="实验分" md-sort-by="exp_grade">
-                <!-- {{ item.exp_grade }} -->
-                <showGrade v-bind:info="item.exp_grade"></showGrade>
+                <showGrade v-bind:info="item.score.action"></showGrade>
               </md-table-cell>
-              <md-table-cell md-label="实验报告" md-sort-by="report">
-                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown()">
+              <md-table-cell md-label="报告分" md-sort-by="exp_grade">
+                <showGrade v-bind:info="item.score.report"></showGrade>
+              </md-table-cell>
+              <md-table-cell md-label="查看报告" md-sort-by="report">
+                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown(item.score.id,item.score.student_id)">
                   <md-icon>visibility</md-icon>
                 </md-button>
-                <!-- {{ item.title }} -->
+              </md-table-cell>
+              <md-table-cell md-label="编写报告" md-sort-by="report">
+                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goEdit(item.score.id,item.score.student_id)">
+                  <md-icon>edit</md-icon>
+                </md-button>
               </md-table-cell>
           </md-table-row>
           
@@ -52,6 +58,9 @@ export default {
     searched: []
   }),
   methods: {
+    goEdit(){
+      this.$router.push("/markdown")
+    },
     goMarkdown() {
       this.$router.push("/article");
     },

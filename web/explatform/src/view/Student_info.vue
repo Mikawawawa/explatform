@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <md-content style="height:95vh!important">
-      <Studentcourse v-bind:info="this.experiment"></Studentcourse>
+      <StudentList v-bind:info="this.experiment"></StudentList>
     </md-content>
 
     <!-- footer -->
@@ -15,7 +15,7 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import Studentcourse from "../components/Studentcourse.vue";
+import StudentList from "../components/StudentList.vue";
 
 import exp_form from "../template/experiment_form";
 export default {
@@ -23,7 +23,7 @@ export default {
   components: {
     Header,
     Footer,
-    Studentcourse
+    StudentList
   },
   data: () => ({
     search: null,
