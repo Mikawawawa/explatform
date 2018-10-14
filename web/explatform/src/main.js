@@ -11,12 +11,17 @@ import 'swiper/dist/css/swiper.css'
 
 import router from './router'
 
-Vue.config.productionTip = false
+const datasource=require("./service/api")
+
+Vue.config.productionTip = true
 
 // require styles
 Vue.use(VueMaterial)
 Vue.use(VueAwesomeSwiper, /* { default global options } */ )
 Vue.use(VueRouter)
+
+Vue.prototype.$dataSource= datasource.default
+Vue.prototype.$appName = 'My App'
 
 new Vue({
   router,

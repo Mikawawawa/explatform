@@ -22,12 +22,12 @@ export const setDomain = ($domain) => {
  * @param {*} queryParameters URL传参
  * @param {*} form FORMDATA
  */
-export default async (method, url, body={}, queryParameters={}, form={}) => {
+export const request= async (method, url, body={}, queryParameters={}, form={}) => {
   method = method.toLowerCase()
   let keys = Object.keys(queryParameters)
   let queryUrl = url
   if (keys.length > 0) {
-    queryUrl = url + '?' + qs.stringify(queryParameters)
+    queryUrl = domain+url + '?' + qs.stringify(queryParameters)
   }
   //post
   if (body) {

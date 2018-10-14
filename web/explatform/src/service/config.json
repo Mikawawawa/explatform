@@ -1,4 +1,5 @@
 {
+    "domin":"http://192.168.1.1",
     "LOGIN":"/user/login",
     "GET_POWER":"/user/get_power",
 
