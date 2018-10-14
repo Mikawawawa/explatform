@@ -4,7 +4,7 @@
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
     <div class="md-layout md-gutter" style="padding:20px">
-        <Card v-for="value in course" v-bind:name="value.name"></Card>
+    <Card v-for="value in course" v-bind:name="value.name" info="1"></Card>
     </div>
     <!-- footer -->
     <Footer></Footer>
@@ -27,9 +27,8 @@ export default {
       {name:"数电实验"},
       {name:"电分实验"},
       {name:"模电实验"}
-    ]
-  }),
-  methods: {}
+    ],
+  })
 };
 </script>
 

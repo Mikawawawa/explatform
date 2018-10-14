@@ -22,13 +22,13 @@
 <script>
 // import router from "./router.js"
 export default {
-  methods: {
-    cardClick: function() {
-      
-      this.$router.push("/teacher_exp");
-    }
-  },
   props: {
+    info:{
+      type:String
+    },
+    name:{
+      type:String
+    },
     time: {
       type: String,
       default: "暂无时间信息"
@@ -37,6 +37,34 @@ export default {
       type: String,
       default: "暂无教室信息"
     }
+  },
+  data: () => ({
+    Dname:[],
+    search: null,
+    searched: []
+  }),
+  created() {
+    this.searched = this.info;
+    this.Dname = this.name;
+  },
+  methods: {
+    cardClick(){
+      if(this.info=="1")this.$router.push({
+        path:`/teacher_exp`,
+        query: { 
+          dataobj: this.Dname,
+        }})
+      else if(this.info=="2") this.$router.push({
+        path:`/teacher_info`,
+        query: { 
+            dataobj: this.Dname,
+        }});
+      else this.$router.push({
+        path:`/student_exp`,
+        query: { 
+            dataobj: this.Dname,
+        }});
+  }
   }
 };
 </script>
