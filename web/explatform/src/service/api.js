@@ -1,27 +1,4 @@
-/* eslint-disable */
-import axios from 'axios'
-import config from "./config.json"
-let domain = config.domain
-config.post={
-    headers:{'Content-Type':'application/x-www-form-urlencoded'}
-}
-config.get={}
-
-export const getDomain = () => {
-  return domain
-}
-export const setDomain = ($domain) => {
-  domain = $domain
-}
-
-/**
- * 
- * @param {*} method 
- * @param {*} url 
- * @param {*} body 
- * @param {*} queryParameters URL传参
- * @param {*} form FORMDATA
- */
+const request=require("./request")
 
 exports.Login=async (id,password) => {
     let response=await request('post',`${config.LOGIN}`,{
