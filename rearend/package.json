@@ -25,5 +25,8 @@
     "morgan": "^1.9.1",
     "mqtt": "^2.18.8",
     "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "pkg": "^4.3.4"
   }
 }
