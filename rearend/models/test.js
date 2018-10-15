@@ -16,7 +16,12 @@ const student=require("./student")
 /*user.login("17031803","aptx4869").then(data=>{
     console.log(data)
 })*/
-user.getPower("17031803").then(data=>{
+/*user.getPower("17031803").then(data=>{
+    console.log(data)
+})*/
+
+
+user.getString("123").then(data=>{
     console.log(data)
 })
 /**

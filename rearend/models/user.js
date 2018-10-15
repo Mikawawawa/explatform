@@ -1,5 +1,7 @@
 const connection=require("./connect")
-
+const QRCode = require('qrcode')
+const fs = require('fs')
+const md5=require('md5')
 /**
  * Author: 姜佐腾
  * Date: 2018年10月14日
@@ -44,3 +46,32 @@ exports.getPower=async function getPower(id){
         return data
     }
 }
+exports.getString=async function getString(prams="123"){
+    console.log(prams)
+    prams=md5(prams)
+    console.log(prams)
+    QRCode.toFile('../public/writeme.png', prams, {
+        color: {
+          dark: '#00F',  // Blue dots
+          light: '#0000' // Transparent background
+        }
+      }, function (err) {
+        if (err) throw err
+        console.log('done')
+      })
+    
+    var timeout_ms = 10000; // 5 seconds
+    var timeout = setTimeout(function() {
+    console.log("timed out!");
+    //删除文件
+    fs.unlink('../public/writeme.png', function (err) {
+        // 判断 如果有错 抛出错误 否则 打印删除成功
+        if (err) {
+            throw err;
+         } 
+            console.log('删除成功!')
+            })
+    }, timeout_ms);
+
+}
+
