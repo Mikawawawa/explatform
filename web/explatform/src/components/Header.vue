@@ -18,8 +18,8 @@
                 <!-- <md-menu-item @click="goTeacherCourse()">教师课程界面</md-menu-item>
                 <md-menu-item @click="goStudentCourse()">学生课程界面</md-menu-item> -->
 
-                <md-menu-item @click="goTeacherCourse()" v-if="this.$store.state.user_type=='2'">教师课程界面</md-menu-item>
-                <md-menu-item @click="goStudentCourse()" v-if="this.$store.state.user_type=='3'">学生课程界面</md-menu-item>
+                <md-menu-item @click="goTeacherCourse()" v-if="this.$store.state.user_type!='3'">教师课程界面</md-menu-item>
+                <md-menu-item @click="goStudentCourse()" v-if="this.$store.state.user_type!='2'">学生课程界面</md-menu-item>
 
                 <md-menu-item @click="goMarkdown()">报告编辑</md-menu-item>
                 <md-menu-item @click="goArticle()">报告显示</md-menu-item>
