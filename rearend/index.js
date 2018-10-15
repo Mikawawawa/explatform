@@ -11,7 +11,14 @@ const teacherRouter = require("./route/teacher")
 
 const app = express();
 
+<<<<<<< HEAD
 app.all('*', function(req, res, next) {
+=======
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.all('/api', function(req, res, next) {
+>>>>>>> 71772a1efe3c255b85a60d08881fbb08cd2f0f1b
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header("Access-Control-Allow-Headers", "X-Requested-With");

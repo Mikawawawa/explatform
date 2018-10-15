@@ -28,13 +28,14 @@ exports.getCourse=async function(id) {
 }
 
 /**
- * Author: 姜佐腾
- * Date: 2018年10月13日
- * Time: 17点35分
+ * Author: 李心慧
+ * Date: 2018年10月15日
+ * Time: 18点32分
  * Comment: 
  */
 exports.get_exp=async function(class_id){
     let data=await connection.execute("SELECT * FROM `experiment_recard` where student_id in (select student_id from `class_join` where class_id=?)",[class_id])
+    console.log(data)
     if(data.status!=0){
         data.info={
             student_id:data.info.student_id,

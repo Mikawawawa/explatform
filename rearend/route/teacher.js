@@ -1,18 +1,17 @@
 const app = require("express").Router()
 
-const user=require("../service/TeacherService")
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({extended:true}));
+const teacher=require("../service/TeacherService")
+
 
 app.get("/get_exp", async(req, res) => { 
     
-    let params =await user.get_exp(req.query.class_id) 
+    let params =await teacher.get_exp(req.query.class_id) 
     res.send(JSON.stringify({
         params
     }))
 })
 app.get("/set_grade", async(req, res) => {
-    let params =await user.set_grade(req.query.student_id,req.query.exp_id,req.query.grade) 
+    let params =await teacher.set_grade(req.query.student_id,req.query.exp_id,req.query.grade) 
     res.send(JSON.stringify({
         params
     }))
@@ -30,7 +29,7 @@ app.get("/get_course", async(req, res) => {
     }))
 })
 app.get("/start_exp", async(req, res) => {
-    let params=await teacher.teacherStart_expPOST(req.query.class_id)
+    let params=await teacher.teacherStart_expPOST(req.query.classroom_id,req.query.class_id,req.query.process)
     res.send(JSON.stringify({
         params
     }))
