@@ -69,15 +69,3 @@ exports.teacherStart_expPOST = async function(classroom_id,class_id,process) {
   await Mqtt.noticePower(class_id, process)
   return await Teacher.startExp(classroom_id,class_id,process)
 }
-
-
-
-
-
-exports.mqtt_beginExperiment = async function(target,message0){
-    return await Mqtt.beginExperiment(target,message0)
-}
-
-exports.mqtt_noticePower = async function(target, message){
-    return await Mqtt.noticePower(target, message)
-}
