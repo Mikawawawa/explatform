@@ -39,31 +39,6 @@
     <!-- part two -->
     <div class="md-layout md-gutter md-alignment-top md-elevation-0">
       <div class="md-layout-item md-size-40 md-medium-hide">
-        <!-- <span>
-          <md-card style="width=100%;height:100%;margin:0px">
-            <md-card-media-cover md-solid>
-              <md-card-media>
-                <img src="/background/1.jpg" alt="Skyscraper">
-              </md-card-media>
-              <md-card-area>
-                <md-card-header>
-                  <span class="md-title">Solid background</span>
-                  <span class="md-subhead">1/1 image</span>
-                </md-card-header>
-
-                <md-card-actions>
-                  <md-button class="md-icon-button">
-                    <md-icon>favorite</md-icon>
-                  </md-button>
-
-                  <md-button class="md-icon-button">
-                    <md-icon>share</md-icon>
-                  </md-button>
-                </md-card-actions>
-              </md-card-area>
-            </md-card-media-cover>
-          </md-card>
-        </span> -->
         <Swipe></Swipe>
       </div>
       <div class="md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100">
@@ -75,7 +50,6 @@
               <p>点击右上方菜单按钮进入对应功能</p>
               <p>点击Explatform字样可从任何界面回到首页</p>
               <p>编辑器使用了Markdown规范，并提供了一定辅助功能，便于快速上手</p>
-              <p>请开始使用</p>
             </div>
           </md-content>
         </span>
@@ -102,13 +76,15 @@ export default {
     showSidepanel: false
   }),
   mounted:function(){
-    if(typeof(this.$store.state.user)=="undefined"||typeof(!this.$store.state.user.user_id)=="undefined"){
-      console.log(this.$store.user.user_id)
-      console.log("move")
-      this.$router.push("/login")
-    }else{
-      console.log(this.$store.state.user.user_id)
-    }
+    // if(typeof(this.$cookie.get("user_id")!="undefined")){
+    //   this.$store.commit("setUser",JSON.stringify({
+    //     user_id:this.$cookie.get("user_id"),
+    //     user_type:this.$cookie.get("user_type")
+    //   }))
+    // // }
+    // if(this.$store.state.user_id==""){
+    //   this.$router.push("/login")
+    // }
   }
   // methods: {
   // }

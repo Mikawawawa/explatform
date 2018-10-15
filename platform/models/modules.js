@@ -2,7 +2,12 @@ const connection=require('./connect')
 
 //获取实验进度：发MAC地址
 exports.get_progress = async function(id){
-    let data = await connection.execute("SELECT `process` FROM `platform_grant`,`class`  WHERE `mac_address`= ?",[id])
+    let data = await connection.execute(`
+        SELECT process FROM 
+        class JOIN platform_grant
+        ON platform_grant.class_id=class.class_id
+        WHERE platform_grant.mac_address=? 
+    `,[id])
     return {
         status:data.status,
         info:data.info.process

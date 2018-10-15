@@ -4,13 +4,16 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-      user:{}
+      user_id:"",
+      user_type:""
     },
     mutations: {
       setUser(state,user){
         user=JSON.parse(user)
-        state.user.id=user.user_id
-        state.user.type=user.user_type
+        state.user_id=user.user_id
+        state.user_type=user.user_type
+        this.$cookie.set("user_id".user.user_id)
+        this.$cookie.set("user_type".user.user_type)
       }
     },
     actions:{

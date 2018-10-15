@@ -54,7 +54,7 @@ export default {
       },10000)
       let data=await this.$dataSource.Login("17031803","aptx4869")
       console.log(data)
-      // this.$store.commit(JSON.stringify(data.info))
+      this.$store.commit("setUser",JSON.stringify(data.info))
       console.log(this.$store.state)
       this.loading = false;
       this.$router.push("/");
