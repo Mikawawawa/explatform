@@ -28,11 +28,14 @@ export default {
   data: () => ({
     search: null,
     searched: [],
-    experiment: exp_form
+    experiment: {}
   }),
   methods: {},
-  created() {
-    this.searched = this.experiment;
+  mounted:async function() {
+    this.experiment=exp_form
+    console.log(this.$dataSource)
+    let data=await this.$dataSource.sGetExp("17041802","101")
+    console.log(data)
   }
 };
 </script>

@@ -12,8 +12,10 @@ const store = new Vuex.Store({
         user=JSON.parse(user)
         state.user_id=user.user_id
         state.user_type=user.user_type
-        this.$cookie.set("user_id".user.user_id)
-        this.$cookie.set("user_type".user.user_type)
+      },
+      logout(state){
+        state.user_id=""
+        state.user_type=""
       }
     },
     actions:{

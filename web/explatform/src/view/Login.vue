@@ -52,10 +52,12 @@ export default {
       setTimeout(()=>{
           this.loading = false;
       },10000)
-      let data=await this.$dataSource.Login("17031803","aptx4869")
-      console.log(data)
+      
+      let data=await this.$dataSource.Login(this.login.id,this.login.password)
+      this.$cookie.set("user_id",data.info.user_id)
+      this.$cookie.set("user_type",data.info.user_type)
       this.$store.commit("setUser",JSON.stringify(data.info))
-      console.log(this.$store.state)
+      
       this.loading = false;
       this.$router.push("/");
     }

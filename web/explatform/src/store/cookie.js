@@ -17,5 +17,8 @@ export default{
                 return c.substring(name.length, c.length);
         }
         return "";
-    }
+    },
+    clear: function (cname) {
+        this.set(cname, "", -1);
+    },
 }

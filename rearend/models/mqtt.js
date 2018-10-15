@@ -6,22 +6,15 @@ var client  = mqtt.connect('mqtt://120.79.88.153:8201');
     2.通知电源 内容{id:110}
 */
 const beginExperiment = function (target,message) {
-  client.publish(`experiment_000`, JSON.stringify({
-    status:1,
-    process:message
-  }));
+  client.publish(`e_000`, `1|${message}`);
 }
 
 const closeExperiment=function(){
-  client.publish(`experiment_000`,JSON.stringify({
-    status:0
-  }))
+  client.publish(`e_000`,"0")
 }
 
 const noticePower = function (target, message) {
-  client.publish(`power_${target}`, JSON.stringify({
-    status:message
-  }));
+  client.publish(`p_${target}`, message);
 }
 
 

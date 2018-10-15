@@ -15,11 +15,15 @@
             </md-button>
 
             <md-menu-content style="z-index:9998">
-                <md-menu-item @click="goTeacherCourse()">教师课程界面</md-menu-item>
-                <md-menu-item @click="goStudentCourse()">学生课程界面</md-menu-item>
-                <md-menu-item @click="goLogin()">登录</md-menu-item>
+                <!-- <md-menu-item @click="goTeacherCourse()">教师课程界面</md-menu-item>
+                <md-menu-item @click="goStudentCourse()">学生课程界面</md-menu-item> -->
+
+                <md-menu-item @click="goTeacherCourse()" v-if="this.$store.state.user_type=='2'">教师课程界面</md-menu-item>
+                <md-menu-item @click="goStudentCourse()" v-if="this.$store.state.user_type=='3'">学生课程界面</md-menu-item>
+
                 <md-menu-item @click="goMarkdown()">报告编辑</md-menu-item>
                 <md-menu-item @click="goArticle()">报告显示</md-menu-item>
+                <md-menu-item @click="goLogout()">登出</md-menu-item>
             </md-menu-content>
         </md-menu>
         </md-toolbar>
@@ -92,12 +96,12 @@ export default {
     goTeacherCourse:function(){
         this.$router.push("/teacher_course");
     },
-    // goStudentExp:function(){
-    //     this.$router.push("/student_exp");
-    // },
-    // goTeacherExp:function(){
-    //     this.$router.push("/teacher_exp");
-    // },
+    goLogout:function(){
+      this.$store.commit("logout")
+      this.$cookie.clear("user_id")
+      this.$cookie.clear("user_type")
+      this.$router.push("/login")
+    },
     goHome: function() {
       this.$router.push("/");
     },

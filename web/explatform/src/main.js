@@ -13,8 +13,8 @@ import 'swiper/dist/css/swiper.css'
 
 import router from './router'
 import store from './store/index'
-import cookie from './store/cookie'
 
+const cookie =require('./store/cookie')
 const datasource=require("./service/api")
 
 Vue.use(Vuex)

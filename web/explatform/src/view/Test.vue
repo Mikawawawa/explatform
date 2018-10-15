@@ -2,6 +2,7 @@
     <div>
         <p>{{test}}</p>
         <p>{{login}}</p>
+        <p>{{sexp}}</p>
         <p>{{this.$dataSource.request}}</p>
     </div>
 </template>
@@ -13,10 +14,11 @@ export default {
         test:"",
         login:""
     }),
-    created:function(){
+    created:async function(){
         this.test=this.$appName
         // console.log(this.$dataSource)
-        this.login=this.$dataSource.Login("17031803","aptx4869")
+        this.login=await this.$dataSource.Login("17031803","aptx4869")
+        this.sexp=await this.$dataSource.sGetExp("17041802","101")
     }
 }
 </script>

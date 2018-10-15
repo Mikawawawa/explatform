@@ -27,7 +27,7 @@ let sGetCourse=async (id) => {
 }
 
 let sGetExp=async (student_id,course_id) => {
-    let response=await request('post',`${config.S_COURSE_DETAIL}`,{
+    let response=await request('get',`${config.S_COURSE_DETAIL}`,{
         student_id:student_id,
         course_id:course_id
     })

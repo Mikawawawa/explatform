@@ -76,15 +76,17 @@ export default {
     showSidepanel: false
   }),
   mounted:function(){
-    // if(typeof(this.$cookie.get("user_id")!="undefined")){
-    //   this.$store.commit("setUser",JSON.stringify({
-    //     user_id:this.$cookie.get("user_id"),
-    //     user_type:this.$cookie.get("user_type")
-    //   }))
-    // // }
-    // if(this.$store.state.user_id==""){
-    //   this.$router.push("/login")
-    // }
+    //从cookie获取登录信息
+    if(this.$cookie.get("user_id")!=""){
+      this.$store.commit("setUser",JSON.stringify({
+        user_id:this.$cookie.get("user_id"),
+        user_type:this.$cookie.get("user_type")
+      }))
+    }
+    //从state获取用户信息
+    if(this.$store.state.user_id==""){
+      this.$router.push("/login")
+    }
   }
   // methods: {
   // }
