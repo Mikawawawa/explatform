@@ -3,7 +3,7 @@
         <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-fixed-header  style="height:100%!important">
           <md-table-toolbar>
               <div class="md-toolbar-section-start">
-                <h1 class="md-title">大物实验A2</h1>
+                <h1 class="md-title">{{searched[0].id}}</h1>
               </div>
 
               <md-field md-clearable class="md-toolbar-section-end">
@@ -18,17 +18,17 @@
           </md-table-empty-state>
 
           <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell md-label="实验号" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
-              <md-table-cell md-label="实验名称" md-sort-by="name">{{ item.name }}</md-table-cell>
-              <md-table-cell md-label="实验分" md-sort-by="exp_grade">
-                <!-- {{ item.exp_grade }} -->
-                <showGrade v-bind:info="item.exp_grade"></showGrade>
+              <md-table-cell md-label="学号" md-sort-by="id" md-numeric>{{ item.student_id }}</md-table-cell>
+              <md-table-cell md-label="操作分" md-sort-by="exp_grade">
+                <showGrade v-bind:grade="item.score.action?item.score.action:'0'"></showGrade>
               </md-table-cell>
-              <md-table-cell md-label="实验报告" md-sort-by="report">
-                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown()">
+              <md-table-cell md-label="报告分" md-sort-by="exp_grade">
+                <showGrade v-bind:grade="item.score&&item.score.report?item.score.report:'0'"></showGrade>
+              </md-table-cell>
+              <md-table-cell md-label="查看报告" md-sort-by="report">
+                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown(item.id,item.student_id)">
                   <md-icon>visibility</md-icon>
                 </md-button>
-                <!-- {{ item.title }} -->
               </md-table-cell>
           </md-table-row>
           
@@ -52,8 +52,23 @@ export default {
     searched: []
   }),
   methods: {
-    goMarkdown() {
-      this.$router.push("/article");
+    goEdit(){
+      this.$router.push({
+          path:"/markdown",
+          query:{
+            exp:exp,
+            student:student
+          }
+        })
+    },
+    goMarkdown(exp,student) {
+      this.$router.push({
+        path:"/article",
+        query:{
+          exp:exp,
+          student:student
+        }
+      });
     },
     newUser() {
       window.alert("Noop");

@@ -1,2 +1,5 @@
 .vscode/*
 docker/data/*
+rearend/service/TeacherService.js
+rearend/package-lock.json
+rearend/package.json

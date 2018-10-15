@@ -100,7 +100,15 @@ export default {
   data: () => ({
     showNavigation: false,
     showSidepanel: false
-  })
+  }),
+  mounted:function(){
+    if(!this.$store.state.user||!this.$store.state.user.id){
+      console.log(this.$store.state.user)
+      this.$router.push("/login")
+    }else{
+      console.log(this.$store.state.user)
+    }
+  }
   // methods: {
   // }
 };

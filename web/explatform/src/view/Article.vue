@@ -4,7 +4,7 @@
         <md-content class="article">
             <md-card>
                 <md-card-header>
-                    <div class="md-title">Card without hover effect</div>
+                    <div class="md-title">{{exp?exp:"123"}}</div>
                 </md-card-header>
                 <md-card-content v-html="compiledMarkdown"></md-card-content>
             </md-card>
@@ -23,12 +23,18 @@ export default {
     Header
   },
   data: () => ({
-    content: ""
+    content: "",
+    exp:"",
+    student:""
   }),
   computed: {
     compiledMarkdown: function() {
       return marked(article, { sanitize: true });
     }
+  },
+  created() {
+    this.exp = this.$route.query.exp
+    this.student=this.$route.query.student
   },
   methods: {}
 };

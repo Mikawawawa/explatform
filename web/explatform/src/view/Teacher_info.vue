@@ -3,9 +3,8 @@
     <!-- header -->
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
-    <!-- <CourseCard v-for="n in num" v-bind="n"></CourseCard> -->
     <md-content style="height:95vh!important">
-      <StudentInfo v-bind:info="this.users"></StudentInfo>
+      <TeacherList v-bind:info="this.users"></TeacherList>
     </md-content>
 
     <!-- footer -->
@@ -16,8 +15,7 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import Card from "../components/Card.vue";
-import StudentInfo from "../components/StudentInfo.vue";
+import TeacherList from "../components/TeacherList.vue";
 
 import form from "../template/student_form";
 export default {
@@ -25,8 +23,7 @@ export default {
   components: {
     Header,
     Footer,
-    Card,
-    StudentInfo
+    TeacherList
   },
   data: () => ({
     search: null,

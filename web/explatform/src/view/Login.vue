@@ -47,14 +47,16 @@ export default {
     };
   },
   methods: {
-    auth() {
-      // your code to login user
-      // this is only for example of loading
+    async auth() {
       this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-        this.$router.push("/");
-      }, 1000);
+      setTimeout(()=>{
+          this.loading = false;
+      },5000)
+      let data=await this.$dataSource.Login("17031803","aptx4869")
+      console.log(data)
+      this.loading = false;
+      this.$router.push("/");
+    
     }
   }
 };
