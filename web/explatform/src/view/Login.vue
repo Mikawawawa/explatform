@@ -51,12 +51,13 @@ export default {
       this.loading = true;
       setTimeout(()=>{
           this.loading = false;
-      },5000)
+      },10000)
       let data=await this.$dataSource.Login("17031803","aptx4869")
       console.log(data)
+      // this.$store.commit(JSON.stringify(data.info))
+      console.log(this.$store.state)
       this.loading = false;
       this.$router.push("/");
-    
     }
   }
 };

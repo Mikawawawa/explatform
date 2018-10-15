@@ -102,11 +102,12 @@ export default {
     showSidepanel: false
   }),
   mounted:function(){
-    if(!this.$store.state.user||!this.$store.state.user.id){
-      console.log(this.$store.state.user)
+    if(typeof(this.$store.state.user)=="undefined"||typeof(!this.$store.state.user.user_id)=="undefined"){
+      console.log(this.$store.user.user_id)
+      console.log("move")
       this.$router.push("/login")
     }else{
-      console.log(this.$store.state.user)
+      console.log(this.$store.state.user.user_id)
     }
   }
   // methods: {

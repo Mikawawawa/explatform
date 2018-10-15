@@ -7,7 +7,11 @@ const store = new Vuex.Store({
       user:{}
     },
     mutations: {
-
+      setUser(state,user){
+        user=JSON.parse(user)
+        state.user.id=user.user_id
+        state.user.type=user.user_type
+      }
     },
     actions:{
 
