@@ -70,7 +70,7 @@ exports.getExp=async function(course_id,student_id){
  * Comment: 
  */
 exports.setReport=async function(student_id,exp_id,article){
-    let data =connection.execute("UPDATE experiment_recard set `section` = ? where `student_id` = ? and `experiment_id` = ?",[article, student_id,exp_id]);
+    await connection.execute("UPDATE experiment_recard set `section` = ? where `student_id` = ? and `experiment_id` = ?",[article, student_id,exp_id]);
     return{
        status:1,
        info:"EXECUTE DOWN!"
