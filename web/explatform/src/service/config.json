@@ -1,5 +1,5 @@
 {
-    "domin":"http://192.168.1.1",
+    "domain":"http://101.132.116.211:7071/api",
     "LOGIN":"/user/login",
     "GET_POWER":"/user/get_power",
 

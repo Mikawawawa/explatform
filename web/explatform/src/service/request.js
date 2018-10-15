@@ -25,9 +25,9 @@ export const setDomain = ($domain) => {
 export const request= async (method, url, body={}, queryParameters={}, form={}) => {
   method = method.toLowerCase()
   let keys = Object.keys(queryParameters)
-  let queryUrl = url
+  let queryUrl = domain+url
   if (keys.length > 0) {
-    queryUrl = domain+url + '?' + qs.stringify(queryParameters)
+    queryUrl = url + '?' + qs.stringify(queryParameters)
   }
   //post
   if (body) {

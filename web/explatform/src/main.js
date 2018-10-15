@@ -10,8 +10,13 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
 import router from './router'
+import store from './store/index'
 
 const datasource=require("./service/api")
+
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
 
 Vue.config.productionTip = true
 
@@ -25,5 +30,6 @@ Vue.prototype.$appName = 'My App'
 
 new Vue({
   router,
+  store,
   el: '#app'
 })
