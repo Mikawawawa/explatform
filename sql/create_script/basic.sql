@@ -46,3 +46,9 @@ CREATE TABLE `semester` (
 	`semester_stage` bit not null,
 	PRIMARY KEY (`semester_id`)
 );
+
+CREATE TABLE `logs` (
+	`log_id`  tinyint not null ,
+	`log`  varchar(255) not null
+)
+;

@@ -22,7 +22,7 @@ exports.studentGet_courseGET =async function(student_id) {
  * returns Expinfo_s
  **/
 exports.studentGet_expGET =async function(student_id,course_id) {
-  return await Student.getExp(student_id,course_id)
+  return await Student.getExp(course_id,student_id)
 }
 
 

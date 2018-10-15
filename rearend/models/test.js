@@ -1,14 +1,17 @@
 const teacher=require("./teacher")
 const user=require("./user")
 const student=require("./student")
+const mqtt=require("./mqtt")
 
-/*student.getCourse("17041802").then(data=>{
-    console.log(data)
-})*/
+mqtt.beginExperiment("111","0|123")
+//mqtt.noticePower("000","1")
+// student.getCourse("17041801").then(data=>{
+//     console.log(data)
+// })
 
-/*student.getExp("101","17041802").then(data=>{
-    console.log(data)
-})*/
+// student.getExp("101","17041801").then(data=>{
+//     console.log("out",data)
+// })
 
 /*student.setReport("17041802","123",'123').then(data=>{
     console.log(data)

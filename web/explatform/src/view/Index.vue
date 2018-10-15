@@ -39,31 +39,6 @@
     <!-- part two -->
     <div class="md-layout md-gutter md-alignment-top md-elevation-0">
       <div class="md-layout-item md-size-40 md-medium-hide">
-        <!-- <span>
-          <md-card style="width=100%;height:100%;margin:0px">
-            <md-card-media-cover md-solid>
-              <md-card-media>
-                <img src="/background/1.jpg" alt="Skyscraper">
-              </md-card-media>
-              <md-card-area>
-                <md-card-header>
-                  <span class="md-title">Solid background</span>
-                  <span class="md-subhead">1/1 image</span>
-                </md-card-header>
-
-                <md-card-actions>
-                  <md-button class="md-icon-button">
-                    <md-icon>favorite</md-icon>
-                  </md-button>
-
-                  <md-button class="md-icon-button">
-                    <md-icon>share</md-icon>
-                  </md-button>
-                </md-card-actions>
-              </md-card-area>
-            </md-card-media-cover>
-          </md-card>
-        </span> -->
         <Swipe></Swipe>
       </div>
       <div class="md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100">
@@ -75,7 +50,6 @@
               <p>点击右上方菜单按钮进入对应功能</p>
               <p>点击Explatform字样可从任何界面回到首页</p>
               <p>编辑器使用了Markdown规范，并提供了一定辅助功能，便于快速上手</p>
-              <p>请开始使用</p>
             </div>
           </md-content>
         </span>
@@ -100,7 +74,20 @@ export default {
   data: () => ({
     showNavigation: false,
     showSidepanel: false
-  })
+  }),
+  mounted:function(){
+    //从cookie获取登录信息
+    if(this.$cookie.get("user_id")!=""){
+      this.$store.commit("setUser",JSON.stringify({
+        user_id:this.$cookie.get("user_id"),
+        user_type:this.$cookie.get("user_type")
+      }))
+    }
+    //从state获取用户信息
+    if(this.$store.state.user_id==""){
+      this.$router.push("/login")
+    }
+  }
   // methods: {
   // }
 };

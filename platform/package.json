@@ -1,0 +1,28 @@
+{
+  "name": "aerosimulate",
+  "version": "1.0.0",
+  "description": "",
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ]
+  },
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "dev": "node start.js && node index.js",
+    "pkg": "pkg index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maktub",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "http-error": "0.0.6",
+    "http-errors": "^1.7.0",
+    "morgan": "^1.9.0",
+    "mqtt": "^2.18.8",
+    "mysql": "^2.16.0"
+  }
+}

@@ -13,8 +13,14 @@ import Article from "./view/Article"
 import Student_info from "./view/Student_info"
 import Student_course from "./view/Student_course"
 
+import Test from "./view/Test.vue"
 // rules
-const routes = [{
+const routes = [
+    {
+        path:"/test",
+        component:Test
+    },
+    {
         path: '/',
         props:true,
         component: Home

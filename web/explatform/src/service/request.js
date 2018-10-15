@@ -22,27 +22,31 @@ export const setDomain = ($domain) => {
  * @param {*} queryParameters URL传参
  * @param {*} form FORMDATA
  */
-export default async (method, url, body={}, queryParameters={}, form={}) => {
-  method = method.toLowerCase()
-  let keys = Object.keys(queryParameters)
-  let queryUrl = url
-  if (keys.length > 0) {
-    queryUrl = url + '?' + qs.stringify(queryParameters)
+export const request= async (method, url, payload={}) => {
+  try{
+    method = method.toLowerCase()
+    let queryUrl = domain+url
+    //post
+    if (method==="post") {
+      payload=qs.stringify(payload)
+      let response=await axios[method](queryUrl, payload, config.post)
+      return JSON.parse(JSON.stringify(response.data))
+    } 
+    //get
+    else if (method === 'get') {
+      return axios[method](queryUrl, {
+        params: payload
+      }, config.get)
+    }
+    //other
+    else {
+      return axios[method](queryUrl, qs.stringify(payload))
+    }
   }
-  //post
-  if (body) {
-    body=qs.stringify(body)
-    let response=await axios[method](queryUrl, body, config.post)
-    return JSON.parse(JSON.stringify(response.data))
-  } 
-  //get
-  else if (method === 'get') {
-    return axios[method](queryUrl, {
-      params: form
-    }, config.get)
-  }
-  //other
-  else {
-    return axios[method](queryUrl, qs.stringify(form))
+  catch(err){
+    return{
+      status:0,
+      info:"Network Error"
+    }
   }
 }
