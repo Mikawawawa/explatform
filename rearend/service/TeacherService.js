@@ -65,7 +65,7 @@ exports.set_grade = async function(student_id,exp_id,grade,preview,action,report
  * returns ActionState
  **/
 exports.teacherStart_expPOST = async function(classroom_id,class_id,process) {
-  await Mqtt.beginExperiment(class_id, process)
-  await Mqtt.noticePower(class_id, process)
+  Mqtt.beginExperiment(class_id, process)
+  // await Mqtt.noticePower(class_id, process)
   return await Teacher.startExp(classroom_id,class_id,process)
 }
