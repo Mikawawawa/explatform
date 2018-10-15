@@ -1,6 +1,6 @@
 'use strict';
 
-const modules = require("../my_modules/modules")
+const modules = require("../models/modules")
 
 
 /**
