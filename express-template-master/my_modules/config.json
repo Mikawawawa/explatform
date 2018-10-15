@@ -1,0 +1,19 @@
+{
+    "static": "public",
+    "port": 80,
+    "pagePath": "public/page/",
+    "mysql": {
+        "host": "101.132.116.211 ",
+        "port": 3306,
+        "user": "root",
+        "password": "aptx4869",
+        "database": "marx",
+        "charset": "UTF8_GENERAL_CI",
+        "debug": false
+    },
+    "session": {
+        "host": "123.206.176.72",
+        "port": "6379",
+        "ttl": 14400
+    }
+}
