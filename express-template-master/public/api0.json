@@ -1,0 +1,222 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "浙江树人大学马克思主义学院思政课在线考试系统",
+    "version": "1.0.0",
+    "title": "Marx",
+    "termsOfService": "http://wekan.mcfhq.com"
+  },
+  "host": "localhost",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "user",
+      "description": "用户账号相关的API"
+    },
+    {
+      "name": "student",
+      "description": "学生权限下可以操作的API"
+    },
+    {
+      "name": "teacher",
+      "description": "教师身份下可以操作的API"
+    },
+    {
+      "name": "admin",
+      "description": "管理员身份下可以操作的API"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/user/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "登录并返回用户身份",
+        "description": "登录并返回用户身份",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "学号或工号或其他字符串",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "MD5加密后的结果",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功登录，将返回",
+            "schema": {
+              "$ref": "#/definitions/Userinfo"
+            }
+          }
+        }
+      }
+    },
+    "/user/logout": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "注销登录",
+        "description": "注销登陆",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功"
+          }
+        }
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "创建用户",
+        "description": "创建用户",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功"
+          }
+        }
+      }
+    },
+    "/user/get_power": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "获取用户权限",
+        "description": "获取用户权限",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功"
+          }
+        }
+      }
+    },
+    "/user/modify_password": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "修改密码",
+        "description": "修改密码",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "学号或工号或其他字符串",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "neo_password",
+            "in": "formData",
+            "description": "MD5加密后的结果",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "schema": {
+              "$ref": "#/definitions/ActionState"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Userinfo": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "状态码",
+          "default": "1"
+        },
+        "info": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "id号"
+            },
+            "usertype": {
+              "type": "object",
+              "format": "int64",
+              "minItems": 1,
+              "maxItems": 3,
+              "example": [
+                {
+                  "1": "true"
+                },
+                {
+                  "2": "false"
+                },
+                {
+                  "3": "false"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ActionState": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "操作状态码，1成功，0失败（暂定）",
+          "default": 0
+        },
+        "info": {
+          "type": "string",
+          "description": "提示词，便于前端显示",
+          "default": "发送操作请求成功"
+        }
+      }
+    }
+  }
+}

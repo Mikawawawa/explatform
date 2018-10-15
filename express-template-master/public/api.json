@@ -1,0 +1,407 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.2",
+    "title": "Platform",
+    "description": "服务器与硬件部分的接口，除去使用mqtt的部分"
+  },
+  "basePath": "/",
+  "consumes": [
+    "application/x-www-form-urlencoded"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "info": {
+      "type": "object",
+      "title": "info",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "info": {
+          "type": "string",
+          "description": "描述信息"
+        }
+      }
+    },
+    "Classes": {
+      "type": "object",
+      "title": "classes",
+      "required": [
+        "class"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "class": {
+          "type": "string",
+          "description": "班级号"
+        }
+      }
+    },
+    "Emessage": {
+      "type": "object",
+      "title": "emessage",
+      "required": [
+        "class",
+        "process"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "class": {
+          "type": "string",
+          "description": "班级号"
+        },
+        "unit": {
+          "type": "string",
+          "description": "实验进度"
+        }
+      }
+    },
+    "Result": {
+      "type": "object",
+      "title": "result",
+      "required": [
+        "res"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "res": {
+          "type": "string",
+          "description": "成功后的操作"
+        }
+      }
+    },
+    "init": {
+      "type": "object",
+      "title": "init",
+      "required": [
+        "cid",
+        "row",
+        "line"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "cid": {
+          "type": "string",
+          "description": "cid"
+        },
+        "row": {
+          "type": "string",
+          "description": "row"
+        },
+        "line": {
+          "type": "string",
+          "description": "line"
+        }
+      }
+    },
+    "teacher": {
+      "type": "object",
+      "title": "teacher",
+      "required": [
+        "tid"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "tid": {
+          "type": "string",
+          "description": "tid"
+        }
+      }
+    },
+    "student": {
+      "type": "object",
+      "title": "student",
+      "required": [
+        "sid"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "tid": {
+          "type": "string",
+          "description": "sid"
+        }
+      }
+    },
+    "grade": {
+      "type": "object",
+      "title": "grade",
+      "required": [
+        "sid",
+        "cid",
+        "process",
+        "act",
+        "grade"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "sid": {
+          "type": "string",
+          "description": "sid"
+        },
+        "cid": {
+          "type": "string",
+          "description": "cid"
+        },
+        "process": {
+          "type": "string",
+          "description": "process"
+        },
+        "act": {
+          "type": "string",
+          "description": "act"
+        },
+        "grade": {
+          "type": "string",
+          "description": "grade"
+        }
+      }
+    },
+    "admin": {
+      "type": "object",
+      "title": "admin",
+      "required": [
+        "aid"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "aid": {
+          "type": "string",
+          "description": "aid"
+        }
+      }
+    },
+    "log": {
+      "type": "object",
+      "title": "log",
+      "required": [
+        "logstring"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "成功",
+          "default": 1
+        },
+        "logstring": {
+          "type": "string",
+          "description": "logstring"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/get_progress": {
+      "get": {
+        "description": "获取实验进度：发MAC地址",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "发MAC",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Emessage"
+            },
+            "description": "根据最新修改时间保留新的信息，并返回"
+          }
+        }
+      }
+    },
+    "/student_signin": {
+      "get": {
+        "description": "学生签到",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "学生签到",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/info"
+            },
+            "description": "根据最新修改时间保留新的信息，并返回"
+          }
+        }
+      }
+    },
+    "/check_teacher": {
+      "get": {
+        "description": "老师验证",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "老师验证",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Result"
+            },
+            "description": "打分机验证教师身份,返回成功后的操作"
+          }
+        }
+      }
+    },
+    "/put_grade": {
+      "get": {
+        "description": "上传成绩",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "上传成绩",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/grade"
+            },
+            "description": "上传成绩"
+          }
+        }
+      }
+    },
+    "/check_admin": {
+      "get": {
+        "description": "验证管理员身份",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "验证管理员身份",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/init"
+            },
+            "description": "打分机验证管理员身份"
+          }
+        }
+      }
+    },
+    "/read_time": {
+      "get": {
+        "description": "时间",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "时间",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/info"
+            },
+            "description": "时间"
+          }
+        }
+      }
+    },
+    "/put_log": {
+      "get": {
+        "description": "上传日志信息",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "上传日志信息",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/info"
+            },
+            "description": "上传日志信息"
+          }
+        }
+      }
+    },
+    "/read_log": {
+      "get": {
+        "description": "读取日志信息",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "formData",
+            "description": "读取日志信息",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/log"
+            },
+            "description": "读取日志信息"
+          }
+        }
+      }
+    }
+  }
+}
