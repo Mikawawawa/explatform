@@ -1,7 +1,7 @@
 'use strict';
 
 const modules = require("../models/modules")
-
+const mqtt=require("../models/mqtt")
 
 /**
  * 获取实验进度：发MAC地址
@@ -84,6 +84,7 @@ exports.read_timePOST = async function(data) {
  * returns info
  **/
 exports.student_signinPOST = async function(data) {
+  mqtt.noticePower('000',1)
   return await modules.student_signin(data)
 }
 
