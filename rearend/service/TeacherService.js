@@ -1,6 +1,7 @@
 'use strict';
 
 const Teacher=require("../models/teacher")
+const Mqtt=require("../models/mqtt")
 
 /**
  * 根据教师号获取教师课表
@@ -65,4 +66,20 @@ exports.set_grade = async function(student_id,exp_id,grade,preview,action,report
  **/
 exports.teacherStart_expPOST = async function(classroom_id,class_id,process) {
   return await Teacher.startExp(classroom_id,class_id,process)
+}
+
+
+
+/**
+ * mqtt:
+ * 1.开始实验 主题 编号 内容{expre 110}
+ * 2.通知电源 内容{id:110}
+ */
+
+exports.mqtt_beginExperiment = async function(target,message0){
+    return await Mqtt.beginExperiment(target,message0)
+}
+
+exports.mqtt_noticePower = async function(target, message){
+    return await Mqtt.noticePower(target, message)
 }
