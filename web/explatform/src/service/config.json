@@ -1,5 +1,5 @@
 {
-    "domain":"http://localhost/api",
+    "domain":"localhost:8081/api",
     "LOGIN":"/user/login",
     "GET_POWER":"/user/get_power",
 

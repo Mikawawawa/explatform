@@ -23,27 +23,57 @@ export default {
   },
   data: () => ({
     msg:[],
+    showToast:false,
+    search: null,
+    searched: [],
+    Tcouse: [],
     course:[
-      {name:"示波器的使用"},
-      {name:"迈克尔分析"},
-      {name:"伏安法测电流"}
+      {name:"获取实验失败"},
+      {name:"获取实验失败"},
+      {name:"获取实验失败"}
     ]
   }),
-  methods: {
-
+methods:async function() {
+      if(typeof(this.$store.state.Tcouse)!="undefined"){
+        this.experiment=this.$store.state.Tcouse
+        console.log(this.$store.state.Tcouse)
+      }else{
+        let data
+        let delay=setTimeout(()=>{
+          this.showToast=true
+          data=""
+          data=(data!==""?data:Tcouse_form)
+          this.$store.commit("getTcouse",JSON.stringify(data))
+          this.Scouse=this.$store.state.Tcouse
+        },2000)
+        data=await this.$dataSource.tGetCourse("17041802","101")
+        // data=await this.$dataSource.sGetExp(this.$store.state.user_type,this.$route.query.info_id)
+        data.status==0
+        if(data.status==0){
+          clearInterval(delay)
+          data=''
+          this.showToast=true
+          this.$store.commit("getTcouse",JSON.stringify(Tcouse_form))
+          this.Tcouse=this.$store.state.Tcouse
+        }else{
+          clearInterval(delay)
+          this.$store.commit("getTcouse",JSON.stringify(data))
+        }
+      }
   },
   created(){  
     let routerParams = this.$route.query.dataobj
     // 将数据放在当前组件的数据内
     this.msg = routerParams
-    if(this.msg=="数电实验"){
+    for(let i of this.Tcouse.course ){
+      if(this.msg==i){
         this.course=[
-          {name:"差分方程"},
-          {name:"数电分析"},
-          {name:"小信号模型"}
+          {name:this.Tcouse.exp}
         ]
       }
-    else if(this.msg=="电分实验"){
+    }
+
+   /* if(this.msg==this.Tcouse.exp){
         this.course=[
           {name:"差分方程"},
           {name:"电路分析"},
@@ -56,8 +86,8 @@ export default {
           {name:"模电分析"},
           {name:"小信号模型"}
         ]
-      }
-  }
+      }*/
+}
 };
 </script>
 

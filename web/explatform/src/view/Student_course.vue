@@ -22,18 +22,49 @@ export default {
     Card
   },
   data: () => ({
+    showToast:false,
+    search: null,
+    searched: [],
+    Scouse: [],
     course:[
       {
-        "name":"数电实验1"
+        "name":this.Scouse[0]
       },
       {
-        "name":"数电实验2"
+        "name":this.Scouse[1]
       },
       {
-        "name":"数电实验3"
+        "name":this.Scouse[2]
       }
     ]
   }),
-  methods: {}
+  methods: async function() {
+      if(typeof(this.$store.state.Scouse)!="undefined"){
+        this.experiment=this.$store.state.Scouse
+        console.log(this.$store.state.Scouse)
+      }else{
+        let data
+        let delay=setTimeout(()=>{
+          this.showToast=true
+          data=""
+          data=(data!==""?data:Scouse_form)
+          this.$store.commit("getScouse",JSON.stringify(data))
+          this.Scouse=this.$store.state.Scouse
+        },2000)
+        data=await this.$dataSource.sGetCourse("17041802","101")
+        // data=await this.$dataSource.sGetExp(this.$store.state.user_type,this.$route.query.info_id)
+        data.status==0
+        if(data.status==0){
+          clearInterval(delay)
+          data=''
+          this.showToast=true
+          this.$store.commit("getScouse",JSON.stringify(Scouse_form))
+          this.Scouse=this.$store.state.Scouse
+        }else{
+          clearInterval(delay)
+          this.$store.commit("getScouse",JSON.stringify(data))
+        }
+      }
+  }
 };
 </script>

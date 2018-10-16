@@ -52,7 +52,7 @@ export default {
     };
   },
   methods: {
-    async auth() {
+    async auth(){
       this.loading = true;
       let delay=setTimeout(()=>{
           this.loading = false;
@@ -75,9 +75,8 @@ export default {
           clearInterval(delay)
         },800)
       }
-
+      }
     }
-  }
 };
 </script>
 

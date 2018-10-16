@@ -68,7 +68,7 @@ let getReport=async (report_id) => {
     return JSON.parse(JSON.stringify(response.data))
 }
 
-let tGetCours=async (teacher_id) => {
+let tGetCourse=async (teacher_id) => {
     let response=await request('post',`${config.T_GET_COURSE}`,{
         teacher_id:teacher_id
     })
@@ -93,7 +93,7 @@ export default {
     tCourseDetail:tCourseDetail,
     setGrade:setGrade,
     getReport:getReport,
-    tGetCours:tGetCours,
+    tGetCourse:tGetCourse,
     startExp:startExp,
     hello:hello
 }
