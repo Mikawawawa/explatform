@@ -15,6 +15,8 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Card from "../components/Card.vue";
+
+import Tcouse_form from "../template/Tcouse_form";
 export default {
   name: "Course1",
   components: {
