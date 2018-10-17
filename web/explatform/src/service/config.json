@@ -5,12 +5,13 @@
     "GET_POWER":"/user/get_power",
 
     "S_GET_COURSE":"/student/get_course",
-    "S_COURSE_DETAIL":"/student/get_exp",
+    "S_GET_EXP":"/student/get_exp",
     "SET_REPORT":"/student/set_report",
 
     "T_GET_COURSE":"/teacher/get_course",
-    "T_COURSE_DETAIL":"/teacher/get_exp",
+    "T_GET_EXP":"/teacher/get_exp",
     "SET_GRADE":"/teacher/set_grade",
     "GET_REPORT":"/teacher/get_report",
-    "START_EXP":"/teacher/start_exp"
+    "START_EXP":"/teacher/start_exp",
+    "GET_EXPLIST":"/teacher/get_explist"
 }
