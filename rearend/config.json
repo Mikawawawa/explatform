@@ -1,6 +1,6 @@
 {
     "static": "public",
-    "port": 80,
+    "port": 7071,
     "pagePath": "public/page/",
     "mysql": {
         "host": "123.206.176.72",
