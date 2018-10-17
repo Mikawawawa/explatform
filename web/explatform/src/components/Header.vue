@@ -82,7 +82,8 @@ export default {
   data: () => ({
     showNavigation: false,
     showSidepanel: false,
-    qrcode:""
+    qrcode:"",
+    userType:""
   }),
   props: {
     showButton: {
@@ -91,7 +92,13 @@ export default {
     }
   },
   created:function(){
-      this.qrcode=`http://101.132.116.211:7071/api/user/get_qrcode?type=${"sid"}&id=${"17041802"}`
+      let type="sid"
+      if(this.$store.state.user_type=="1"){
+          type="aid"
+      }else if(this.$store.state.user_type=="2"){
+          type="tid"
+      }
+      this.qrcode=`http://101.132.116.211:7071/api/user/get_qrcode?type=${type}&id=${this.$store.state.user_id?this.$store.state.user_id:"17041802"}`
     //   this.qrcode=`http://localhost/api/user/get_qrcode?type=${"sid"}&id=${"17041802"}`
   },
   methods: {

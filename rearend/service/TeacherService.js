@@ -70,3 +70,7 @@ exports.teacherStart_expPOST = async function(classroom_id,class_id,process) {
   // await Mqtt.noticePower(class_id, process)
   return await Teacher.startExp(classroom_id,class_id,process)
 }
+
+exports.teacherGet_explist=async function(course_id){
+  return await Teacher.getExplist(course_id)
+}
