@@ -101,3 +101,12 @@ exports.startExp=async function(classroom_id,class_id,process){
         info:"ACTION SUCCESS"
     }
 }
+
+exports.getExplist=async function(course_id){
+    let data=await connection.execute('SELECT DISTINCT experiment_id FROM experiment_recard WHERE subject_id=?',[course_id])
+    if(data.status==0){
+        return data
+    }else{
+        return data
+    }
+}

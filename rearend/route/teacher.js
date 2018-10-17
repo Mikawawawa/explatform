@@ -2,6 +2,12 @@ const app = require("express").Router()
 
 const teacher=require("../service/TeacherService")
 
+app.get("/get_explist",async(req,res)=>{
+    let data=await teacher.teacherGet_explist(req.query.id)
+    res.send(JSON.stringify(
+        data
+    ))
+})
 
 app.get("/get_exp", async(req, res) => { 
     
