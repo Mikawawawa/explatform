@@ -18,7 +18,8 @@ export default {
         texp:""
     }),
     created:async function(){
-        //this.test=this.$appName
+        this.test=this.$appName
+        // console.log(this.$dataSource)
         this.login=await this.$dataSource.Login("17031803","aptx4869")
         this.test=await this.$dataSource.getExplist("101")
         this.course=await this.$dataSource.sGetCourse("17041803")

@@ -3,6 +3,7 @@
     <!-- header -->
     <Header v-bind:show-button="true"></Header>
     <!-- container -->
+<<<<<<< HEAD
      <div class="md-layout md-gutter" style="padding:20px">
     <Card  v-for="value in Tcourse" v-bind:name="value.course_name" info="1"></Card>
     </div>
@@ -20,6 +21,11 @@
         <md-button class="md-primary" @click="showToast = false">重试</md-button>
       </md-snackbar>
       <p>{{Tcourse}}</p>
+=======
+    <div class="md-layout md-gutter" style="padding:20px">
+    <Card v-for="value in course" v-bind:name="value.name" info="1"></Card>
+    </div>
+>>>>>>> d753948cb7172dde28494e80099f3665ce7309f1
     <!-- footer -->
     <Footer></Footer>
   </md-content>

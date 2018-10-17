@@ -21,17 +21,13 @@
       </div>
 
       <div class="actions md-layout md-alignment-center-space-between" style="">
-        <md-button class="md-raised md-primary" @click="auth()">Log in</md-button>
+        <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
       </div>
 
       <div class="loading-overlay" v-if="loading">
         <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
       </div>
 
-      <md-snackbar :md-position="'center'" :md-active.sync="showToast" md-persistent>
-        <span>抱歉，服务器吃饭去了，请重试</span>
-        <md-button class="md-primary" @click="showToast = false">重试</md-button>
-      </md-snackbar>
     </md-content>
     <div class="background" />
   </div>
@@ -43,7 +39,6 @@ export default {
   data() {
     return {
       loading: false,
-      showToast:false,
       login: {
         id: "",
         password: "",
@@ -52,31 +47,21 @@ export default {
     };
   },
   methods: {
-    async auth(){
+    async auth() {
       this.loading = true;
-      let delay=setTimeout(()=>{
+      setTimeout(()=>{
           this.loading = false;
-          this.showToast=true
-      },8000)
+      },10000)
       
       let data=await this.$dataSource.Login(this.login.id,this.login.password)
-      if(data.status==1){
-        this.$cookie.set("user_id",data.info.user_id)
-        this.$cookie.set("user_type",data.info.user_type)
-        this.$store.commit("setUser",JSON.stringify(data.info))
+      this.$cookie.set("user_id",data.info.user_id)
+      this.$cookie.set("user_type",data.info.user_type)
+      this.$store.commit("setUser",JSON.stringify(data.info))
       
-        this.loading = false;
-        this.$router.push("/");
-        clearInterval(delay)
-      }else{
-        setTimeout(()=>{
-          this.loading=false
-          this.showToast=true
-          clearInterval(delay)
-        },800)
-      }
-      }
+      this.loading = false;
+      this.$router.push("/");
     }
+  }
 };
 </script>
 

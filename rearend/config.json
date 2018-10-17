@@ -1,10 +1,10 @@
 {
     "static": "public",
-    "port": 7071,
+    "port": 80,
     "pagePath": "public/page/",
     "mysql": {
-        "host": "123.206.176.72",
-        "port": 8306,
+        "host": "101.132.116.211",
+        "port": 3306,
         "user": "root",
         "password": "aptx4869",
         "database": "explatform",

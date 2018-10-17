@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Login from './view/Login'
 import Home from "./view/Index"
 
-// import Teacher_course from "./view/Teacher_course"
+import Teacher_course from "./view/Teacher_course"
 import Teacher_info from "./view/Teacher_info"
 import Teacher_exp from "./view/Teacher_exp"
 import Teacher_course from "./view/Teacher_course"
@@ -13,7 +13,7 @@ import Markdown from "./view/Markdown"
 import Article from "./view/Article"
 
 import Student_info from "./view/Student_info"
-// import Student_course from "./view/Student_course"
+import Student_course from "./view/Student_course"
 
 import Test from "./view/Test.vue"
 // rules
@@ -34,7 +34,7 @@ const routes = [
     },
     {
         path: '/teacher_course',
-        props:true,
+        props:false,
         component: Teacher_course
     },
     {
