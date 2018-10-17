@@ -27,8 +27,7 @@ exports.student_signin = async function(id,mac_id,exp_id){
 }
 
 //老师验证
-//打分机发过来的password是数据库里的user_id
-//打分机发过来的id是数据库里的user_type
+//打分机发过来的password是数据库里的user_id,打分机发过来的id是数据库里的user_type
 exports.check_teacher = async function(id){   
     // let data = await connection.execute("SELECT `user_type` FROM `user` WHERE `password`= ? AND `user_id`= ?",[password,id])
     // let nam = await connection.execute("SELECT `teacher_name` FROM `teacher` WHERE `teacher_id`= ?",[id])
