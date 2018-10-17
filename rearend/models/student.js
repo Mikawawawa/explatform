@@ -27,7 +27,6 @@ exports.getCourse= async function(student_id){
         }
         return data
     }
-
 }
 
 /**
