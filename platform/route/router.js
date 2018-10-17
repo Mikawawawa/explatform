@@ -46,6 +46,7 @@ router.get('/get_progress',async function(req,res,next) {
  *  put_grade
  */
 router.get('/put_grade',async function(req,res,next) {
+    console.log(req.query)
     let data = await modle.put_gradePOST(req.query.mark,req.query.id,req.query.experiment_id)
     res.send(
         JSON.stringify(data)

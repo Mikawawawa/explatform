@@ -8,9 +8,9 @@ const modules=require("./modules")
 //     console.log(data)
 // })
 
-modules.student_signin(17031803,1,'创新性实验').then(data=>{
-    console.log(data)
-})
+// modules.student_signin(17031803,1,'创新性实验').then(data=>{
+//     console.log(data)
+// })
 
 // modules.check_teacher(17041802).then(data=>{
 //     console.log(data)

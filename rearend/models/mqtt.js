@@ -1,5 +1,5 @@
 var mqtt    = require('mqtt');
-var client  = mqtt.connect('mqtt://120.79.88.153:8201');
+var client  = mqtt.connect('mqtt://101.132.116.211:8201');
 /*
   mqtt：
     1.开始实验 主题 编号 内容{expre 110}
@@ -14,7 +14,7 @@ const closeExperiment=function(){
 }
 
 const noticePower = function (target, message) {
-  client.publish(`p_${target}`, message);
+  client.publish(`p_000`, message);
 }
 
 
