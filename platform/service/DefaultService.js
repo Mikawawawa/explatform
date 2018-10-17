@@ -19,8 +19,8 @@ exports.get_progressPOST = async function(id) {
  * data Admin 验证管理员身份
  * returns init
  **/
-exports.check_adminPOST = async function(password,id) {
-  return await modules.check_admin(password,id)
+exports.check_adminPOST = async function(password) {
+  return await modules.check_admin(password)
 }
 
 /**
@@ -30,6 +30,8 @@ exports.check_adminPOST = async function(password,id) {
  * returns Result
  **/
 exports.check_teacherPOST = async function(password,id) {
+  // var a = await modules.check_teacher(password,id)
+  // console.log(a)
   return await modules.check_teacher(password,id)
 }
 
@@ -72,8 +74,8 @@ exports.read_logPOST = async function(id) {
  * data Emessage 时间
  * returns info
  **/
-exports.read_timePOST = async function(data) {
-  return await modules.read_time(data)
+exports.read_timePOST = async function(id) {
+  return await modules.read_time(id)
 }
 
 
@@ -83,8 +85,8 @@ exports.read_timePOST = async function(data) {
  * data Student 学生签到
  * returns info
  **/
-exports.student_signinPOST = async function(data) {
+exports.student_signinPOST = async function(id,mac_id,exp_id) {
   mqtt.noticePower('000',1)
-  return await modules.student_signin(data)
+  return await modules.student_signin(id,mac_id,exp_id)
 }
 
