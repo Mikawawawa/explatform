@@ -51,7 +51,7 @@ exports.teacherGet_reportGET = async function(report_id) {
  * returns ActionState
  **/
 exports.set_grade = async function(student_id,exp_id,grade,preview,action,report) {
-  return await Teacher.set_grade(student_id,exp_id,grade)
+  return await Teacher.setGrade(student_id,exp_id,grade)
 }
 
 
