@@ -84,6 +84,7 @@ let startExp=async (classroom_id,class_id, process) => {
     })
     return JSON.parse(JSON.stringify(response.data))
 }
+//获取教师课程实验
 let getExplist=async (id) => {
     let response=await request('get',`${config.GET_EXPLIST}`,{
         id:id

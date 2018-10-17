@@ -55,7 +55,7 @@ methods:async function() {
           this.showToast=true
           data=""
           data=(data!==""?data:Tcourse_form)
-          this.$store.commit("getTcourse",JSON.stringify(data))
+          this.$store.commit("getExplist",JSON.stringify(data))
           this.Tcourse=this.$store.state.Tcourse
         },2000)
         let subject_id = this.$store.state.subject_id
@@ -66,11 +66,11 @@ methods:async function() {
           clearInterval(delay)
           data=''
           this.showToast=true
-          this.$store.commit("getTcourse",JSON.stringify(Tcourse_form))
+          this.$store.commit("getExplist",JSON.stringify(Tcourse_form))
           this.Tcourse=this.$store.state.Tcourse
         }else{
           clearInterval(delay)
-          this.$store.commit("getTcourse",JSON.stringify(data))
+          this.$store.commit("getExplist",JSON.stringify(data))
         }
       }
   },

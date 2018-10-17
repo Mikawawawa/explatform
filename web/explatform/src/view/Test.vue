@@ -2,6 +2,9 @@
     <div>
         <p>{{test}}</p>
         <p>{{login}}</p>
+        <p>{{sexp}}</p>
+        <p>{{texp}}</p>
+        <p>{{tcourse}}</p>
         <p>{{this.$dataSource.request}}</p>
     </div>
 </template>

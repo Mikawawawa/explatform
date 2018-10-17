@@ -29,7 +29,10 @@ const store = new Vuex.Store({
       },
       getScourse(state,Scourse){
         Scourse=JSON.parse(Scourse)
-        atate.subject_name=Scourse.subject_name
+        state.subject_name=Scourse.subject_name
+      },
+      getExplist(state,Texp){
+        state.Texp=JSON.parse(Texp)  
       }
     },
     actions:{
