@@ -97,7 +97,6 @@ export default {
           type="aid"
       }else if(this.$store.state.user_type=="2"){
           type="tid"
-          console.log("here")
       }
       this.qrcode=`http://101.132.116.211:7071/api/user/get_qrcode?type=${type}&id=${this.$store.state.user_id?this.$store.state.user_id:"17041802"}`
     //   this.qrcode=`http://localhost/api/user/get_qrcode?type=${"sid"}&id=${"17041802"}`
