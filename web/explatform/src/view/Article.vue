@@ -7,6 +7,7 @@
                     <div class="md-title">{{exp?exp:"123"}}</div>
                 </md-card-header>
                 <md-card-content v-html="compiledMarkdown"></md-card-content>
+    
             </md-card>
         </md-content>
     </div>
@@ -25,16 +26,32 @@ export default {
   data: () => ({
     content: "",
     exp:"",
-    student:""
+    student:"",
+    // test:""
   }),
   computed: {
     compiledMarkdown: function() {
-      return marked(article, { sanitize: true });
+      return marked(this.student, { sanitize: true });
     }
   },
-  created() {
-    this.exp = this.$route.query.exp
-    this.student=this.$route.query.student
+  created:async function() {
+    //this.exp = this.$route.query.exp
+    //this.student=this.$route.query.student
+    let data=await this.$dataSource.hello()
+    if(data.status == 0){
+      this.student = "error!!"
+    }
+    else if(data.length == 0){
+      this.student = "Null"
+    }
+    else{
+      this.student = data
+    }
+    console.log(this.exp)
+    // this.student = await this.$dataSource.hello()
+    // this.content = await this.$dataSource.hello()
+    //console.log(this.student)
+    // console.log(this.content)
   },
   methods: {}
 };
