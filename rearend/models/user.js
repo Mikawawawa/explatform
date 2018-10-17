@@ -46,32 +46,33 @@ exports.getPower=async function getPower(id){
         return data
     }
 }
-exports.getString=async function getString(prams="123"){
-    console.log(prams)
-    prams=md5(prams)
-    console.log(prams)
-    QRCode.toFile('../public/writeme.png', prams, {
-        color: {
-          dark: '#00F',  // Blue dots
-          light: '#0000' // Transparent background
-        }
-      }, function (err) {
-        if (err) throw err
-        console.log('done')
-      })
-    
-    var timeout_ms = 10000; // 5 seconds
-    var timeout = setTimeout(function() {
-    console.log("timed out!");
-    //删除文件
-    fs.unlink('../public/writeme.png', function (err) {
-        // 判断 如果有错 抛出错误 否则 打印删除成功
-        if (err) {
-            throw err;
-         } 
-            console.log('删除成功!')
-            })
-    }, timeout_ms);
 
+
+
+exports.getQrcode=async function qrcode(prams="123"){
+    return Promise((resolve,reject)=>{
+        prams=md5(prams)
+        QRCode.toFile(`./public/${prams}.png`, prams, {
+            color: {
+              dark: '#333',  // Blue dots
+              light: '#0000' // Transparent background
+            }
+          }, function (err) {
+            if (err) 
+                console.log(err)
+                var timeout_ms = 10*60*1000; // 5 seconds
+                setTimeout(function() {
+                //删除文件
+                    fs.unlink(`../public/${prams}.png`, function (err) {
+                        // 判断 如果有错 抛出错误 否则 打印删除成功
+                        if (err) {
+                            throw err;
+                        } 
+                        console.log('删除成功!')
+                    })
+                }, timeout_ms);
+                resolve(`./public/${prams}.png`)            
+          })
+    })
 }
 

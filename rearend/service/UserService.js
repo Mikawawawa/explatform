@@ -1,6 +1,5 @@
 'use strict';
 const User=require("../models/user")
-
 /**
  * 登录
  * 用户登录.
@@ -24,5 +23,9 @@ exports.login = async function(id,password) {
  **/
 exports.get_power = async function(id) {
   return await User.getPower(id)
+}
+
+exports.getQrcode=async function(id){
+  return await User.getQrcode()
 }
 
