@@ -51,16 +51,6 @@ exports.put_grade = async function(mark,id,experiment_id){
 exports.check_admin = async function(password){
     //let data = await connection.execute("SELECT `user_type` FROM `user` WHERE `user_id`= ?",[password])
     let data = await connection.execute("SELECT COUNT(*) FROM user WHERE user_type = '1' AND user_id =  17041802",[password])
-    /////////////////////////////////////////第一次改动
-    // return {    
-    //     //status:1,
-    //     status:data.status,
-    //     data.info.user_type
-    // }
-    /////////////////////////////////////////第二次改动
-    // if(data.info.user_type==1)
-    //     return{status:1}
-    // else return{status:0}
     return {
         status:data.status,
     }
