@@ -56,7 +56,8 @@ export default {
           this.$store.commit("setExp",JSON.stringify(data))
           this.experiment=this.$store.state.Exp
         },2000)
-        data=await this.$dataSource.tCourseDetail("17041802","101")
+
+        data=await this.$dataSource.tCourseDetail("17041803")
         // data=await this.$dataSource.sGetExp(this.$store.state.user_type,this.$route.query.info_id)
         data.status==0
         if(data.status==0){
