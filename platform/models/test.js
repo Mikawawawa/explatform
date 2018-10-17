@@ -1,8 +1,13 @@
 const modules=require("./modules")
+const mqtt=require("./mqtt")
 
-modules.get_progress(17040318).then(data=>{
-    console.log(data)
-})
+mqtt.beginExperiment('000',"创新性实验")
+// mqtt.closeExperiment("000")
+ //mqtt.noticePower("000",1)
+
+// modules.get_progress(17040318).then(data=>{
+//     console.log(data)
+// })
 
 // modules.student_signin('aptx4869',17041802,123).then(data=>{
 //     console.log(data)

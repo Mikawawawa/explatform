@@ -15,9 +15,14 @@ exports.get_progress = async function(id){
 }
 
 //学生签到
-exports.student_signin = async function(password,id,experiment_id){
+exports.student_signin = async function(id,mac,exp){
     let data = await connection.execute("SELECT `student_name` FROM `student`, WHERE `student_id`= ? ",[id])
-    await connection.execute("UPDATE `experiment_recard` SET `present`= ? WHERE (`student_id`=?) AND (`experiment_id`=?)",[new Date().toLocaleString(),id,experiment_id])
+    if(data.status==0){
+        return {
+            status:0
+        }
+    }
+    await connection.execute("UPDATE `experiment_recard` SET `present`= ? WHERE (`student_id`=?) AND (`experiment_id`=?)",[new Date().toLocaleString(),mac,exp])
     return {
         status:data.status,
         info:data.info.student_name,

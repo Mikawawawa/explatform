@@ -11,10 +11,9 @@ router.get('/check_admin',async function(req,res,next) {
     //console.log(req.query.id)
     let data = await modle.check_adminPOST(req.query.password,req.query.id)
     console.log(data)
-    res.send({
-           code: 123,
-           data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 /*
@@ -23,10 +22,9 @@ router.get('/check_admin',async function(req,res,next) {
  */
 router.get('/check_teacher',async function(req,res,next) {
     let data = await modle.check_teacherPOST(req.query.password,req.query.id)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 
@@ -37,10 +35,9 @@ router.get('/check_teacher',async function(req,res,next) {
 router.get('/get_progress',async function(req,res,next) {
     let data = await modle.get_progressPOST(req.query.id)
     console.log(data)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 
@@ -50,10 +47,9 @@ router.get('/get_progress',async function(req,res,next) {
  */
 router.get('/put_grade',async function(req,res,next) {
     let data = await modle.put_gradePOST(req.query.mark,req.query.id,req.query.experiment_id)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 
@@ -63,10 +59,9 @@ router.get('/put_grade',async function(req,res,next) {
  */
 router.get('/put_log',async function(req,res,next) {
     let data = await modle.put_logPOST(req.query.id,req.query.log)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 
@@ -76,10 +71,9 @@ router.get('/put_log',async function(req,res,next) {
  */
 router.get('/read_log',async function(req,res,next) {
     let data = await modle.read_logPOST(req.query.id)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 
@@ -89,10 +83,9 @@ router.get('/read_log',async function(req,res,next) {
  */
 router.get('/read_time',async function(req,res,next) {
     let data = await modle.read_timePOST(req.query.id)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 
@@ -102,11 +95,10 @@ router.get('/read_time',async function(req,res,next) {
  *  student_signin
  */
 router.get('/student_signin',async function(req,res,next) {
-    let data = await modle.student_signinPOST(req.query.password,req.query.id,req.query.experiment_id)
-    res.send({
-        code: 123,
-        data: JSON.stringify(data)
-    });
+    let data = await modle.student_signinPOST(req.query.id,req.query.mac_id,req.query.exp_id)
+    res.send(
+        JSON.stringify(data)
+    );
 });
 
 

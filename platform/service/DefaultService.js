@@ -83,8 +83,8 @@ exports.read_timePOST = async function(data) {
  * data Student 学生签到
  * returns info
  **/
-exports.student_signinPOST = async function(data) {
+exports.student_signinPOST = async function(id,mac,exp) {
   mqtt.noticePower('000',1)
-  return await modules.student_signin(data)
+  return await modules.student_signin(id,mac,exp)
 }
 
