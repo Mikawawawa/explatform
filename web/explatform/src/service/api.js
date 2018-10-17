@@ -62,7 +62,7 @@ let setGrade=async (student_id,exp_id,preview,action,report) => {
 }
 
 let getReport=async (report_id) => {
-    let response=await request('post',`${config.GET_REPORT}`,{
+    let response=await request('get',`${config.GET_REPORT}`,{
         report_id:report_id
     })
     return JSON.parse(JSON.stringify(response.data))
