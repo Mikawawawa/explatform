@@ -5,9 +5,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
       user_id:"",
-      user_type:"",
-      subject_id:"",
-      subject_name:""
+      user_type:""
     },
     mutations: {
       setUser(state,user){
@@ -18,21 +16,6 @@ const store = new Vuex.Store({
       logout(state){
         state.user_id=""
         state.user_type=""
-      },
-      setExp(state,data){
-        state.Exp=JSON.parse(data)
-      },
-      getTcourse(state,Tcourse){
-        Tcouse=JSON.parse(Tcourse)
-        state.subject_id=Tcourse.subject_id
-        atate.subject_name=Tcourse.subject_name
-      },
-      getScourse(state,Scourse){
-        Scourse=JSON.parse(Scourse)
-        state.subject_name=Scourse.subject_name
-      },
-      getExplist(state,Texp){
-        state.Texp=JSON.parse(Texp)  
       }
     },
     actions:{

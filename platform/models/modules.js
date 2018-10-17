@@ -15,14 +15,9 @@ exports.get_progress = async function(id){
 }
 
 //学生签到
-exports.student_signin = async function(id,mac,exp){
+exports.student_signin = async function(id,mac_id,exp_id){
     let data = await connection.execute("SELECT `student_name` FROM `student` WHERE `student_id`= ? ",[id])
-    if(data.status==0){
-        return {
-            status:0
-        }
-    }
-    await connection.execute("UPDATE `experiment_recard` SET `present`= ? WHERE (`student_id`=?) AND (`experiment_id`=?)",[new Date().toLocaleString(),mac,exp])
+    await connection.execute("UPDATE `experiment_recard` SET `present`= ? WHERE (`student_id`=?) AND (`experiment_id`=?)",[new Date().toLocaleString(),id,exp_id])
     return {
         status:data.status,
         info:data.info.student_name,
@@ -31,32 +26,32 @@ exports.student_signin = async function(id,mac,exp){
 }
 
 //老师验证
-exports.check_teacher = async function(password,id){   
-    let data = await connection.execute("SELECT `user_type` FROM `user` WHERE `password`= ? AND `user_id`= ?",[password,id])
-    let nam = await connection.execute("SELECT `teacher_name` FROM `teacher` WHERE `teacher_id`= ?",[id])
+//打分机发过来的password是数据库里的user_id,发过来的id是数据库里的user_type
+exports.check_teacher = async function(id){   
+    // let data = await connection.execute("SELECT `user_type` FROM `user` WHERE `password`= ? AND `user_id`= ?",[password,id])
+    // let nam = await connection.execute("SELECT `teacher_name` FROM `teacher` WHERE `teacher_id`= ?",[id])
+    //let data = await connection.execute("SELECT user_type FROM teacher JOIN user ON teacher.teacher_id=user.user_id WHERE `user`.user_id=?",[id])
+    let data = await connection.execute("SELECT COUNT(*) FROM user WHERE user_type = '2' AND user_id =?",[id])
     return {
         status:data.status,
-        info:data.info.user_type,
-        name:nam.info.teacher_name
     } 
+
 }
 
 //上传成绩
 exports.put_grade = async function(mark,id,experiment_id){
     let data = await connection.execute("UPDATE `experiment_recard` SET `operation` = ? WHERE `student_id` = ? AND `experiment_id` = ?",[mark,id,experiment_id])
     return {
-        status:1,
-        info: "EXECUTE DOWN!"
+        status:1
     }
 }
 
 //管理员验证
-exports.check_admin = async function(password,id){
-    let data = await connection.execute("SELECT `user_type` FROM `user` WHERE `user_id`= ? AND `password`= ?",[id,password])
-    return {    
-        //status:1,
+exports.check_admin = async function(password){
+    //let data = await connection.execute("SELECT `user_type` FROM `user` WHERE `user_id`= ?",[password])
+    let data = await connection.execute("SELECT COUNT(*) FROM user WHERE user_type = '1' AND user_id =  17041802",[password])
+    return {
         status:data.status,
-        info:data.info
     }
 }
 

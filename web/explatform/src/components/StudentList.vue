@@ -103,9 +103,7 @@ export default {
           ];
     }
   },
-  created:function(){
-  },
-  mounted:function() {
+  created() {
     this.searched = this.info;
   }
 };

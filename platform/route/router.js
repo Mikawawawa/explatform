@@ -9,8 +9,8 @@ const modle = require("../service/DefaultService");
  */
 router.get('/check_admin',async function(req,res,next) {
     //console.log(req.query.id)
-    let data = await modle.check_adminPOST(req.query.password,req.query.id)
-    console.log(data)
+    let data = await modle.check_adminPOST(req.query.password)
+    //console.log(data)
     res.send(
         JSON.stringify(data)
     );
@@ -97,7 +97,7 @@ router.get('/read_time',async function(req,res,next) {
 router.get('/student_signin',async function(req,res,next) {
     let data = await modle.student_signinPOST(req.query.id,req.query.mac_id,req.query.exp_id)
     res.send(
-        JSON.stringify(data)
+        JSON.stringify(data)     
     );
 });
 

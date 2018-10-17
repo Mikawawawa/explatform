@@ -51,7 +51,7 @@ exports.teacherGet_reportGET = async function(report_id) {
  * returns ActionState
  **/
 exports.set_grade = async function(student_id,exp_id,grade,preview,action,report) {
-  return await Teacher.setGrade(student_id,exp_id,grade)
+  return await Teacher.set_grade(student_id,exp_id,grade)
 }
 
 
@@ -69,8 +69,4 @@ exports.teacherStart_expPOST = async function(classroom_id,class_id,process) {
   Mqtt.beginExperiment("000", process)
   // await Mqtt.noticePower(class_id, process)
   return await Teacher.startExp(classroom_id,class_id,process)
-}
-
-exports.teacherGet_explist=async function(course_id){
-  return await Teacher.getExplist(course_id)
 }

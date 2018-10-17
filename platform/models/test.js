@@ -1,13 +1,4 @@
 const modules=require("./modules")
-const mqtt=require("./mqtt")
-
-// mqtt.beginExperiment('000',"创新性实验")
-// mqtt.closeExperiment("000")
- //mqtt.noticePower("000",1)
-
- modules.put_grade("a","1","123").then(data=>{
-     console.log(data)
- })
 
 //  modules.student_signin("17041802","戴维南等效电路","1").then(data=>{
 //      console.log(data)
@@ -17,11 +8,11 @@ const mqtt=require("./mqtt")
 //     console.log(data)
 // })
 
-// modules.student_signin('aptx4869',17041802,123).then(data=>{
-//     console.log(data)
-// })
+modules.student_signin(17031803,1,'创新性实验').then(data=>{
+    console.log(data)
+})
 
-// modules.check_teacher('aptx4869',17031803).then(data=>{
+// modules.check_teacher(17041802).then(data=>{
 //     console.log(data)
 // })
 
@@ -29,7 +20,7 @@ const mqtt=require("./mqtt")
 //     console.log(data)
 // })
 
-// modules.check_admin('12345',17032117).then(data=>{
+// modules.check_admin(17032117).then(data=>{
 //     console.log(data)
 // })
 
@@ -47,10 +38,10 @@ const mqtt=require("./mqtt")
 
 /*  name            parameter                   status
  *  get_progress    id                          OK.
- *  student_signin  password,id,experiment_id   OK.
- *  check_teacher   password,id                 OK.
+ *  student_signin  password,id,experiment_id   OK
+ *  check_teacher   password,id                 OK
  *  put_grade       mark,id,experiment_id       OK.
- *  check_admin     password,id                 OK.
+ *  check_admin     id                          OK
  *  read_time       id                          OK.
  *  put_log         id,log                      OK.
  *  read_log        id                          OK.

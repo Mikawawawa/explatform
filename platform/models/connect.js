@@ -24,6 +24,7 @@ module.exports = connection
 connection.execute=async function(command,params){
     return new Promise((resolve,reject)=>{
         connection.query(command,params,(error,results)=>{
+            results=results[0]
             //console.log(error)
             // 错误处理
             if(error){
@@ -33,20 +34,17 @@ connection.execute=async function(command,params){
                     info:"ACTION ERROR!"
                 })
             // 空值处理
+            }else if(typeof(results)=='undefined'){
+                resolve({
+                    status:0,
+                    info:"NOT FOUND!"
+                })
+            // 返回结果
             }else{
-                results=results[0]
-                if(typeof(results)=='undefined'){
-                    resolve({
-                        status:0,
-                        info:"NOT FOUND!"
-                    })
-                // 返回结果
-                }else{
-                    resolve({
-                        status:1,
-                        info:results
-                    })
-                }
+                resolve({
+                    status:1,
+                    info:results
+                })
             }
         })
     })

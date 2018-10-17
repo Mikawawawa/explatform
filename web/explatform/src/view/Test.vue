@@ -3,8 +3,6 @@
         <p>{{test}}</p>
         <p>{{login}}</p>
         <p>{{sexp}}</p>
-        <p>{{texp}}</p>
-        <p>{{tcourse}}</p>
         <p>{{this.$dataSource.request}}</p>
     </div>
 </template>
@@ -14,16 +12,13 @@ export default {
     name:"test",
     data:()=>({
         test:"",
-        login:"",
-        sexp:"",
-        tcourse:"",
-        texp:""
+        login:""
     }),
     created:async function(){
-        //this.test=this.$appName
+        this.test=this.$appName
+        // console.log(this.$dataSource)
         this.login=await this.$dataSource.Login("17031803","aptx4869")
-        this.test=await this.$dataSource.getExplist("101")
-        console.log(this.test)
+        this.sexp=await this.$dataSource.sGetExp("17041802","101")
     }
 }
 </script>
