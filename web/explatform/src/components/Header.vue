@@ -34,7 +34,7 @@
         </md-toolbar>
         <md-card class="md-elevation-0">
             <md-card-media>
-            <img src="qr.png" alt="unlock">
+            <img v-bind:src="this.qrcode" alt="unlock">
             </md-card-media>
 
             <md-card-header>
@@ -81,13 +81,18 @@ export default {
   name: "Header",
   data: () => ({
     showNavigation: false,
-    showSidepanel: false
+    showSidepanel: false,
+    qrcode:""
   }),
   props: {
     showButton: {
       type: Boolean,
       default: true
     }
+  },
+  created:function(){
+      this.qrcode=`http://101.132.116.211:7071/api/user/get_qrcode?type=${"sid"}&id=${"17041802"}`
+    //   this.qrcode=`http://localhost/api/user/get_qrcode?type=${"sid"}&id=${"17041802"}`
   },
   methods: {
     goStudentCourse: function() {

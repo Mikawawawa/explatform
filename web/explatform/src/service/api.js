@@ -44,7 +44,7 @@ let setReport=async (student_id,exp_id,article) => {
 }
 
 let tCourseDetail=async (class_id) => {
-    let response=await request('post',`${config.T_COURSE_DETAIL}`,{
+    let response=await request('get',`${config.T_COURSE_DETAIL}`,{
         class_id:class_id
     })
     return JSON.parse(JSON.stringify(response.data))
