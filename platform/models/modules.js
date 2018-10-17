@@ -16,7 +16,7 @@ exports.get_progress = async function(id){
 
 //学生签到
 exports.student_signin = async function(id,mac,exp){
-    let data = await connection.execute("SELECT `student_name` FROM `student`, WHERE `student_id`= ? ",[id])
+    let data = await connection.execute("SELECT `student_name` FROM `student` WHERE `student_id`= ? ",[id])
     if(data.status==0){
         return {
             status:0
