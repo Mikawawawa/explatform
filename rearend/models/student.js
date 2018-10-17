@@ -8,34 +8,25 @@ const connection=require("./connect")
  */
 exports.getCourse= async function(student_id){
     var result=[];
-    let data=await connection.execute("call get_student_timetable(?)",[student_id]);
+    let data=await connection.batch(`
+    SELECT * FROM subject WHERE subject_id in(
+        SELECT DISTINCT subject_id FROM class WHERE class_id IN (
+            SELECT DISTINCT class_id FROM class_join WHERE student_id=?
+        )
+    )`,[student_id]);
     //return data
-    if(data.info.length == 0){
-        return{
-            status:0,
-            info:"Not Found!"
-        }
-    }
-    else if(data.status != 1){
-        return{
-            status: 0,
-            info:"Action Error!"
-        }
+    if(data.status == 0){
+        return data
     }
     else{
         for(let i=0; i<data.info.length; i++){
-            result[i] = {
-                course_id: data.info[i].subject_id,
-                type: null,
-                description: "课程id号"
+            data.info[i]={
+                course_id:data.info[i].subject_id,
+                course_name:data.info[i].subject_name
             }
         }
-        return {
-            status:1,
-            info:result
-        }
+        return data
     }
-
 }
 
 /**

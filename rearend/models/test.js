@@ -29,7 +29,7 @@ const mqtt=require("./mqtt")
  * 日期：2018年10月13日
  */
 
-// teacher.getCourse("170318").then(data=>{
+// teacher.getCourse("17040318").then(data=>{
 //     console.log(data)
 // })
 
@@ -41,12 +41,12 @@ const mqtt=require("./mqtt")
 //     console.log(data)
 // })
 
-teacher.setGrade('17041802','123',{
-    action:4,
-    report:3
-}).then(data=>{
-    console.log(data)
-})
+// teacher.setGrade('17041802','123',{
+//     action:4,
+//     report:3
+// }).then(data=>{
+//     console.log(data)
+// })
 
 // teacher.startExp(
 //     '254','17040318','123'
@@ -67,3 +67,6 @@ teacher.setGrade('17041802','123',{
 //     console.log(data)
 // })
 
+student.getCourse("17041802").then(data=>{
+    console.log(data)
+})

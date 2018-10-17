@@ -7,20 +7,32 @@ const connection=require("./connect")
  * Comment: 
  */
 exports.getCourse=async function(id) {
-    let data=await connection.execute("CALL get_teacher_timetable(?)",[id])
+    // SELECT * FROM experiment_recard WHERE experiment_id in (
+    //     SELECT experiment_id from experiment_grant WHERE class_id in(
+    //         SELECT class_id FROM class WHERE class_id="17040318"
+    //     )
+    // )
+    let data=await connection.batch(`
+    SELECT * FROM experiment_recard WHERE experiment_id in (
+        SELECT experiment_id from experiment_grant WHERE class_id in(
+            SELECT class_id FROM class WHERE class_id=?
+        )
+    )`,[id])
     if(data.status!=1){
         return {    
             status: 0,
             info: "Action Error!"
         }
     }else{
+        console.log(data)
         for(let i=0;i<data.info.length;i++){
-            let subject_name=await connection.execute(`SELECT subject_name as name FROM subject WHERE subject_id=?`,[data.info[i].subject_id])
-            subject_name=subject_name.info.name
-            data.info[i].subject_name=subject_name
             data.info[i]={
-                course_id:data.info[i].class_id,
-                course_name:data.info[i].subject_name
+                student_id:data.info[i].student_id,
+                article:data.info[i].experiment_id,
+                grade:{
+                    action:Number(data.info[i].operation),
+                    report:Number(data.info[i].grade)
+                }
             }
         }
         return data
