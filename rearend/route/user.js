@@ -17,6 +17,6 @@ app.get("/get_power", async (req, res) => {
 })
 
 app.get("/get_qrcode",async (req,res)=>{
-    res.sendfile(await user.getQrcode(req.query.id))
+    res.sendfile(await user.getQrcode(req.query.type,req.query.id))
 })
 module.exports = app

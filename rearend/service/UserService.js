@@ -25,7 +25,7 @@ exports.get_power = async function(id) {
   return await User.getPower(id)
 }
 
-exports.getQrcode=async function(id){
-  return await User.getQrcode()
+exports.getQrcode=async function(type="sid",id="17041802"){
+  return await User.getQrcode(type,id)
 }
 

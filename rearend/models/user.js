@@ -49,9 +49,10 @@ exports.getPower=async function getPower(id){
 
 
 
-exports.getQrcode=function qrcode(prams="123"){
+exports.getQrcode=function qrcode(type,message="123"){
     return new Promise((resolve,reject)=>{
-        prams=md5(prams)
+        // prams=`${type}:${md5(prams)}`
+        prams=`${type}:${message}`
         QRCode.toFile(`./public/${prams}.png`, prams, {
             color: {
               dark: '#333',  // Blue dots
