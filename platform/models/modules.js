@@ -18,7 +18,6 @@ exports.get_progress = async function(id){
 exports.student_signin = async function(id,mac_id,exp_id){
     let data = await connection.execute("SELECT `student_name` FROM `student` WHERE `student_id`= ? ",[id])
     await connection.execute("UPDATE `experiment_recard` SET `present`= ? WHERE (`student_id`=?) AND (`experiment_id`=?)",[new Date().toLocaleString(),id,exp_id])
-    //console.log(arguments)
     return {
         status:data.status,
         info:data.info.student_name,
