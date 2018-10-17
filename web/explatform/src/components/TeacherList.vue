@@ -3,7 +3,7 @@
         <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-fixed-header  style="height:100%!important">
           <md-table-toolbar>
               <div class="md-toolbar-section-start">
-                <h1 class="md-title">{{searched[0].id}}</h1>
+                <h1 class="md-title">{{"大物实验"}}</h1>
               </div>
 
               <md-field md-clearable class="md-toolbar-section-end">

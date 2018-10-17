@@ -1,5 +1,6 @@
 {
-    "domain":"http://192.168.0.3/api",
+    "domain":"http://101.132.116.211:7071/api",
+    "domain_b":"http://localhost/api",
     "LOGIN":"/user/login",
     "GET_POWER":"/user/get_power",
 

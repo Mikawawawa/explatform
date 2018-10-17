@@ -21,9 +21,14 @@ student.setReport("17041802","123",'123').then(data=>{
 /*user.login("17031803","aptx4869").then(data=>{
     console.log(data)
 })*/
-// user.getPower("17031803").then(data=>{
-//     console.log(data)
-// })
+/*user.getPower("17031803").then(data=>{
+    console.log(data)
+})*/
+
+
+user.getString("123").then(data=>{
+    console.log(data)
+})
 /**
  * 测试人：姜佐腾
  * 日期：2018年10月13日

@@ -52,17 +52,17 @@ export default {
       if(this.info=="1")this.$router.push({
         path:`/teacher_exp`,
         query: { 
-          dataobj: this.Dname,
+          info_id: this.Dname,
         }})
       else if(this.info=="2") this.$router.push({
         path:`/teacher_info`,
         query: { 
-            dataobj: this.Dname,
+            info_id: this.Dname,
         }});
       else this.$router.push({
         path:`/student_exp`,
         query: { 
-            dataobj: this.Dname,
+            info_id: this.Dname,
         }});
   }
   }
