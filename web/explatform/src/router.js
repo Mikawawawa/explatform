@@ -30,26 +30,26 @@ const routes = [
         props:true,
         component: Login
     },
-     {
-         path: '/teacher_course',
-         props:false,
-         component: Teacher_course
-     },
-     /*{
-         path: '/student_course',
-         props:true,
-        component: Student_course
-     },
+    //  {
+    //      path: '/teacher_course',
+    //      props:false,
+    //      component: Teacher_course
+    //  },
+    // {
+    //      path: '/student_course',
+    //      props:true,
+    //     component: Student_course
+    //  },
     {
         path: '/student_exp',
         props:true,
         component: Student_info
     },
-    {
-        path: '/teacher_exp',
-        props:false,
-        component: Teacher_exp
-    },*/
+    // {
+    //     path: '/teacher_exp',
+    //     props:false,
+    //     component: Teacher_exp
+    // },
     {
         path: '/teacher_info',
         component:Teacher_info
