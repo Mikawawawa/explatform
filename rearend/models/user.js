@@ -62,18 +62,18 @@ exports.getQrcode=function qrcode(type,message="123"){
             }, function (err) {
                 if (err) 
                     console.log(err)
-                    var timeout_ms = 10*60*1000; // 5 seconds
-                    setTimeout(function() {
-                    //删除文件
-                        fs.unlink(`../public/${prams}.png`, function (err) {
-                            // 判断 如果有错 抛出错误 否则 打印删除成功
-                            if (err) {
-                                throw err;
-                            } 
-                            console.log('删除成功!')
-                        })
-                    }, timeout_ms);
-                    resolve(`./public/${prams}.png`)            
+                var timeout_ms = 10*60*1000; // 5 seconds
+                // setTimeout(function() {
+                // //删除文件
+                //     fs.unlink(`../public/${prams}.png`, function (err) {
+                //         // 判断 如果有错 抛出错误 否则 打印删除成功
+                //         if (err) {
+                //             throw err;
+                //         } 
+                //         console.log('删除成功!')
+                //     })
+                // }, timeout_ms);
+                resolve(`./public/${prams}.png`)            
             })
         }catch(err){
             resolve(`./public/qr.png`)
