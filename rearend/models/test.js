@@ -3,8 +3,10 @@ const user=require("./user")
 const student=require("./student")
 const mqtt=require("./mqtt")
 
-mqtt.beginExperiment("111","0|123")
+//mqtt.beginExperiment("000","0")
 //mqtt.noticePower("000","1")
+
+
 // student.getCourse("17041801").then(data=>{
 //     console.log(data)
 // })
