@@ -49,8 +49,8 @@ exports.getPower=async function getPower(id){
 
 
 
-exports.getQrcode=async function qrcode(prams="123"){
-    return Promise((resolve,reject)=>{
+exports.getQrcode=function qrcode(prams="123"){
+    return new Promise((resolve,reject)=>{
         prams=md5(prams)
         QRCode.toFile(`./public/${prams}.png`, prams, {
             color: {
