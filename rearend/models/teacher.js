@@ -13,10 +13,10 @@ exports.getCourse=async function(id) {
     //     )
     // )
     let data=await connection.batch(`
-    SELECT * FROM experiment_recard WHERE experiment_id in (
-        SELECT experiment_id from experiment_grant WHERE class_id in(
-            SELECT class_id FROM class WHERE class_id=?
-        )
+    SELECT DISTINCT * FROM subject where subject_id in(
+		SELECT subject_id from class WHERE class_id in (
+				SELECT class_id from class_grant WHERE teacher_id=?
+		)
     )`,[id])
     if(data.status!=1){
         return {    
@@ -27,12 +27,8 @@ exports.getCourse=async function(id) {
         console.log(data)
         for(let i=0;i<data.info.length;i++){
             data.info[i]={
-                student_id:data.info[i].student_id,
-                article:data.info[i].experiment_id,
-                grade:{
-                    action:Number(data.info[i].operation),
-                    report:Number(data.info[i].grade)
-                }
+                course_id:data.info[i].subject_id,
+                course_name:data.info[i].subject_name
             }
         }
         return data
