@@ -66,7 +66,9 @@ export default {
           this.$store.commit("setExp",JSON.stringify(exp_form))
           this.experiment=this.$store.state.Exp
         }else{
+          data=data.info
           clearInterval(delay)
+          this.experiment=data
           this.$store.commit("setExp",JSON.stringify(data))
         }
       }

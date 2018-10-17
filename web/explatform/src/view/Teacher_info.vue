@@ -57,9 +57,9 @@ export default {
           this.experiment=this.$store.state.Exp
         },2000)
 
-        data=await this.$dataSource.tGetExp("17041803")
+        data=await this.$dataSource.tGetExp("17040318")
         // data=await this.$dataSource.sGetExp(this.$store.state.user_type,this.$route.query.info_id)
-        data.status==0
+        // data.status==0
         if(data.status==0){
           clearInterval(delay)
           data=''
@@ -68,7 +68,12 @@ export default {
           this.experiment=this.$store.state.Exp
         }else{
           clearInterval(delay)
+          data=data.info
+          // data=exp_form
+          console.log(data)
+          this.experiment=data
           this.$store.commit("setExp",JSON.stringify(data))
+
         }
       }
   }

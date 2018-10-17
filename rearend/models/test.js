@@ -29,13 +29,13 @@ const mqtt=require("./mqtt")
  * 日期：2018年10月13日
  */
 
-// teacher.getCourse("17040318").then(data=>{
-//     console.log(data)
-// })
-
-teacher.get_exp('17040318').then(data=>{
+teacher.getCourse("17031803").then(data=>{
     console.log(data)
 })
+
+// teacher.get_exp('17040318').then(data=>{
+//     console.log(data)
+// })
 
 // teacher.getReport('123').then(data=>{
 //     console.log(data)
@@ -67,6 +67,6 @@ teacher.get_exp('17040318').then(data=>{
 //     console.log(data)
 // })
 
-student.getCourse("17041802").then(data=>{
-    console.log(data)
-})
+// student.getCourse("17041802").then(data=>{
+//     console.log(data)
+// })

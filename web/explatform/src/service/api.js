@@ -77,7 +77,7 @@ let tGetCourse=async (teacher_id) => {
 }
 //教师开始实验
 let startExp=async (classroom_id,class_id, process) => {
-    let response=await request('post',`${config.SET_GRADE}`,{
+    let response=await request('get',`${config.START_EXP}`,{
         classroom_id:classroom_id,
         class_id:class_id,
         process: process

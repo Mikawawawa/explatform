@@ -49,7 +49,7 @@ exports.get_exp=async function(class_id){
             data.info[i]={
                 student_id:data.info[i].student_id,
                 article:data.info[i].experiment_id,
-                grade:{
+                score:{
                     report:data.info[i].grade,
                     action:data.info[i].operation
                 }

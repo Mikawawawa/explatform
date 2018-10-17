@@ -3,7 +3,14 @@
         <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-fixed-header  style="height:100%!important">
           <md-table-toolbar>
               <div class="md-toolbar-section-start">
-                <h1 class="md-title">{{"大物实验"}}</h1>
+                <h1>
+                  <span class="md-title">
+                    {{searched[0].article}}
+                  </span>
+                  <span>
+                    <md-button @click="start_exp(searched[0].article)">开始实验</md-button>
+                  </span>
+                </h1>
               </div>
 
               <md-field md-clearable class="md-toolbar-section-end">
@@ -26,7 +33,7 @@
                 <showGrade v-bind:grade="item.score&&item.score.report?item.score.report:'0'"></showGrade>
               </md-table-cell>
               <md-table-cell md-label="查看报告" md-sort-by="report">
-                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown(item.id,item.student_id)">
+                <md-button class="md-size-1x md-icon-button" style="padding:0px" @click="goMarkdown(item.article,item.student_id)">
                   <md-icon>visibility</md-icon>
                 </md-button>
               </md-table-cell>
@@ -52,6 +59,10 @@ export default {
     searched: []
   }),
   methods: {
+    start_exp(id){
+      this.$dataSource.startExp("254","17040318",id)
+    },
+
     goEdit(){
       this.$router.push({
           path:"/markdown",
