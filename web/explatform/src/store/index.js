@@ -7,7 +7,11 @@ const store = new Vuex.Store({
       user_id:"",
       user_type:"",
       subject_id:"",
-      subject_name:""
+      Tcourse:"",
+      Scourse:"",
+      Texp:"",
+      Tsubject_name:"",
+      Ssubject_name:""
     },
     mutations: {
       setUser(state,user){
@@ -22,16 +26,16 @@ const store = new Vuex.Store({
       setExp(state,data){
         state.Exp=JSON.parse(data)
       },
-      getTcourse(state,Tcourse){
-        Tcouse=JSON.parse(Tcourse)
-        state.subject_id=Tcourse.subject_id
-        atate.subject_name=Tcourse.subject_name
+      setTcourse(state,Tcourse){
+        state.Tcourse=JSON.parse(Tcourse)
+        //state.subject_id=Tcourse.course_id
+        //atate.subject_name=Tcourse.info.course_name
       },
-      getScourse(state,Scourse){
-        Scourse=JSON.parse(Scourse)
-        state.subject_name=Scourse.subject_name
+      setScourse(state,Scourse){
+        state.Scourse=JSON.parse(Scourse)
+       // state.Ssubject_name=Scourse.subject_name
       },
-      getExplist(state,Texp){
+      setTexp(state,Texp){
         state.Texp=JSON.parse(Texp)  
       }
     },

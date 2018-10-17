@@ -6,6 +6,8 @@ import Home from "./view/Index"
 // import Teacher_course from "./view/Teacher_course"
 import Teacher_info from "./view/Teacher_info"
 import Teacher_exp from "./view/Teacher_exp"
+import Teacher_course from "./view/Teacher_course"
+import Student_course from "./view/Student_course"
 
 import Markdown from "./view/Markdown"
 import Article from "./view/Article"
@@ -29,6 +31,16 @@ const routes = [
         path: '/login',
         props:true,
         component: Login
+    },
+    {
+        path: '/teacher_course',
+        props:true,
+        component: Teacher_course
+    },
+    {
+        path: '/student_course',
+        props:true,
+        component: Student_course
     },
     {
         path: '/student_exp',
