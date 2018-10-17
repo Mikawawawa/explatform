@@ -5,9 +5,13 @@ const mqtt=require("./mqtt")
 // mqtt.closeExperiment("000")
  //mqtt.noticePower("000",1)
 
- modules.student_signin("17041802","戴维南等效电路","1").then(data=>{
+ modules.put_grade("a","1","123").then(data=>{
      console.log(data)
  })
+
+//  modules.student_signin("17041802","戴维南等效电路","1").then(data=>{
+//      console.log(data)
+//  })
 
 // modules.get_progress(17040318).then(data=>{
 //     console.log(data)
