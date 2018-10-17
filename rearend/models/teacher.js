@@ -46,15 +46,17 @@ exports.getCourse=async function(id) {
  * Comment: 
  */
 exports.get_exp=async function(class_id){
-    let data=await connection.execute("SELECT * FROM `experiment_recard` where student_id in (select student_id from `class_join` where class_id=?)",[class_id])
-    console.log(data)
+    let data=await connection.batch("SELECT * FROM `experiment_recard` where student_id in (select student_id from `class_join` where class_id=?)",[class_id])
+    // console.log(data)
     if(data.status!=0){
-        data.info={
-            student_id:data.info.student_id,
-            article:data.experiment_id,
-            grade:{
-                report:data.info.grade,
-                action:data.info.operation
+        for(let i=0;i<data.info.length;i++){
+            data.info[i]={
+                student_id:data.info[i].student_id,
+                article:data.info[i].experiment_id,
+                grade:{
+                    report:data.info[i].grade,
+                    action:data.info[i].operation
+                }
             }
         }
         return data

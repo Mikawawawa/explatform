@@ -33,9 +33,9 @@ const mqtt=require("./mqtt")
 //     console.log(data)
 // })
 
-// teacher.getExp('17040318').then(data=>{
-//     console.log(data)
-// })
+teacher.get_exp('17040318').then(data=>{
+    console.log(data)
+})
 
 // teacher.getReport('123').then(data=>{
 //     console.log(data)
