@@ -7,12 +7,14 @@ const config = require("./config.json")
 const apiRouter = require("./route/router")
 
 const app = express();
-
 app.use("*",(req,res,next)=>{
     console.log(req.url)
     next()
 })
+<<<<<<< HEAD
+=======
 
+>>>>>>> d753948... add features
 app.use("/", apiRouter)
 
 

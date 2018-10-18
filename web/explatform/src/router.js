@@ -13,7 +13,7 @@ import Markdown from "./view/Markdown"
 import Article from "./view/Article"
 
 import Student_info from "./view/Student_info"
-// import Student_course from "./view/Student_course"
+import Student_course from "./view/Student_course"
 
 import Test from "./view/Test.vue"
 // rules

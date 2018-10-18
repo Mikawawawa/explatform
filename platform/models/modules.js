@@ -40,7 +40,6 @@ exports.check_teacher = async function(id){
 
 //上传成绩
 exports.put_grade = async function(mark,id,experiment_id){
-    console.log(arguments)
     if(mark=="A")
         mark="5"
     if(mark=="B")
@@ -49,9 +48,7 @@ exports.put_grade = async function(mark,id,experiment_id){
         mark="3"
     if(mark=="D")
         mark="2"
-    console.log(arguments)
-    let data = await connection.execute("UPDATE experiment_recard SET operation = ? WHERE student_id = ? AND experiment_id = ?",[mark,id,experiment_id])
-    console.log(data)
+    let data = await connection.execute("UPDATE `experiment_recard` SET `operation` = ? WHERE `student_id` = ? AND `experiment_id` = ?",[mark,id,experiment_id])
     return {
         status:1
     }
@@ -94,5 +91,3 @@ exports.read_log = async function(id){
         info:data.info
     }
 }
-
-
