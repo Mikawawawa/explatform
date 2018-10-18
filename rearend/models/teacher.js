@@ -7,19 +7,27 @@ const connection=require("./connect")
  * Comment: 
  */
 exports.getCourse=async function(id) {
-    let data=await connection.execute("CALL get_teacher_timetable(?)",[id])
+    // SELECT * FROM experiment_recard WHERE experiment_id in (
+    //     SELECT experiment_id from experiment_grant WHERE class_id in(
+    //         SELECT class_id FROM class WHERE class_id="17040318"
+    //     )
+    // )
+    let data=await connection.batch(`
+    SELECT DISTINCT * FROM subject where subject_id in(
+		SELECT subject_id from class WHERE class_id in (
+				SELECT class_id from class_grant WHERE teacher_id=?
+		)
+    )`,[id])
     if(data.status!=1){
         return {    
             status: 0,
             info: "Action Error!"
         }
     }else{
+        console.log(data)
         for(let i=0;i<data.info.length;i++){
-            let subject_name=await connection.execute(`SELECT subject_name as name FROM subject WHERE subject_id=?`,[data.info[i].subject_id])
-            subject_name=subject_name.info.name
-            data.info[i].subject_name=subject_name
             data.info[i]={
-                course_id:data.info[i].class_id,
+                course_id:data.info[i].subject_id,
                 course_name:data.info[i].subject_name
             }
         }
@@ -34,15 +42,17 @@ exports.getCourse=async function(id) {
  * Comment: 
  */
 exports.get_exp=async function(class_id){
-    let data=await connection.execute("SELECT * FROM `experiment_recard` where student_id in (select student_id from `class_join` where class_id=?)",[class_id])
-    console.log(data)
+    let data=await connection.batch("SELECT * FROM `experiment_recard` where student_id in (select student_id from `class_join` where class_id=?)",[class_id])
+    // console.log(data)
     if(data.status!=0){
-        data.info={
-            student_id:data.info.student_id,
-            article:data.experiment_id,
-            grade:{
-                report:data.info.grade,
-                action:data.info.operation
+        for(let i=0;i<data.info.length;i++){
+            data.info[i]={
+                student_id:data.info[i].student_id,
+                article:data.info[i].experiment_id,
+                grade:{
+                    report:data.info[i].grade,
+                    action:data.info[i].operation
+                }
             }
         }
         return data
@@ -99,5 +109,14 @@ exports.startExp=async function(classroom_id,class_id,process){
     return{
         status:1,
         info:"ACTION SUCCESS"
+    }
+}
+
+exports.getExplist=async function(course_id){
+    let data=await connection.execute('SELECT DISTINCT experiment_id FROM experiment_recard WHERE subject_id=?',[course_id])
+    if(data.status==0){
+        return data
+    }else{
+        return data
     }
 }

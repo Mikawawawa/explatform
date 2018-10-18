@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// import router from "./router.js"
 export default {
   props: {
     info:{

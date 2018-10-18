@@ -28,7 +28,8 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Card from "../components/Card.vue";
 
-import Texp_form from "../template/Texp_form";
+// import Texp_form from "../template/Texp_form";
+const Texp_form=[]
 export default {
   name: "Course2",
   components: {
@@ -65,33 +66,33 @@ export default {
           this.$store.commit("setTexp",JSON.stringify(data.info))
           this.Texp=this.$store.state.Texp
         }
-      }
- /* created(){  
-    let routerParams = this.$route.query.dataobj
-    // 将数据放在当前组件的数据内
-    this.msg = routerParams
-    if(this.msg=="数电实验"){
-        this.course=[
-          {name:"差分方程"},
-          {name:"数电分析"},
-          {name:"小信号模型"}
-        ]
-      }
-    else if(this.msg=="电分实验"){
-        this.course=[
-          {name:"差分方程"},
-          {name:"电路分析"},
-          {name:"小信号模型"}
-        ]
-      }
-      else{
-        this.course=[
-          {name:"差分方程"},
-          {name:"模电分析"},
-          {name:"小信号模型"}
-        ]
-      }
-  }
+      },
+    //  created(){  
+    //   let routerParams = this.$route.query.dataobj
+    //   // 将数据放在当前组件的数据内
+    //   this.msg = routerParams
+    //   if(this.msg=="数电实验"){
+    //       this.course=[
+    //         {name:"差分方程"},
+    //         {name:"数电分析"},
+    //         {name:"小信号模型"}
+    //       ]
+    //     }
+    //   else if(this.msg=="电分实验"){
+    //       this.course=[
+    //         {name:"差分方程"},
+    //         {name:"电路分析"},
+    //         {name:"小信号模型"}
+    //       ]
+    //     }
+    //   else{
+    //     this.course=[
+    //       {name:"差分方程"},
+    //       {name:"模电分析"},
+    //       {name:"小信号模型"}
+    //     ]
+    //   }
+    // }
 };
 </script>
 

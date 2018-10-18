@@ -28,7 +28,8 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Card from "../components/Card.vue";
 
-import Scourse_form from "../template/Scourse_form";
+// import Scourse_form from "../template/Texp_form";
+const Scourse_form=[]
 export default {
   name: "Student_course",
   components: {
